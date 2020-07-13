@@ -42,18 +42,47 @@ console.log(a)
       function foo(a) {
           console.log(a)
       }
-      //2
+      //2 函数声明提升
       ```
 
     * 函数表达式
 
       ```js
+      console.log(foo) //undefind 说明还是有变量提升 但是没有函数声明提升
       foo(2)
       var foo = function(a){
           console.log(a)
       }
-      //foo is not defined
+      //foo is not a function
       ```
+    
+    * 混在一起
+    
+      ```js
+      console.log(foo) //Function: foo
+      var foo = function(){
+          console.log("a")
+      }
+      function foo(){        //函数声明提升
+          console.log("b")
+      }
+      foo()
+      
+      
+      //相当于下面一部分
+      var foo        
+      
+      function foo(){
+          console.log("b")
+      }
+       
+      
+      foo = function(){
+          console.log("a")
+      }
+      ```
+    
+      
 
 ###### 作用域
 
