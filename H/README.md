@@ -7,7 +7,7 @@
 次日10：00-11：00 学习markdown语法并练习使用
 次日11：00-11：30 写日报，完成git作业[hello.md](./Tasks/hello.md)  
 ### ②学了什么
-学习了markdown的语法，笔记见[markdown.md](./Notes/Markdown.md)  
+学习了markdown的语法，笔记见[markdown.md](./Notes/markdown.md)  
 了解了github的基础用法与git概念、优点、发展等  
 ### ③收获
 抛弃了百度，学会翻墙并会用Google了 -v-  
