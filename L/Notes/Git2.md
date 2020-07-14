@@ -22,10 +22,25 @@
 `git stash drop`    
 移除最新的stash，后面也可以跟指定stash的名字  
 ## git reset
+`git reset -- hard [指针位置]`  
+- 删除操作已经提交到本地库：指针位置指向历史位置  
+- 删除操作尚未提交到本地库：指针位置用HEAD  
+
 `git reset HEAD^/~n`  
 回退版本，一个^表示一个版本，可以多个，另外也可以使用 git reset HEAD~n这种形式。
 也可以回退到指定版本：
 `git reset commit -id`  
+## git diff  
+- 将工作区的文件与暂存区进行比较  
+`git diff[文件名]`  
+
+- 将工作区中的文件与本地库开始记录比较  
+`git diff[本地库中的历史记录][文件名]`  
+
+- 不带文件名可以比较多个文件  
+
+
+
 ## git reflog  
 `git reflog  `
 可以查看所有分支的所有操作记录（包括commit和reset的操作），包括已经被删除的commit记录，git log则不能察看已经删除了的commit记录
@@ -61,7 +76,17 @@ git checkout newBranchName(工作区一定要是clean的)`
 |git checkout| 提交层面| 切换分支或查看旧版本|
 |git checkout| 文件层面| 舍弃工作目录中的更改|
 |git revert| 提交层面| 在公共分支上回滚更改|
-|git revert| 文件层面| （然而并没有）|
+|git revert| 文件层面| （然而并没有）|  
+## 分支操作
+- 创建分支  
+`git branch[分支名]`  
+- 查看分支  
+`git branch -v ` 
+- 切换分支  
+`git checkout [分支名]  `
+- 合并分支  
+先切换接受修改的分支，执行merge命令  
+
 ## 删除分支  
 
 `$ git branch -d branchName
@@ -74,7 +99,7 @@ git push命令用于将本地分支的更新，推送到远程主机.
 
 `git push origin(远程主机名) master（本地分支名`   
 `git push origin :master`相等于`git push origin -- delete master`  
- 
+
 如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。  
 
 上面命令表示删除origin主机的master分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。
