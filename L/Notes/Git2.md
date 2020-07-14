@@ -76,7 +76,7 @@ git checkout newBranchName(工作区一定要是clean的)`
 |git checkout| 提交层面| 切换分支或查看旧版本|
 |git checkout| 文件层面| 舍弃工作目录中的更改|
 |git revert| 提交层面| 在公共分支上回滚更改|
-|git revert| 文件层面| （然而并没有）|  
+|git revert| 文件层面| （无）|  
 ## 分支操作
 - 创建分支  
 `git branch[分支名]`  
