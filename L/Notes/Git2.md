@@ -62,7 +62,7 @@ git checkout newBranchName(工作区一定要是clean的)`
 |git revert| 文件层面| （然而并没有）|
 ## 删除分支
 `$ git branch -d branchName
-或者， git branch -D branchName `
+或者， git branch -D branchName`  
 删除分支（不管它有没有merge）
 前提是先要切换到其他分支
 ## git push
