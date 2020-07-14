@@ -85,7 +85,9 @@ git checkout newBranchName(工作区一定要是clean的)`
 - 切换分支  
 `git checkout [分支名]  `
 - 合并分支  
-先切换接受修改的分支，执行merge命令  
+先切换接受修改的分支`git checkout master`，执行merge命令`git merge hoy_fix`  
+- 解决冲突  
+编辑文件，add，commit（*不能带文件名*）  
 
 ## 删除分支  
 
@@ -94,6 +96,11 @@ git checkout newBranchName(工作区一定要是clean的)`
 
 删除分支（不管它有没有merge）
 前提是先要切换到其他分支
+## git clone address  
+- 完整吧远程库下载到本地
+- 创建origin别名
+- 初始化本地库
+
 ## git push
 git push命令用于将本地分支的更新，推送到远程主机.  
 
@@ -118,7 +125,7 @@ git push命令用于将本地分支的更新，推送到远程主机.
 
 `$ git push origin HEAD:master`  
 将当前分支推送到源存储库中的远程引用匹配主机。 这种形式方便推送当前分支，而不考虑其本地名称。
-## git pull
+## git pull=fetch+merge
 `$ git pull <远程主机名> <远程分支名>:<本地分支名>`    
 
 git pull命令用于从另一个存储库或本地分支获取并集成(整合)。git pull命令的作用是：取回远程主机某个分支的更新，再与本地的指定分支合并，  
@@ -128,5 +135,8 @@ git pull命令用于从另一个存储库或本地分支获取并集成(整合)�
 
 `$ git pull origin master`  
 如果远程分支(master)要与当前分支合并，则冒号后面的部分可以省略
+## 解决远程冲突  
+如果不是基于github最新版所做的修改，不能推送，必须先拉取  
+拉取后会进入冲突状态，测按照分支冲突操作  
 
 [常用命令](https://blog.csdn.net/u012556150/article/details/50736896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.compare)
