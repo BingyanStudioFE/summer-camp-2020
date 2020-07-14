@@ -319,4 +319,51 @@ peng.__proto__ === Student.prototype //true
 
 ## 原型链
 
-待补充
+![image-20200715030307392](C:\Users\lenovo\AppData\Roaming\Typora\typora-user-images\image-20200715030307392.png)
+
+1.首先明确一点 function xxx 实际上相当于 xxx = new Function()
+
+2.new操作符
+
+* 创建一个新对象
+* 新对象的\_\_proto\_\_指向构造函数的prototype
+* this绑定
+* return
+
+3.当我们使用Peng.xx属性或者Peng.xx方法时，如果在Peng这个对象中没有找到xx属性或者方法，就会到它的
+
+\_\_proto\_\_属性中寻找，如果Peng.\_\_proto\_\_仍然没有该方法或者属性，就Peng.\_\_proto\_\_.constructor.\_\_proto\_\_中寻找,直到遇见null
+
+4.好处：实现继承，Teacher和Student的公共属性或者方法储存在同一个内存地址
+
+5.由于Function本身是一个函数也是一个对象，所以有
+
+```js
+Function.prototype === Function.__proto__
+```
+
+
+
+
+
+
+
+
+
+再举个例子
+
+```js
+var b = new Foo(20);
+var c = new Foo(30);
+```
+
+
+
+
+
+![enter image description here](https://i.stack.imgur.com/UfXRZ.png)
+
+
+
+
+
