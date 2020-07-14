@@ -6,15 +6,15 @@
 相当于运行 git add -u把所有当前目录下的文件加入缓存区域再运行git commit.
 注意！对于新增的文件，并没有被commit  
 `git commit -am/-a-m`  
-等同于上面的-a和-m
+等同于上面的-a和-m  
 `git commit --amend`  
 修改最近一次提交。有时候如果提交注释书写有误或者漏提文件，可以使用此命令。对于漏提交的文件，需要git add到缓存区之后，git commit --amend才能将修改追加到最近的一次提交上。  
 ## git stash
 `git stash`  
 所有未提交的修改都保存起来，用于后续恢复当前工作目录  
 `git stash save "stash_name"`  
-给每个stash加一个message，用于记录版本
-`git stash pop/git stash apply`  
+给每个stash加一个message，用于记录版本  
+`git stash pop/git stash apply`    
 恢复最新缓存的工作目录（第一个），并删除缓存堆栈中的那一个stash删除(pop), apply则只恢复不删除  
 `git stash list`    
 查看现有所有stash
@@ -26,23 +26,25 @@
 回退版本，一个^表示一个版本，可以多个，另外也可以使用 git reset HEAD~n这种形式。
 也可以回退到指定版本：
 `git reset commit -id`  
-## git reflog
-git reflog 可以查看所有分支的所有操作记录（包括commit和reset的操作），包括已经被删除的commit记录，git log则不能察看已经删除了的commit记录
-想要回退到只需要`git reset -- hard 版本号`
+## git reflog  
+`git reflog  `
+可以查看所有分支的所有操作记录（包括commit和reset的操作），包括已经被删除的commit记录，git log则不能察看已经删除了的commit记录
+想要回退到只需要  
+`git reset -- hard 版本号`
 ## git add
-`git add -A`保存所有修改
-`git add .`保存新的添加和修改，但是不包括删除
-`git add -u`保存修改和删除，不包括新建文件
+`git add -A`保存所有修改  
+`git add .`保存新的添加和修改，但是不包括删除  
+`git add -u`保存修改和删除，不包括新建文件  
 ## git checkout
 ### git checkout切换分支
 `$ git checkout -b newBranchName
 Switched to a new branch ‘newBranchName’`
 
-这相当于执行下面这两条命令：
+这相当于执行下面这两条命令：  
 `git branch newBranchName
-git checkout newBranchName(工作区一定要是clean的)`
+git checkout newBranchName(工作区一定要是clean的)`  
 
-`$ git checkout -b newBranchName remote_branch_name`  
+`$ git checkout -b newBranchName remote_branch_name`   
 拉取远程分支remote_branch_name创建一个本地分支newBranchName，并切到本地分支newBranchName，采用此种方法建立的本地分支会和远程分支建立映射关系。
 ### git checkout回退修改
 `git checkout – fileName`  
@@ -60,15 +62,19 @@ git checkout newBranchName(工作区一定要是clean的)`
 |git checkout| 文件层面| 舍弃工作目录中的更改|
 |git revert| 提交层面| 在公共分支上回滚更改|
 |git revert| 文件层面| （然而并没有）|
-## 删除分支
+## 删除分支  
+
 `$ git branch -d branchName
 或者， git branch -D branchName`  
+
 删除分支（不管它有没有merge）
 前提是先要切换到其他分支
 ## git push
-git push命令用于将本地分支的更新，推送到远程主机。
+git push命令用于将本地分支的更新，推送到远程主机.  
+
 `git push origin(远程主机名) master（本地分支名`   
 `git push origin :master`相等于`git push origin -- delete master`  
+ 
 如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。  
 
 上面命令表示删除origin主机的master分支。如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。
