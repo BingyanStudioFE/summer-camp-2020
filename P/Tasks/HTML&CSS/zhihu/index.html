@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="./iconfont/iconfont.js"></script>
+    <style>
+        .icon {
+          width: 1em;
+          height: 1em;
+          vertical-align: -0.15em;
+          fill: currentColor;
+          overflow: hidden;
+        }
+        * {
+            padding: 0; margin: 0;
+            list-style: none;
+            text-decoration: none;
+        }
+        body {
+            background-color: #f6f6f6;
+        }
+        #head {
+            width: 100%; height: 52px;
+            background-color: white;
+            position: fixed;
+            box-shadow: 0 0 3px 3px #e8e9ea;
+        }
+        #head .head1 {
+            width: 100%; height: 52px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+        }
+        #head ul {
+            margin: 0 30px;
+        }
+        #head ul li{
+            float: left;
+            font-size: 20px;
+            margin: 0 15px;
+            height: 50px;
+            line-height: 50px;
+            box-sizing: border-box;
+        }
+        #head ul li:hover a {
+            color: black;
+        }
+        #head ul li:nth-of-type(1) {
+            border-bottom: 3px solid #0084ff;
+        }
+        #head ul li:nth-of-type(1) a {
+            color: black;
+        }
+        a {
+            color: #8590a6;
+        }
+        #head .search {
+            display: flex;
+            font-size: 18px;
+            
+        }
+        #head img {
+            width: 65px; height: 35px;
+        }
+        #head .ask {
+            width: 60px; height: 35px;
+            background-color: #0084ff;
+            line-height: 35px; 
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            margin-left: 20px;
+        }
+        #head .search .search {
+            box-sizing: border-box;
+            padding: 5px;
+            background-color: #f6f6f6;
+            border-radius: 5px;
+            padding: 5px 10px;
+        }
+        #head .search input {
+            border: none;
+            outline: none;
+            background-color: #f6f6f6;
+            width: 300px;
+        }
+        #head .other {
+            font-size: 25px;
+            color: #8590a6;
+            display: flex;
+            margin-left: 40px;
+            width: 200px;
+            justify-content: space-between;
+            align-items: center;
+        }
+        #head .other .icon {
+            margin-left: 30px;
+        }
+        #head .other img{
+            width: 30px; height: 30px;
+        }
+        #main {
+            width: 700px;
+            background-color: white;
+            margin-right: 15px;
+            margin-left: 250px;
+            box-shadow: 0 0 3px 3px #e8e9ea;
+        }
+        #menu {
+            width: 300px;
+        }
+        .box0 #main, .box0 #menu {
+            float: left;
+            margin-top: 65px;
+        }
+        #main ul:nth-of-type(1) {
+            height: 60px;
+            border-bottom: 1px solid #eef0f6;
+        }
+        #main ul:nth-of-type(1) li {
+            float: left;
+            line-height: 60px;
+            font-size: 16px;
+            margin: 0 30px;
+            
+        }
+        #main ul:nth-of-type(1) li a {
+            color: black;
+            font-weight: 400;
+        }
+        #main ul:nth-of-type(2) li a {
+            color: black;
+        }
+        #main ul:nth-of-type(2) {
+            height: 60px;
+            border-bottom: 1px solid #eef0f6;
+        }
+        #main ul:nth-of-type(2) li {
+            float: left;
+            line-height: 60px;
+            font-size: 14px;
+            margin: 0 10px;
+            width: 60px;
+            height: 35px;
+            margin-top: 15px;
+            line-height: 35px;
+            text-align: center;
+            background-color: #f6f6f6;
+            border-radius: 5px;
+        }
+        #main ul:nth-of-type(2) li:nth-of-type(1) {
+            margin-left: 30px;
+        }
+        #main .message li {
+            display: flex;
+            align-items: flex-start;
+            width: 900px;
+            height: 170px;
+            border-bottom: 1px solid #f6f6f6;
+            font-size: 20px;
+        }
+        #main .message li .num {
+            width: 60px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        #main .message a:nth-of-type(1) .num, #main .message a:nth-of-type(2) .num, #main .message a:nth-of-type(3) .num {
+            color: orange;
+        }
+        #main .message li .container {
+            width: 400px;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            line-height: 35px;
+        }
+        #main .message li .container .title {
+            height: 70px;
+            width: 390px;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            color: black;
+            
+        }
+        #main .message li .container .discribe {
+            height: 30px;
+            width: 390px;
+            font-size: 16px;
+            font-weight: 400;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            color: black;
+        }
+        #main .message li .img {
+            margin-top: 20px;
+            height: 130px; width: 230px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+        #main .message li .popular {
+            color: #9fadc7;
+            font-size: 20px;
+            font-weight: 300;
+        }
+        #main .message li .popular span{
+            font-size: 14px;
+            margin-right: 30px;
+        }
+        #main .nomore {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px; 
+            background-color: #f6f6f6;
+            color: #8590a6;
+            font-size: 16px;
+            box-shadow: 0 5px 0 5px #f6f6f6;
+        }
+        #main .nomore div {
+            width: 30px; height: 0;
+            border-top: 1px solid #8590a6;
+            margin: 10px;
+        }
+        #menu {
+            height: 1950px;
+        }
+        #menu .publish {
+            width: 300px; height: 150px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            grid-template-areas: 
+            "a1 a2 a3 a4"
+            "a1 a2 a3 a4"
+            "a5 a5 a6 a6";
+            background-color: white;
+            box-shadow: 0 0 3px 3px #e8e9ea;
+        }
+        #menu .publish a div {
+            font-size: 22px;
+            width: 40px; height: 40px;
+            margin: 20px 18px 15px;
+            line-height: 40px;
+            text-align: center;
+            border-radius: 50%;
+        }
+        #menu .publish a span {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            color: black;
+        }
+        #menu .publish div:nth-of-type(5) a span{
+            color: #8590a6;
+        }
+        #menu .publish div:nth-of-type(6) a span{
+            color: #8590a6;
+        }     
+        #menu .publish div:nth-of-type(1) a div {
+            color: #0084ff;
+            background-color: #e1f1ff;
+        }
+        #menu .publish div:nth-of-type(2) a div {
+            color: #ff9607;
+            background-color: #fff3e2;
+        }
+        #menu .publish div:nth-of-type(3) a div {
+            color: #f4c807;
+            background-color: #fef9e2;
+        }
+        #menu .publish div:nth-of-type(4) a div {
+            color: #26bfbf;
+            background-color: #e5f7f7;
+        }
+        #menu .publish div:nth-of-type(1) {
+            grid-area: a1;
+        }
+        #menu .publish div:nth-of-type(2) {
+            grid-area: a2;
+        }
+        #menu .publish div:nth-of-type(3) {
+            grid-area: a3;
+        }
+        #menu .publish div:nth-of-type(4) {
+            grid-area: a4;
+        }
+        #menu .publish div:nth-of-type(5) {
+            grid-area: a5;
+            border: 1px solid #f6f6f6;
+            line-height: 50px;
+        }
+        #menu .publish div:nth-of-type(6) {
+            grid-area: a6;
+            border: 1px solid #f6f6f6;
+            line-height: 50px;
+        }
+        #menu .create {
+            margin: 10px 0;
+            background-color: white;
+            box-shadow: 0 0 3px 3px #e8e9ea;
+        }
+        #menu .create a {
+            display: inline-block;
+            font-size: 16px;
+            font-weight: 300;
+            height: 50px;
+            width: 300px;
+            text-align: left;
+            line-height: 50px;
+        }
+        #menu .create a .icon {
+            font-size: 18px;
+        }
+        #menu .create a span:nth-of-type(1) {
+            margin: 0 80px 0 30px;
+        }
+        #menu .create a span:nth-of-type(2) {
+            color: #8484ff;
+            margin-right: 8px;
+        }
+        #menu .class {
+            background-color: white;
+            box-shadow: 0 0 3px 3px #e8e9ea;
+        }
+        #menu .class img {
+            width: 280px;
+            margin: 10px 10px 0 10px;
+        }
+        #menu .class .menu{
+            width: 300px; height: 150px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            margin-top: 13px;
+        }
+        #menu .menu div {
+            color: #8590a6;
+            text-align: center;
+        }
+        #menu .menu div div {
+            line-height: 40px;
+        }
+        #menu .menu div:nth-of-type(1) .icon{
+            font-size: 40px;
+        }
+        #menu .menu div:nth-of-type(1):hover span{
+            color: #ffcf00;
+        }
+        #menu .menu div:nth-of-type(2) .icon{
+            font-size: 36px;
+        }
+        #menu .menu div:nth-of-type(2):hover span {
+            color: #43d480;
+        }
+        #menu .menu div:nth-of-type(3) {
+            margin-top: 3px;
+        }
+        #menu .menu div:nth-of-type(3) .icon{
+            font-size: 30px;
+            color: #0084ff;
+        }
+        #menu .menu div:nth-of-type(3):hover span {
+            color: #0084ff;
+        }
+        #menu .menu div:nth-of-type(4) .icon{
+            font-size: 25px;
+            color: #0084ff;
+        }
+        #menu .menu div:nth-of-type(4):hover span {
+            color: #0084ff;
+        }
+        #menu .menu div:nth-of-type(5) .icon{
+            font-size: 32px;
+            color: #5478f0;
+        }
+        #menu .menu div:nth-of-type(5):hover span {
+            color: #5478f0;
+        }
+        #menu .menu div:nth-of-type(6) .icon{
+            font-size: 30px;
+            color: #5868d1;
+        }
+        #menu .menu div:nth-of-type(6):hover span {
+            color: #5478f0;
+        }
+        #menu .move {
+            margin-top: 12px;
+            position: sticky;
+            top: 60px;
+        }
+        #menu ul {
+            background-color: white;
+            box-sizing: border-box;
+            padding: 10px 0;
+            box-shadow: 0 0 3px 3px #e8e9ea;
+        }
+        #menu .move .icon {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        #menu .move li {
+            font-size: 14px;
+            font-weight: 300;
+            margin: 15px 20px;
+        }
+        #menu .copyright {
+            font-size: 14px;
+            line-height: 30px;
+            margin-top: 15px;
+            color: #8590a6;
+            margin-left: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div id="head">
+        <div class="head1">
+           <a href="#"><img src="imgs/logo.png" alt=""></a> 
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#">发现</a></li>
+                <li><a href="#">等你来答</a></li>
+            </ul>
+            <div class="search">
+                <div class="search">
+                    <input type="text" placeholder="肖战工作室致歉信">
+                    <div><a href="#"><svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-sousuo"></use>
+                      </svg></a>
+                    </div>
+                </div>
+                <a href="#"><div class="ask">提问</div></a>
+            </div>
+            <div class="other">
+                <div><a href="#"><svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xiaoxi"></use>
+                  </svg></a>
+                  <a href="#"><svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-xiaoxi1"></use>
+                  </svg></a></div>
+                <div class="user"><a href="#"><img src="imgs/user.jpg" alt=""></a></div>
+            </div>
+        </div>
+    </div>
+    <div class="box0">
+        <div id="main">
+            <ul>
+                <li><a href="#">推荐</a></li>
+                <li><a href="#">关注</a></li>
+                <li><a href="#">热榜</a></li>
+            </ul>
+            <ul>
+                <li><a href="#">全站</a></li>
+                <li><a href="#">科学</a></li>
+                <li><a href="#">视频</a></li>
+                <li><a href="#">数码</a></li>
+                <li><a href="#">体育</a></li>
+                <li><a href="#">时尚</a></li>
+                <li><a href="#">影视</a></li>
+            </ul>
+            <ul class="message">
+                <a href="#">
+                    <li>
+                        <div class="num">1</div>
+                        <div class="container">
+                            <div class="title">如何看待七月十四日肖战工作室发布的致歉信，承认在粉丝管理上存在疏忽和缺位</div>
+                            <div class="discribe"></div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article1.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">2</div>
+                        <div class="container">
+                            <div class="title">如何看待7月15日大量QQ账号被冻结？腾讯发生了什么？</div>
+                            <div class="discribe">来自朋友的真实案例，你们也发生过这样的情况吗？腾讯发生了什么？</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article2.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">3</div>
+                        <div class="container">
+                            <div class="title">如何评价[深圳要求落户满三年且连续缴纳 36 个月个税或社保才能购买商品住房]的限购政策</div>
+                            <div class="discribe">深圳出台限购令，是否意味着房地产市场过热？市场持续</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article3.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">4</div>
+                        <div class="container">
+                            <div class="title">世界考古发现中有没有什么重大发现让人觉得不真实？</div>
+                            <div class="discribe"></div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article4.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">5</div>
+                        <div class="container">
+                            <div class="title">工行为什么被叫做[宇宙行]？</div>
+                            <div class="discribe">很多知友从小就认识工商银行这家企业。有些人觉得，互联网金融时代，大银行在人们眼中似乎有了点古董气质。不过，工行的实力究竟如何，墙里开花墙外香。</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article5.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">6</div>
+                        <div class="container">
+                            <div class="title">如何看待腾讯工程师因[每天在岗不足8小时]被辞退？反诉加班费500余万两度败诉？</div>
+                            <div class="discribe">因不满被腾讯公司开除，闫先生向深圳市仲裁委提出申请，要求腾讯支付自2012 年工作以来年终奖差额、加班费共计 500 多万元。</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article6.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">7</div>
+                        <div class="container">
+                            <div class="title">如何看待[英雄联盟]职业选手乐言直播过程中爆粗口被战队处罚？</div>
+                            <div class="discribe">作为职业选手及公众人物，Leyan应当以身作则，时刻规范自己的言行，展现应有的职业素养。对此，VG电子竞技俱乐部在此向所有直播观众与支持VG英雄联盟的粉丝致歉。</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article7.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">8</div>
+                        <div class="container">
+                            <div class="title">有多少女生打算自己一个人生活，不结婚生子？</div>
+                            <div class="discribe"></div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article8.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">9</div>
+                        <div class="container">
+                            <div class="title">武松在景阳冈喝了18碗酒，吃了两斤熟牛肉，正常人的胃一次能塞这么多东西下去吗？</div>
+                            <div class="discribe">关于武松的饭量</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article9.png" alt="">
+                        </div>
+                    </li>
+                </a>
+                <a href="#">
+                    <li>
+                        <div class="num">10</div>
+                        <div class="container">
+                            <div class="title">14岁女孩坠亡，生前疑遭一男子强奸怀孕后患上重度抑郁症，事件最新进展是什么，该男子将承担怎样的处罚？</div>
+                            <div class="discribe">14岁女孩坠亡，生前疑遭一男子强奸怀孕后患上重度抑郁症，目前已在审查逮捕阶段</div>
+                            <div class="popular">
+                                <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-huo"></use>
+                                  </svg><span>3683万热度</span>
+                                  <svg class="icon" aria-hidden="true">
+                                    <use xlink:href="#icon-fenxiang"></use>
+                                  </svg><span>分享</span>
+                            </div>
+                        </div>
+                        <div class="img">
+                            <img src="imgs/article10.png" alt="">
+                        </div>
+                    </li>
+                </a>
+            </ul>
+            <div class="nomore">
+                <div></div>
+                没有更多内容
+                <div></div>
+            </div>
+        </div>
+        
+        <div id="menu">
+            <div class="publish">
+                <div>
+                    <a href="#">
+                        <div>
+                            <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-benzi"></use>
+                          </svg>
+                        </div>
+                        <span>回答问题</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <div>
+                            <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-shipin"></use>
+                          </svg>
+                        </div>
+                        <span>发视频</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <div>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-combinedshapecopy2"></use>
+                              </svg>
+                        </div>
+                        <span>发视频</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <div>
+                            <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-10"></use>
+                              </svg>
+                        </div>
+                        <span>发视频</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <span>稍后答</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#">
+                        <span>草稿箱</span>
+                    </a>
+                </div>
+            </div>
+            <div class="create">
+                <a href="#">
+                    <span>
+                        <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-chuangzuo"></use>
+                      </svg>
+                      创作中心
+                    </span>
+                    <span>去开通</span>
+                    &#62;
+                </a>
+            </div>
+            <div class="class">
+                <a href="#"><img src="imgs/advertise.png" alt=""></a>
+                <div class="menu">
+                    <div>
+                        <a href="#">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-shandian"></use>
+                                </svg>
+                            </div>
+                            <span>Live</span>
+                        </a>
+                    </div>                
+                    <div>
+                        <a href="#">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-tubiao-"></use>
+                                </svg>
+                            </div>
+                            <span>书店</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-V"></use>
+                                </svg>
+                            </div>
+                            <span>圆桌</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-bi"></use>
+                                </svg>
+                            </div>
+                            <span>专栏</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-fufeizhuanqu"></use>
+                                </svg>
+                            </div>
+                            <span>付费咨询</span>
+                        </a>
+                    </div>
+                    <div>
+                        <a href="#">
+                            <div>
+                                <svg class="icon" aria-hidden="true">
+                                <use xlink:href="#icon-baike"></use>
+                                </svg>
+                            </div>
+                            <span>百科</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="move">
+                <ul>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-shoucang1"></use>
+                          </svg>
+                          <span>我的收藏</span>
+                    </a></li>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-wenti"></use>
+                          </svg>
+                          <span>我关注的问题</span>
+                    </a></li>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-iconfontzhizuobiaozhun49"></use>
+                          </svg>
+                          <span>我的邀请</span>
+                    </a></li>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-qianbaoyue"></use>
+                          </svg>
+                          <span>我的余额</span>
+                    </a></li>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-xiaoxi1"></use>
+                          </svg>
+                          <span>站务中心</span>
+                    </a></li>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-wodekefu"></use>
+                          </svg>
+                          <span>帮助中心</span>
+                    </a></li>
+                    <li><a href="#">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-copyrightbanquan"></use>
+                          </svg>
+                          <span>版权服务中心</span>
+                    </a></li>
+                </ul>
+
+                <div class="copyright">
+                    刘看山&nbsp;&nbsp;知乎指南&nbsp;&nbsp;知乎协议&nbsp;&nbsp;知乎隐私保护指引<br>
+                    应用&nbsp;&nbsp;工作&nbsp;&nbsp;申请开通知乎机构号<br>
+                    侵权举报&nbsp;&nbsp;网上有害信息举报专区<br>
+                    京 ICP 证 110745 号<br>
+                    京 ICP 备 13052560 号 - 1<br>
+                    京公网安备 11010802010035 号<br>
+                    互联网药品信息服务资格证书<br>
+                    （京）- 非经营性 - 2017 - 0067违法和不良信息举报：010-82716601<br>
+                    儿童色情信息举报专区<br>
+                    证照中心<br>
+                    联系我们 © 2020 知乎<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
