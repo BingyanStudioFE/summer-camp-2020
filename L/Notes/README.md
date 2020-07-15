@@ -30,3 +30,10 @@ git和markdown的基本语法和使用
 - 学翻墙，注册外网账户..  
 - 整理html的常用语法，编写练习网站  
 *详见/notes/html&css&/task/html*
+# 7.15
+##1
+1.30-6.00css  
+6.00-6.30恰饭  
+6.30-8.30css  
+##2
+-学习css样式，css布局与定位，css3新增属性*详见notes/html&css.md task/html&css*
