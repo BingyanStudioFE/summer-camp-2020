@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        display: flex;
+        justify-content: space-between;
+        height: 200px;
+        width: 200px;
+        background-color: rgb(155, 202, 243);
+      }
+      .item {
+        width: 60px;
+        height: 60px;
+        background-color: black;
+        border-radius: 50%;
+      }
+      .item:nth-child(2) {
+        align-self: flex-end;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <span class="item"></span>
+      <span class="item"></span>
+    </div>
+  </body>
+</html>
