@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>CSS3 animation-timing-function属性</title>
+    <style type="text/css">
+        @-webkit-keyframes mytransform
+        {
+            0%{ }
+            100%{width:300px;}
+        }
+        div
+        {
+            width:100px;
+            height:50px;
+            text-align:center;
+            line-height:50px;
+            border-radius:0;
+            background-color:#14C7F3;
+            -webkit-animation-name:mytransform;
+            -webkit-animation-duration:5s;
+            -webkit-animation-timing-function:linear;
+        }
+        div+div
+        {
+            margin-top:10px;
+        }
+        #div1{-webkit-animation-timing-function:linear;}
+        #div2{-webkit-animation-timing-function:ease;}
+        #div3{-webkit-animation-timing-function:ease-in;}
+        #div4{-webkit-animation-timing-function:ease-out;}
+        #div5{-webkit-animation-timing-function:ease-in-out}
+    </style>
+</head>
+<body>
+    <div id="div1">linear</div>
+    <div id="div2">ease</div>
+    <div id="div3">ease-in</div>
+    <div id="div4">ease-out</div>
+    <div id="div5">ease-in-out</div>
+</body>
+</html>
