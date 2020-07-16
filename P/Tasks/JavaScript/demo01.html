@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="tool.js"></script>
+  </head>
+  <body>
+    <button style="width: 100px; height: 50px; " id="btn"></button>
+    <button style="width: 100px; height: 50px; " id="btn"></button>
+    <button style="width: 100px; height: 50px; " id="btn"></button>
+    <button style="width: 100px; height: 50px; " id="btn"></button>
+    <script>
+      var oBtn = document.getElementsByTagName('button');
+
+      //var user = 'moukuc';
+      let user = 'moukuc';
+      console.log(window.user);
+
+      for(let i = 0; i < 4; i++) {
+        oBtn[i].onclick = function () {
+          console.log(i);
+        }
+      }
+
+      
+    </script>
+  </body>
+</html>

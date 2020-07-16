@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="tool.js"></script>
+  </head>
+  <body>
+    <input type="text" id="length" placeholder="请输入要走的路程"><br>
+    <input type="radio" id="wBtn" name='person'>Walker
+    <input type="radio" id="rBtn" name='person'>Runner<br>
+    <button id="walk">走</button>
+    <button id="run">跑</button>
+    <script>
+
+      let length = $('length');
+      let walker = $('wBtn');
+      let runner = $('rBtn');
+      let person;
+      let walk = $('walk');
+      let run = $('run');
+
+      function getPerson() {
+        if(walker.checked == true) {
+          person = new Walker('alvin', 18, 'male', 1);
+        }
+        else {
+          person = new Runner('alvin', 18, 'male', 1);
+        }
+      }
+
+      walk.onclick = function () {
+        getPerson();
+        person.walk(parseInt(length.value));
+      }
+      run.onclick = function () {
+        getPerson();
+        if(person instanceof Runner)
+          person.run(parseInt(length.value));
+        else
+          alert("walker can't run! ");
+      }
+      
+
+      function Walker(name, age, sex, speed) {
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.speed = speed;
+      }
+      Walker.prototype.walk = function (length) {
+        let time = parseInt(length / this.speed);
+        alert('spend ' + time + 'seconds ' + 'running');
+      }
+
+      function Runner(name, age, sex, speed) {
+        Walker.call(this, name, age, sex, speed);
+      }
+      Runner.prototype = Object.create(Walker.prototype);
+      Runner.prototype.constructor = Runner;
+      Runner.prototype.run = function (length) {
+        let speed = this.speed * 3;
+        let time = parseInt(length / speed);
+        alert('spend ' + time + 'seconds ' + 'running');
+      }
+    </script>
+  </body>
+</html>
