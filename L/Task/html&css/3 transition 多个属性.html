@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>深入了解transition属性</title>
+    <style type="text/css">
+        div
+        {
+            display:inline-block;
+            width:100px;
+            height:100px;
+            border-radius:0;
+            background-color:#14C7F3;
+                        
+            transition: all 1s linear 2s;
+
+            /*-webkit-transition: border-radius,background-color 1s linear 2s;
+            -moz-transition: border-radius,background-color 1s linear 2s;
+            -ms-transition: border-radius,background-color 1s linear 2s;
+            -o-transition: border-radius,background-color 1s linear 2s;*/            
+        }
+        div:hover
+        {
+            border-radius:50px;
+            background-color:red;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+</body>
+</html>

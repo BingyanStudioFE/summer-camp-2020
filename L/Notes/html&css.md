@@ -469,3 +469,63 @@ width，height
 #### 阴影box-shadow(bxsh)
 - inset水平偏移 垂直偏移 模糊距离 颜色；(inset 可选，内部阴影;outset 默认值，外部阴影)
 - `前缀-box-shadow:inset hoff voff blur color`
+#### text-shadow属性
+- text-shadow:水平偏移 垂直偏移 阴影大小 颜色
+- 文字描边`text-shadow:0 0 3px #F00`
+- 浮雕`color:white; text-shadow:2px 2px 4px #000`
+#### word-wrap属性
+- 允许长单词，url强制进行换行
+- `word-wrap:break-word`
+#### @font-face规则
+- 使用规则：下载字体，[生成其他格式](https://www.fontsquirrel.com/tools/webfont-generator)
+
+		<style> 
+		@font-face{
+		font-family: kastlerFont;
+		src:url('fonts/kastler.ttf'),
+		    url('fonts/kastler.eot'),
+		    url('fonts/kastler.woff'),
+		    url('fonts/kastler.svg');
+		}
+		p{
+		font-family:kastlerFont;
+		}
+		</style>
+#### transform属性
+-rotate( deg)
+-scale(x,y)
+#### transition
+- 将某个元素的**某个属性**从一个值，在指定时间内变化到另一个值
+- transition 属性名 持续时间 过渡方法
+- transition-property 属性名/all 对那个属性进行变化
+- transition-duration 持续时间
+- transition-timing-function 过度使用方法
+	- linear 匀速
+	- ease 慢快慢
+	- ease-in慢快
+	- ease-out快慢
+	- ease-in-out慢快慢
+
+>div
+        {
+            display:inline-block;
+            width:100px;
+            height:100px;
+            border-radius:0;
+            background-color:#14C7F3;                       
+            transition: all 1s linear 2s;
+                    
+        }
+        div:hover
+        {
+            border-radius:50px;
+            background-color:red;
+        }
+#### @keyframes animation属性(见代码)
+#### 3d变化(见代码)
+- transform-style:preserve-3d
+- transform属性(在图片父层)
+	- rotateX()
+	- rotateY()
+	- rotareZ()
+- perspective 100px(在舞台上层)
