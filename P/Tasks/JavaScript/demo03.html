@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+  </head>
+  <body>
+    <script>
+      function runAsync(){
+        var p = new Promise(function(resolve, reject){
+          setTimeout(function(){
+            console.log('1执行完成');
+            resolve('随便什么数据');
+          }, 2000);
+        });
+        return p;            
+      }
+      //runAsync();
+        //这个函数的作用就是获得并返回一个promise对象
+      // runAsync().then(function (data) {
+      //   setTimeout(function () {
+      //     console.log('2执行完成');
+      //     console.log(data);
+      //   }, 2000);
+      //   resolve('随便什么数据');
+      // }).then(function (data) {
+      //   setTimeout(function () {
+      //     console.log('3执行完成');
+      //     console.log(data);
+      //   }, 2000);
+      //   return '随便什么数据';
+      // }).then(function (data) {
+      //   setTimeout(function () {
+      //     console.log('4执行完成');
+      //     console.log(data);
+      //     return '随便什么数据';     //不可行，因为在前半部分延时的时候return已经行动了
+      //   }, 2000);                      //就会导致各个then的延时部分会同时执行
+      // }).then(function (data) {          //这野蛮至极你知道吗！！！  --囧仙儿
+      //   setTimeout(function () {
+      //     console.log('5执行完成');
+      //     console.log(data);
+      //     return '随便什么数据';
+      //   }, 2000);
+      // });
+
+      //正规操作应当是，在需要连续延迟的时候，为每个then都传入返回promise的函数(或者直接peomise对象)作为参数
+      //即使已经返回了对象，但由于promise还处于未确定的状态，也就不会执行后续的then操作
+        function runAsync1 () {
+          let p = new Promise(function(resolve, reject) {
+            setTimeout(function () {
+              console.log('1_执行完成');
+              resolve('随便什么数据');
+            }, 2000);
+          })
+          console.log(p);
+          return p;
+        }
+        function runAsync2 (data) {
+          let p = new Promise(function(resolve, reject) {
+            setTimeout(function () {
+              console.log('2_执行完成');
+              console.log(data);
+              resolve('随便什么数据');
+            }, 2000);
+          })
+          console.log(p);
+          return p;
+        }
+        function runAsync3 (data) {
+          let p = new Promise(function(resolve, reject) {
+            setTimeout(function () {
+              console.log('3_执行完成');
+              console.log(data);
+              resolve('随便什么数据');
+            }, 2000);
+          })
+          console.log(p);
+          return p;
+        }
+        function runAsync4 (data) {
+          let p = new Promise(function(resolve, reject) {
+            setTimeout(function () {
+              console.log('4_执行完成');
+              console.log(data);
+              resolve('随便什么数据');
+            }, 2000);
+          })
+          console.log(p);
+          return p;
+        }
+
+        runAsync1().then(runAsync2).then(runAsync3).then(runAsync4);
+    </script>
+  </body>
+</html>

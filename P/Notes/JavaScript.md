@@ -248,3 +248,252 @@ ul.onclick = function (ev) {
 一点点想法：
 
 ​	虽然添加事件监听器可以通过在绑定事件的函数里嵌套多个函数来实现，但是会显得比较杂乱，且不符合`一个函数仅实现一个功能`的原则，使用事件监听器可以增强代码的可读性，同时降低调试难度(大概)
+
+## ES6新增内容
+
+#### let和const
+
+> let声明的变量具有块级作用域，并且不同块内的重复声明不会相互覆盖
+
+感觉在循环中let的实用性会比较高，
+
+```
+for(let i = 0; i < 4; i++) {
+        oBtn[i].onclick = function () {
+          console.log(i);
+        }	//如果使用的是var
+      }		//输出的就会是完全不同的结果
+```
+
+var在循环中不是重新定义变量，而是重复赋值，由于事件并不是立即执行的，i一直是存储的内存引用，最终所用的事件都会输出4，而let声明的变量仅在块级作用域有效，所以这里的i只在本轮循环有效果，每次循环的i其实都是一个新的变量
+
+此外，let和var在块外以及函数中声明时都具有全局作用域以及函数作用域，但有一点区别，在声明全局变量时，var会被认为时window对象，而let不会
+
+```
+var carName = "Volvo";
+	//window.carName = "Volvo"
+let carName = "Volvo";
+	//window.carName = undefined
+```
+
+let不允许在同一作用域或同一区块重复声明相同变量
+
+同时，let变量不具有**变量提升**
+
+感觉为了安全考虑，绝大多数情况都应当尽量用let代替var，~~除非是想实现某些骚操作~~
+
+const的基本特征和let相似，但是const声明的字段不可被修改
+
+> const并不是声明了一个常量，它只是声明了一个指向变量的常量引用，也就是说我们不能修改原始值，但是可以修改对象的属性（你甚至可以修改常量数组里面的内容）
+
+#### Arrow Functions
+
+在声明比较简短的函数语句时，为了简洁(比如将函数作为参数传递时)，可以使用箭头函数(应该是这么叫的吧)，和普通函数相比，箭头函数没有this，所以并不适合定义对象方法。
+
+同时，在声明时使用const更加安全一些，因为函数表达式始终为常数
+
+```
+const x = (x, y) => {x * y};
+//单个语句可以不加花括号，语句较多的话就必须要加
+//所以不如养成一个良好的习惯
+```
+
+#### class(他来了他来了)
+
+>**类是一种函数**，但是我们没有使用关键字 function来启动它，而是使用了关键字 class，并且在constructor()方法内部分配了属性 。
+
+感觉会是函数的语法糖
+
+查了一些资料，做个总结的话就是，类和函数的语义几乎相同，但是class会更加严格一些
+
+##### 既然是语法糖，那就不得不说一说构造函数
+
+有关[构造函数](https://juejin.im/entry/584a1c98ac502e006c5d63b8) (总感觉用构造函数行使类的功能怪怪的)
+
+有关[构造函数的继承](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Inheritance) 【问】将属性放在构造函数中而方法放在其prototype中的意义是什么呢？
+
+从继承上来看继承时通过call()就可以将原型中的方法一并继承过来，而prototype中的方法则需要额外使用Object.create()方法并把constructor修改回新建的函数，这样做只是单纯的为了做到属性和方法的分离吗？
+
+想了一阵子，优势应该是这样，在继承以及多次创建中，不需要额外创建新的方法，因为所有的新建对象都拥有指向原prototy的\__proto__，这样就节省了很多的时间和空间，在垃圾处理的时候也能节省一部分时间，大概就是私有与共享的区别，感觉通过原型的prototype来获取方法更像是一种委托，而非继承。
+
+##### 类及其继承
+
+通过extend关键字来表示继承，父类的相关参数可以通过super()获取，如
+
+```
+class Car {
+  constructor(brand) {
+    this.carname = brand;
+  }
+  present() {
+    return 'I have a ' + this.carname;
+  }
+}
+
+class Model extends Car {
+  constructor(brand, mod) {
+    super(brand);
+    this.model = mod;
+  }
+  show() {
+    return this.present() + ', it is a ' + this.model;
+  }
+}
+```
+
+类可以通过get和set来选择性的对某些属性进行操作，可以在返回和设置之前做一些额外的操作
+
+```
+class Car {
+	constructor(brand) {
+		this._brand = brand;
+	}	//一般我们不会把getter/setter的名字设置的和属性一样
+	//为了便于区分，我们对原本的属性经常用下划线修饰
+	get brand() {
+		return this._brand;
+	}
+	set brand(brand) {
+		this._brand = brand;
+	//这里也可以什么都不做，这样我们的brand属性就是一个可读不可写的属性了
+	}
+}
+```
+
+类不会被提升，也就是说必须先声明才可以调用，为了解决这类问题可以试试把类写在外部文件中然后开头就直接引入？
+
+#### 参数默认值
+
+声明函数的时候如果给变量赋值，则代表如果没有参数传入，则该参数会采用赋给的默认值
+
+```
+function myFunction(x, y = 10) {
+  // y is 10 if not passed or undefined
+  return x + y;
+}
+```
+
+
+
+#### 新增数组方法
+
+##### array.find
+
+```
+var numbers = [4, 9, 16, 25, 29];
+var first = numbers.find(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+```
+
+和原有的filter方法比较类似，一个是返回第一个满足条件的数据，一个是返回所有满足条件的数据(数组)
+
+##### array.findIndex
+
+```
+var numbers = [4, 9, 16, 25, 29];
+var first = numbers.findIndex(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+```
+
+返回的第一个满足条件的数据的下标
+
+#### 新增属性、方法
+
+##### 属性
+
+* EPSILON		表示1与大于1的最小浮点数之间的差    ~~(这玩意儿真的用得到吗)~~
+* MIN_SAFE_INTEGER
+* MAX_SAFE_INTEGER
+
+属于静态属性，无需创建对象就可以访问（Number.xxx）
+
+##### 方法
+
+- Number.isInteger()	判断是否是整数
+- Number.isSafeInteger()    判断是否是安全整数
+
+> 安全整数是可以精确表示为双精度数字的整数。
+
+- isFinite()	判断是否是可数的数字（好难描述），即Infinity以及NaN返回false
+- isNaN()    如果参数是NaN，则返回true
+
+##### 求幂运算符
+
+通过该运算符`**`可以直接求幂，如
+
+```
+var result = 5 ** 5;
+```
+
+Math.pow()要失业啦！
+
+## 异步
+
+#### 线程数
+
+>传统上，JavaScript是单线程的。即使具有多个内核，也只能使它在称为**主线程**的单个线程上运行任务。
+
+Web worker允许将一些JavaScript处理发送到一个单独的线程（称为worker），以便可以同时运行多个JavaScript块，通常可以将主线程的一个高消耗程序转移到一个额外的线程，以便维持与用户的交互
+
+#### 异步的局限性
+
+在异步执行的过程中无法对其对应的DOM进行操作(如果我没理解错的话)，比如在另一个线程正在渲染一个UI，则现在不能对其进行其它操作。
+
+> Web workers are pretty useful, but they do have their limitations. A major one is they are not able to access the DOM — you can't get a worker to directly do anything to update the UI. We couldn't render our 1 million blue circles inside our worker; it can basically just do the number crunching.
+
+*这一段看不懂好难受哇〒▽〒*
+
+
+
+当后续操作依赖另一线程的结果但worker还没有完成时，就会出现一些问题
+
+#### 异步回调
+
+> 异步回调是在调用将在后台开始执行代码的函数时指定为参数的函数。当后台代码完成运行时，它将调用回调函数以使您知道工作已完成，或者让我们知道发生了一些有趣的事情。
+
+例如可以将资源加载和资源插入异步执行，当资源加载完毕以后，回调资源插入的函数，可以保证资源在网页上的正常显示(除此之外比较常见的还有事件触发时执行的回调)
+
+PS：并非所有回调都是异步的，还有很多是同步回调（比如foreach）
+
+#### Promise
+
+> Promise对象是一个代理对象（代理一个值），被代理的值在Promise对象创建时可能是未知的。它允许你为异步操作的成功和失败分别绑定相应的处理方法（handlers）。 这让异步方法可以像同步方法那样返回值，但并不是立即返回最终执行结果，而是一个能代表未来出现的结果的promise对象
+
+promise的状态
+
+* pending  初始状态，既不是成功，也不是失败~~(就像薛定谔的那只该死的猫一样)~~。
+* fulfilled  操作成功完成。
+* rejected  操作失败。
+
+当promise有确定状态之后，后面的then()就会根据状态执行相应的操作，并且返回的仍然是promise对象，这就意味着其可以被链式调用
+
+![promise的链式调用](./imgs/promises.png)
+
+primise对象在声明的时候会被立刻执行，可以包装在一个函数中在需要的时候使用
+
+##### promise方法
+
+* Promise.all(iterable)
+  * 这个方法返回一个新的promise对象，该promise对象在iterable参数对象里所有的promise对象都成功的时候才会触发成功，这个新的promise对象在触发成功状态以后，会把一个包含iterable里所有promise返回值的数组作为成功回调的返回值，顺序跟iterable的顺序保持一致，如果这个新的promise对象触发了失败状态，它会把iterable里第一个触发失败的promise对象的错误信息作为它的失败错误信息
+    * 适合游戏之类的网页？等到所有游戏资源加载完成之后再显示操作界面
+* Promise.allSettled(iterable)
+  * 等到所有promises都完成时，返回一个promise，该promise在所有promise完成后完成。并带有一个对象数组，每个对象对应每个promise的结果。
+* Promise.any(iterable)
+  * 接收一个Promise对象的集合，当其中的一个promise完成，就返回那个已经有完成的promise的值。
+* Promise.race(iterable)
+  * 当iterable参数里的任意一个子promise成功或失败后，父promise马上也会用子promise的成功返回值或失败详情作为参数调用父promise绑定的相应句柄，并返回该promise对象。
+
+* Promise.reject(reason)
+
+  * 返回一个状态为失败的Promise对象，并将给定的失败信息传递给对应的处理方法
+
+* Promise.resolve(value)
+
+  * 返回一个状态由给定value决定的Promise对象。如果该值是thenable(即，带有then方法的对象)，返回的Promise对象的最终状态由then方法执行决定；否则的话(该value为空，基本类型或者不带then方法的对象),返回的Promise对象状态为fulfilled，并且将该value传递给对应的then方法。通常而言，如果你不知道一个值是否是Promise对象，使用Promise.resolve(value) 来返回一个Promise对象,这样就能将该value以Promise对象形式使用。
+
+    ​			***完全没用过，先抄下来再说2333***
