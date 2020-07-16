@@ -1,7 +1,7 @@
 ## HTML
 `<div>`定义了文档的区域，块级（block-level）  
 `<span>`用来组合文档中的行内元素，内联元素（inline）
-![HTML&CSS](pics/HTML&CSS1.png )
+![HTML&CSS1](pics/HTML&CSS1.png )
 ## CSS
 `:nth-of-type(n)`   
 选择器匹配属于父元素的特定类型的第 N 个子元素的每个元素.   
