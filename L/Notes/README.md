@@ -37,3 +37,15 @@ git和markdown的基本语法和使用
 6.30-8.30css  
 ##2
 -学习css样式，css布局与定位，css3新增属性*详见notes/html&css.md task/html&css*
+# 7.16
+### 1
+12.46-1.30flex  
+1.30-2.00午睡  
+2.00-3.50flex  
+3.50-5.22js  
+5.22-5.40吃饭  
+### 2
+- 学习flex布局*详见详见/notes/html&css&/task/html*
+- 学习js
+*详见js.md*
+

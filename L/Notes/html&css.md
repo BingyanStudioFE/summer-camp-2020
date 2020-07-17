@@ -102,27 +102,27 @@
 ### 文本标签
 
 	<h1>...</h1>               标题字大小（h1~h6）
-    <b>...</b>                 粗体字
-    <strong>...</strong>       粗体字(强调) 
-    <i>...</i>                 斜体字 
-    <em>...</em>               斜体字(强调)
-    <center>…</center>         居中文本
-    <ul>…</ul>                 无序列表 
-    <ol>…</ol>                 有序列表
-    <li>…</li>                 列表项目
-    <a href=”…”>…</a>          超链接
-    <font>                     定义文本字体尺寸、颜色、大小
-    <sub>                      下标
-    <sup>                      上标
-    <br>                       换行
-    <p>                        段落
+	<b>...</b>                 粗体字
+	<strong>...</strong>       粗体字(强调) 
+	<i>...</i>                 斜体字 
+	<em>...</em>               斜体字(强调)
+	<center>…</center>         居中文本
+	<ul>…</ul>                 无序列表 
+	<ol>…</ol>                 有序列表
+	<li>…</li>                 列表项目
+	<a href=”…”>…</a>          超链接
+	<font>                     定义文本字体尺寸、颜色、大小
+	<sub>                      下标
+	<sup>                      上标
+	<br>                       换行
+	<p>                        段落
 ### 表格标签
-	
+
 	<table>…</table>    定义表格
-    <th>…</th>          定义表格中的表头单元格
-    <tr>…</tr>          定义表格中的行
-    <td>…</td>          定义表格中的单元
-​## 快捷键  
+	<th>…</th>          定义表格中的表头单元格
+	<tr>…</tr>          定义表格中的行
+	<td>…</td>          定义表格中的单元
+## 快捷键  
 `! + Tab`基本html5标准的基本格式  
 `ctrl +\`转注释  
 `>`子标签  
@@ -145,7 +145,7 @@
 	<body>
 	<P style="color: red;">
 		天使投资指早起投资，尤其是指个人早期投资
-
+	
 	</P> 
 	</body>
 ### 内嵌样式
@@ -169,11 +169,11 @@
 
 	外部样式表文件  
 	p{
-    color:red;/*设置文字颜色*/
+	color:red;/*设置文字颜色*/
 	}
 	网页文件  
 	<head>
-      <link rel="stylesheet" href="style.css">
+	  <link rel="stylesheet" href="style.css">
 	</head>
 ### 优先级
 - 多重样式可以层叠，可以覆盖
@@ -266,7 +266,7 @@
 |----|----|
 |px|像素|
 |em|字符，自适应用户所使用的字体，可以设置行高|
-|%|百分比，样式继承父层|		
+|%|百分比，样式继承父层|
 ### 颜色
 |colour|discription|
 |----|----|
@@ -274,7 +274,7 @@
 |rgb(x,x,x)|x:0-255|
 |rgb(%x,%x,%x)||
 |rgba(x,x,x,a)|a:0-1,0 totally apparent|
-|#rrggbb|16进制数|  
+|#rrggbb|16进制数|
 ### 文本
 |属性|描述|取值|
 |----|----|----|
@@ -283,7 +283,7 @@
 |line-height|行高|14px,1.5em,120%|
 |text-align|对其|center,left,right,justify（两端对其）|
 |text-decoration|装饰线|none（可以用于取消超链接的下划线）,overline,underline,line-through|
-|text-indent|首行缩进|2em|  
+|text-indent|首行缩进|2em|
 - ##### 垂直居中
 
 	p{ height: 40px;  
@@ -514,7 +514,7 @@ width，height
             border-radius:0;
             background-color:#14C7F3;                       
             transition: all 1s linear 2s;
-                    
+
         }
         div:hover
         {
@@ -529,3 +529,83 @@ width，height
 	- rotateY()
 	- rotareZ()
 - perspective 100px(在舞台上层)
+### FLEX  
+- flex布局的重要概念 
+	- 开启了flex布局的元素交`flex container`
+	- flex container 里面的直接子元素叫做`flex items`
+- 设置display 属性为flex 或者 inline flex 可以成为flex container
+	- flex:flex container以block-lever形式存在
+	- inline-flex:flex container以inline-lever形式存在
+- ![flex布局模型](C:\git\free\summer-camp-2020\L\Notes\images/flex.jpg)
+- |应用在flex container上            的CSS属性|应用在flex items上的CSS属性|
+  |---|---|
+  |flex-flow|flex|
+  |flex-direction|flex-grow|
+  |flex-wrap|flex-basis|
+  |justify-content|flex-shrink|
+  |align-items|order|
+  |align-content|align-self|
+##### container属性
+- flow-direction:决定主轴方向
+	- row:主轴从左到右
+	- row-reverse:主轴从右到左
+	- column:主轴从下到上
+	- colum-reverse:主轴从下到上
+- justify-content (决定items在主轴上如何排布)
+	- flex-start:与mian start对其
+	- flex-end:与mian end对齐
+	- center:居中对齐
+	- space-between:
+		- flex items 之间距离相同
+		- 与mian start，main end两端对其
+	- space-evently:
+		- flex items 之间距离相同
+		- flex items 与mian start，main end之间的距离等于flex items之间的距离
+	- space around
+		- items 之间距离相同
+		- flex items 与mian start，main end之间的距离等于flex items之间的距离的一半
+- align-items (交叉轴对齐方式)
+	- nomal:在弹性布局中，效果和stretch一样
+	- stretch：当flex items 在cross axis方向的size为auto时，会自动拉伸填充至flex container
+	- flex-start:
+	- flex-end:
+	- center:居中对齐
+	- baseline：与基线对齐(第一行文本的底部)
+- flex-wrap (换行)
+	- nowrap:不换行现在是，所有items都会在第一行会压缩显示
+	- wrap:多行显示
+	- wrap-reverse:多行(对比wrap,cross start与corss end 相反)
+- flex-flow:缩写属性=flex-direction||flex-wrap
+- align-content(决定决定多行items在交叉轴上的对齐方式)
+	- flex-start:与mian start对其
+	- flex-end:与mian end对齐
+	- center:居中对齐
+	- space-between:
+		- flex items 之间距离相同
+		- 与mian start，main end两端对其
+	- space-evently:
+		- flex items 之间距离相同
+		- flex items 与mian start，main end之间的距离等于flex items之间的距离
+	- space around
+		- items 之间距离相同
+		- flex items 与mian start，main end之间的距离等于flex items之间的距离的一半
+##### items属性
+- order：属性定义项目的排列顺序。数值越小，排列越靠前，默认为0
+
+  `order:integer`
+
+- flex-grow:属性定义项目的放大比例，默认为`0`，即如果存在剩余空间，也不放大。
+
+  如果所有项目的`flex-grow`属性都为1，则它们将等分剩余空间（如果有的话）。如果一个项目的`flex-grow`属性为2，其他项目都为1，则前者占据的剩余空间将比其他项多一倍。
+
+- flex-shrink:属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。  
+
+  如果所有项目的`flex-shrink`属性都为1，当空间不足时，都将等比例缩小。如果一个项目的`flex-shrink`属性为0，其他项目都为1，则空间不足时，前者不缩小。
+
+- flex-basis:属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小
+`flex-basis: <length> | auto;`
+- `flex`属性是`flex-grow`, `flex-shrink` 和 `flex-basis`的简写，默认值为`0 1 auto`。后两个属性可选。
+
+  - auto`1 1 auto`
+  - none`0 0 auto`
+- align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
