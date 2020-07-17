@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="tool.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        background-color: red;
+      }
+      .menu {
+        height: 300px;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+      }
+      .menu div, .menu button{
+        width: 300px;
+        height: 100px;
+        border: 8px solid black;
+        border-radius: 15px;
+        font-size: 40px;
+        line-height: 100px;
+        text-align: center;
+      }
+      .menu button {       
+        outline: none;
+      }
+      .spinner {
+        width: 200px;
+        height: 200px;
+        margin: 100px auto;
+        font-size: 200px;
+        transform-origin: 40% 70%;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu">
+      <div class="left">Player 1: "A"</div>
+      <button>Start Game</button>
+      <div class="right">Player 2: "L"</div>
+    </div>
+    <div class="spinner">↻</div>
+
+    <script>
+      let oBtn = document.getElementsByTagName('button')[0];
+      let spinner = document.getElementsByClassName('spinner')[0];
+      let rotateCount = 0;
+      let startTime = null;
+      let rAf;
+
+      function draw(timeStamp) {
+        if(!startTime) {
+          startTime = timeStamp;
+        }
+        rotateCount = (timeStamp - startTime) / 3;
+        if(rotateCount >= 360) {
+          rotateCount %= 360;
+        }
+        spinner.style.transform = 'rotateZ(' + rotateCount + 'deg)';
+        requestAnimationFrame(draw);
+      }
+      draw();
+      oBtn.onclick = function clickAble() {
+        oBtn.onclick = null;
+        oBtn.style.display = 'none';
+        spinner.style.display = 'block';
+        promise().then(function() {
+          window.onkeydown = function(ev) {
+            let e = getEvent(ev);
+            let keyCode = getKeyCode(e);
+            console.log(keyCode);
+            if(keyCode == 65) {
+              oBtn.innerHTML = 'Player 1 won!!';
+            }
+            else if(keyCode == 76) {
+              oBtn.innerHTML = 'Player 2 won!!';
+            }
+            else {
+              return;
+            }
+            oBtn.onclick = clickAble;
+          }
+        })
+      }
+
+      function promise() {
+        let p = new Promise(function(resolve, reject) {
+          setTimeout(function() {
+            oBtn.style.display = 'inline-block';
+            oBtn.innerHTML = 'PLAYERS GO!!';
+            spinner.style.display = 'none';
+            resolve();
+          }, Math.random() * 7000 + 3000);
+        });
+
+        return p;
+      }
+
+    </script>
+  </body>
+</html>
