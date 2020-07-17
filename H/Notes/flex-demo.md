@@ -112,3 +112,7 @@ CSS:
 }
 ```
 完整实例：见 [an demo of dice](pics/flex-demo1.html) 
+
+## 二. 其它
+![](pics/flex-demo1.png)  
+![](pics/flex-demo2.png)
