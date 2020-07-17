@@ -145,19 +145,21 @@
 - id 仅一个html元素可用
 
   #idname
-- 
+- ```
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+```
   
-
+  use google fonts
   
 ## CSS
 
 ### 基础
 
-- inline
+- inline //prior1
 
 style attribute
 
-- internal
+- internal //prior2
 
 ```html
 <head>
@@ -169,7 +171,7 @@ p    {color: red;}
 </head>
 ```
 
-- external
+- external //prior2
 
 ```html
 <head>
@@ -180,6 +182,37 @@ p    {color: red;}
 href: Full URL/same page/same folder
 
 - padding(text&border)/margin(outside border)
+
+- position
+
+  ```
+  static reletive fixed absolute sticky
+  ```
+
+- overflow
+
+  ```
+  visible hidden scroll auto
+  ```
+
+### Selector
+
+- Id="idname" #idname{}
+
+- class="classname"  (element).classname{}
+
+  - Pseudo-classes
+
+    ```
+    a:hover | link | visited | active | focus...
+    ::firstline | ::selection
+    ```
+
+    
+
+- grouping selector
+
+- /*means all
 
 ### Flex
 
@@ -196,6 +229,10 @@ href: Full URL/same page/same folder
 #### Basic Concept
 
 <img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015071004.png" alt="img" style="zoom: 80%;" />
+
+#### Box Model
+
+Margin{Border[Padding(Content)]}
 
 #### Container Property
 
@@ -245,7 +282,7 @@ href: Full URL/same page/same folder
   ```css
   .box {
     align-content: flex-start | flex-end | center | space-between | space-around | stretch;
-  }                                     //多根轴线
+  }                                       //多根轴线
   ```
 
 #### Item Property
