@@ -1,0 +1,278 @@
+    *{
+    font-family:"微软雅黑"; 
+    margin: 0;
+    padding: 0;
+    }
+
+    .body {/*整体背景*/
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(246, 246, 246);
+    
+    }
+
+    .nav {/*顶端导航栏*/
+    display: inline-flex;
+    flex-direction: row;
+    height: 50px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    position: fixed;
+    z-index: 100;/*z-index是把DIV设置到了最顶层*/
+    }  
+  
+   .logo{
+    height: 30px ;
+    margin: 10px 0px 10px 110px; 
+    }
+
+   .menu1{/*导航栏整体*/
+        display: inline-flex;
+        flex-direction: row;/*为什么又写了一遍？不是在nav里写过了吗？*/
+    }
+
+   .menu11{/*导航栏每个按钮*/
+        margin-left:40px;
+        line-height: 50px;
+    }
+
+    .menu12{
+        background-color: rgb(0,132,255);
+        color: white;
+        font-size: 13px;
+        border-radius:2px;
+        height: 30px;
+        margin:10px 10px 10px 0px;
+        width: 50px;
+        line-height: 30px;
+        text-align: center;
+    }
+    
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .input{
+        
+        -webkit-appearance:none;
+        -moz-appearance: none;
+        margin:10px 10px 10px 50px;
+        padding: 0px 0px 0 10px;
+        font-size:13px;
+        height:30px;
+        width:330px;
+        border-radius:2px;
+        border:1px solid #c8cccf;
+        color:#6a6f77;
+        
+    }
+/*主要内容区*/
+    .main{
+        margin-left: 150px;
+        height: 100%;
+        width: 630px;
+        flex:1;
+        margin-top: 60px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .menu2{
+        background-color: rgb(255, 255, 255);
+        height: 50px;
+        width: 630px;
+        padding-left: 20px;
+        padding-right:20px;
+        display: inline-flex;
+        align-items: center;
+        
+    }
+
+    .menu21{
+        margin-right:20px;
+        line-height: 50px;
+        color:rgb(0,132,255);
+    }
+
+    .menu22{
+        margin-right:20px;
+        margin-left:20px;
+        line-height: 50px;
+    }
+
+    .article{/*每一篇文章整体*/
+        background-color: rgb(255, 255, 255);
+        flex: 1;
+        margin-top: 3px;
+        width: 630px;
+        padding-left: 20px;
+        padding-right:20px;
+        padding-top: 10px;
+        padding-bottom: 18px;
+    }
+
+   .head{/*每一篇文章标题*/
+    
+        line-height: 50px;
+        font-size: 18px; 
+    }
+  
+   .passage{/*每一篇文章内容*/
+        
+        color:rgb(46, 46, 46);
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .manu3{
+        display: inline-flex;
+        flex-direction: row;
+
+    }
+
+    .manu31{
+        background-color:rgb(229,242,255);
+        color:rgb(0,132,255);
+        font-size: 14px;
+        margin:10px 4px 0px 0px;
+        padding:5px 10px 5px 10px;
+        line-height: 25px;
+    }
+
+    .manu32{
+        color: rgb(133, 144, 166);
+        margin:10px 6px 0px 10px;
+        padding:5px 6px;
+        font-size: 14px;
+        line-height: 25px;
+    }
+
+    .icon1{
+        height:8px;
+        margin:5px 5px 0px;
+    }
+
+    .icon2{
+        height:13px;
+        margin:8px 5px 0px;
+    }
+
+ /*右侧卡片栏*/
+    .aside{
+        display: flex;
+        flex-direction: column;
+        flex:1;
+    }
+
+    .card1{
+        background-color: rgb(255, 255, 255);
+        margin: 60px 120px 2px 60px;
+        height: 110px;
+    }
+
+    .row1{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .column1{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin:25px 5px;
+    }
+    .icon3{
+        height:40px;
+        margin:25px 0px 5px;
+    }
+    
+    .word1{
+        font-size: 12px;
+        color:rgb(48, 48, 48);
+        text-align: center;/*为什么还是不完全居中*/
+    }
+
+    .card2{
+        background-color: rgb(255, 255, 255);
+        margin: 0px 2px 20px 60px;
+        height: 50px;
+        width: 150px;
+    }
+
+    .card3{
+        background-color: rgb(255, 255, 255);
+        height: 50px;
+        width: 150px;
+    }
+
+    .row2{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .word2{
+        font-size: 14px;
+        color:rgb(170, 170, 170);
+        display: flex;
+        justify-content: center;
+        line-height: 50px;
+    }
+
+    .card4{
+        background-color: rgb(255, 255, 255);
+        height: 180px;
+        width: 292px;
+        margin: 0px 120px 20px 60px;
+        padding: 12px 0px 12px 10px;
+    }
+
+    .icon41{
+        height:15px;
+        margin:0px 3px;
+    }
+    .icon42{
+        height:15px;
+        width: 280px;
+        margin:7px 3px 0px;
+    }
+
+    .word3{
+        color:rgb(170, 170, 170);
+        font-size: 14px;
+    }
+    .column2{/*怎么没用？*/
+        margin: 5px 0px 5px 500px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .icon43{
+        height:40px;
+        margin:0px 0px 5px 10px;
+    }
+
+    .word4{
+        font-size: 11px;
+        display: flex;
+        flex-wrap: wrap;
+        width: 60px;
+        text-align: center;
+        justify-content: center;/*怎么居中不了？*/
+        line-height: 20px;
+    }
+    .foot{
+        margin:20px 0px 5px 0px;
+        font-size: 9px;
+        color:rgb(170, 170, 170);
+        text-align: center;
+        width: 300px;
+    }
+
+    .circle{
+        background-color: rgb(243, 243, 243);
+        border-radius: 50%;
+        height: 20px;
+        width: 20px;
+    }

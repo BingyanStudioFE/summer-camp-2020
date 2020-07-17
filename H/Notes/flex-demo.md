@@ -1,5 +1,8 @@
+> 参考教程：https://www.ruanyifeng.com/blog/2015/07/flex-examples.html
+
 ## 一. 骰子布局🎲  
 > 放置黑点时用`<span>`，整体用`<div class="box">`盒子盛着，有时需要加`<div class="column">`对每一行进行格式限定
+
 ![flex-demo-dice1](pics/flex-demo-dice1.png )  
 
 HTML:
