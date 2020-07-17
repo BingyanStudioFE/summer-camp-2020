@@ -583,3 +583,106 @@ display: -webkit-box;
 -webkit-box-orient: vertical;
 ```
 
+## 十三.媒体查询
+
+```
+@media 媒体类型 and (媒体特性) {
+	样式
+}
+```
+
+媒体类型：
+
+- all：所有设备
+- print：打印机，打印预览
+- screen：电脑平板手机屏幕
+- speech：屏幕阅读器等发声设备
+
+媒体特性较多，如max-width，min-width分别表示媒体类型≤或≥指定宽度时样式生效
+
+### and关键词
+
+用and连接多个媒体特性，如：
+
+```css
+@media screen and (min-width:600px) and (max-width:900px){
+  body {background-color:#f5f5f5;}
+}
+```
+
+### not关键词
+
+not排除某种指定的媒体类型
+
+```css
+@media not print and (max-width: 1200px){样式代码}
+```
+
+表示的是样式代码将被使用在除打印设备和设备宽度小于1200px的所有设备中
+
+### only关键词
+
+意思没有太大变化，只是让不支持媒体查询的浏览器忽略掉这条媒体查询
+
+```css
+@media only screen and……………………
+```
+
+## 十四.::before和::after
+
+### content
+
+::before和::after必须配合content属性来使用，content用来定义插入的内容，content必须有值，至少是空。
+
+content属性值：
+
+- 字符串
+
+  ```css
+  p::before {
+      content:"《";
+  }
+  ```
+
+- attr()
+
+  调用当前元素属性，比如显示图片alt提示文字或链接href地址
+
+  ```css
+  a::after {
+      content:"("attr(href)")";
+  }
+  ```
+
+- url()或uri()
+
+  引用媒体文件例如图片
+
+  ```css
+  a::before {
+      content: url("https://www.baidu.com/img/baidu_jgylogo3.gif")
+  }
+  ```
+
+- counter()
+
+  调用计数器，可以不使用列表元素实现序号功能(要用counter-increment和counter-reset)
+
+  ```css
+  body{
+      counter-reset: section;
+  }
+  h1{
+      counter-reset: subsection;
+  }
+  h1:before{
+      counter-increment:section;
+      content:counter(section) "、";
+  }
+  h2:before{
+      counter-increment:subsection;
+      content: counter(section) "." counter(subsection) "、";
+  }
+  ```
+
+  [一些特殊字符的写法](https://www.cnblogs.com/starof/p/4718550.html)
