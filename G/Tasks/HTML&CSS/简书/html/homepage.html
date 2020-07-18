@@ -60,7 +60,7 @@
               <a class="passage_info_content_title" href="#"
                 >世界上最大的蛇确实是森蚺，但最长的蛇却不是森蚺！森蚺和网纹蟒谁厉害？</a
               >
-              <div class="passage_info_content_txt">
+              <div class="passage_info_content_txt content_fold">
                 世界上最大的蛇确实是森蚺，但最长的蛇却不是森蚺，而是网纹蟒！尽管它们都是蛇类，但两者所专长的技能也不一样，当然关键还是它们生活习性不尽相同！亚马逊森蚺，与各位见到的一样，亚马逊森蚺喜欢生活在沼泽地区，这是它们最喜欢的环境！
                 <br />
                 网纹蟒是地球上最长的蛇类，它的一生都在生长！最长的网纹蟒能长到14M，网纹蟒的绞杀能力是蛇类中最强的！网纹虽然在陆地上速度更快,但森蚺体格更粗壮,绞杀力量更强.如果在陆地上,森蚺可能会在被网纹狠咬几口之后把网纹干掉.如果是在水里,呵呵网纹就死得惨了。
@@ -81,8 +81,8 @@
                 根据以上情况，我们可以说森蚺比网纹蟒更有力量，如果互相争斗，可以杀死网纹蟒。
                 <br />
               </div>
-              <span class="unfold" data-all="0">展开</span>
-              <span class="fold" data-brief="0">收回</span>
+              <span class="unfold" id="fold_unfold" data-all="0">展开</span>
+              <!-- <span class="fold hidden" data-brief="0">收回</span> -->
             </div>
             <a class="passage_info_img" href="#"></a>
             <div class="passage_info_data"></div>
@@ -113,67 +113,123 @@
 
         <div class="authorTitle">
           <span class="recommend">推荐作者</span>
-          <a class="change" href="#">换一批</a>
+          <span id="change">换一批</span>
         </div>
 
         <div class="authorList">
           <!-- 第一个作者 -->
           <div class="author">
-            <a class="photo1" href="#"></a>
+            <a class="photo" href="#"></a>
             <div class="authorInfo">
               <div class="nameAndfollow">
                 <a class="name" href="#">董克平日记</a>
-                <a class="follow" href="#">关注</a>
+                <div class="follow" data-follow="0">关注</div>
               </div>
               <div>写了1034.1k字 · 4.2k喜欢</div>
             </div>
           </div>
           <!-- 第二个作者 -->
           <div class="author">
-            <a class="photo2" href="#"></a>
+            <a class="photo nth2" href="#"></a>
             <div class="authorInfo">
               <div class="nameAndfollow">
                 <a class="name" href="#">简书钻首席小管家</a>
-                <a class="follow" href="#">关注</a>
+                <div class="follow" data-follow="1">关注</div>
               </div>
               <div>写了440.2k字 · 173.3k喜欢</div>
             </div>
           </div>
           <!-- 第三个作者 -->
           <div class="author">
-            <a class="photo3" href="#"></a>
+            <a class="photo nth3" href="#"></a>
             <div class="authorInfo">
               <div class="nameAndfollow">
                 <a class="name" href="#">卢璐说</a>
-                <a class="follow" href="#">关注</a>
+                <div class="follow" data-follow="2">关注</div>
               </div>
               <div>写了1782.5k字 · 32.9k喜欢</div>
             </div>
           </div>
           <!-- 第四个作者 -->
           <div class="author">
-            <a class="photo4" href="#"></a>
+            <a class="photo nth4" href="#"></a>
             <div class="authorInfo">
               <div class="nameAndfollow">
                 <a class="name" href="#">宇文欢</a>
-                <a class="follow" href="#">关注</a>
+                <div class="follow" data-follow="3">关注</div>
               </div>
               <div>写了135.5k字 · 2.5k喜欢</div>
             </div>
           </div>
           <!-- 第五个作者 -->
           <div class="author">
-            <a class="photo5" href="#"></a>
+            <a class="photo nth5" href="#"></a>
             <div class="authorInfo">
               <div class="nameAndfollow">
                 <a class="name" href="#">王小麦</a>
-                <a class="follow" href="#">关注</a>
+                <div class="follow" data-follow="4">关注</div>
+              </div>
+              <div>写了167.9k字 · 40.8k喜欢</div>
+            </div>
+          </div>
+
+          <!-- 作者6~10 -->
+          <div class="author">
+            <a class="photo nth6" href="#"></a>
+            <div class="authorInfo">
+              <div class="nameAndfollow">
+                <a class="name" href="#">王小麦</a>
+                <div class="follow" data-follow="5">关注</div>
+              </div>
+              <div>写了167.9k字 · 40.8k喜欢</div>
+            </div>
+          </div>
+
+          <div class="author">
+            <a class="photo nth7" href="#"></a>
+            <div class="authorInfo">
+              <div class="nameAndfollow">
+                <a class="name" href="#">王小麦</a>
+                <div class="follow" data-follow="6">关注</div>
+              </div>
+              <div>写了167.9k字 · 40.8k喜欢</div>
+            </div>
+          </div>
+
+          <div class="author">
+            <a class="photo nth8" href="#"></a>
+            <div class="authorInfo">
+              <div class="nameAndfollow">
+                <a class="name" href="#">王小麦</a>
+                <div class="follow" data-follow="7">关注</div>
+              </div>
+              <div>写了167.9k字 · 40.8k喜欢</div>
+            </div>
+          </div>
+
+          <div class="author">
+            <a class="photo nth9" href="#"></a>
+            <div class="authorInfo">
+              <div class="nameAndfollow">
+                <a class="name" href="#">王小麦</a>
+                <div class="follow" data-follow="8">关注</div>
+              </div>
+              <div>写了167.9k字 · 40.8k喜欢</div>
+            </div>
+          </div>
+
+          <div class="author">
+            <a class="photo nth10" href="#"></a>
+            <div class="authorInfo">
+              <div class="nameAndfollow">
+                <a class="name" href="#">王小麦</a>
+                <div class="follow" data-follow="9">关注</div>
               </div>
               <div>写了167.9k字 · 40.8k喜欢</div>
             </div>
           </div>
         </div>
-        <a class="allAuthor" href="#">查看全部</a>
+        <div id="allAuthor">查看全部</div>
       </div>
     </div>
 
