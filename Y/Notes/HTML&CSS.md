@@ -147,6 +147,7 @@
   #idname
 - ```
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+  ```
 ```
   
   use google fonts
@@ -161,7 +162,7 @@ style attribute
 
 - internal //prior2
 
-```html
+​```html
 <head>
 <style>
 body {background-color: powderblue;}
@@ -326,4 +327,68 @@ Margin{Border[Padding(Content)]}
     align-self: auto | flex-start | flex-end | center | baseline | stretch;
   }
   ```
+
+### Grid布局
+
+```css
+display: grid|inline-grid
+grid-column-gap
+grid-row-gap
+grid-gap
+grid-template-columns
+grid-template-rows
+justify-content:start|end|center|space-between|space-around
+.item1 {
+  grid-column-start: 1;
+  grid-column-end: 3;      //从1列开始3列结束
+  grid-column: 1 / 3;
+  grid-column: 1 / span 3;
+  grid-area: rowstart|columstart|rowspan|colspan
+       		 header|menu| main|right|footer
+}
+```
+
+![img](https://www.w3schools.com/css/grid_gaps.png)
+
+![img](https://www.w3schools.com/css/grid_lines.png)
+
+示例:
+
+```css
+.grid-container {
+ grid-template-areas:
+  'header header header header header header'
+  'menu main main main right right'
+  'menu footer footer footer footer footer';
+}
+```
+
+### CSSAnimations
+
+- 示例
+
+  ```css
+  @keyframes example {
+    from {background-color: red;}
+    to {background-color: yellow;}
+  }
+  
+  /* The element to apply the animation to */
+  div {
+  	width: 100px;
+    	height: 100px;
+    	background-color: red;
+    	animation-name: example;
+    	animation-duration: 4s;
+    	animation-delay:2s;
+    	animation-iteration-count: 3|infinite;
+    	animation-direction: normal|reverse|alternate|alternate-reverse;
+    	animation-timing-function:ease|linear|ease-in|ease-out|ease-in-out;
+    	animation-fill-mode:none|backwards|forwards|both;
+  }
+  ```
+
+### CSS Tooltop
+
+
 
