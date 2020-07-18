@@ -184,5 +184,180 @@ ul {
 }
 
 #swiper {
-  width: ;
+  
+}
+
+.store-bottom{
+  position: relative;
+}
+.store-bottom ul{
+  display: inline-block;
+  margin:0
+}
+
+
+
+.store-bottom .flex{
+  padding:3.5px 10px;
+  display: inline-flex;
+  justify-content: space-between;
+  width: 170px;
+  color: #999999;
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.store-bottom .flex:hover{
+  color:#ff8700;
+  background-color: #a89784;
+}
+
+.store-bottom .topic-store>ul{
+  width:190px;
+  box-sizing: border-box;
+  border:1px solid #ff8700;
+  overflow: hidden;
+}
+
+#swiper{
+  width: 520px;
+  overflow: hidden;
+  height: 280px;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  margin: 10px;
+}
+.swiper-img{
+  width: 2600px;
+  height: 280px;
+  display: inline-block;
+}
+
+.hover-topic{
+  width: 700px;
+  height: 512px;
+  border: 2px solid #d39957;
+  position: absolute;
+  top:0;
+  left: 190px;
+  z-index: 2;
+  display: none
+}
+
+#buttons{
+  position: absolute;
+  top: 275px;
+  left: 430px;
+}
+
+.topic-store{
+  display: inline-block;
+}
+
+.swiper-bottom{
+  height: 200px;
+  display: inline-block;
+  width: 520px;
+  position: absolute;
+  bottom: 0;
+  margin-left: 10px
+}
+
+.swiper-bottom .swiper-img{
+  width:520px;
+  height:200px;
+}
+
+.image{
+  float: right;
+}
+
+.store-bottom-right{
+  width:290px;
+  height:520px;
+  border: 1px solid #d39957;
+  float:right;
+}
+
+.hover-out{
+  display: none
+}
+
+.userinfo .avatar{
+  display: block;
+  margin: auto;
+}
+
+.userinfo .hello{
+  text-align: center;
+  color:#000000;
+  font-size: 13px
+}
+
+.userinfo .coin{
+  background-color: #ddcebd;
+  font-size: 12px;
+  border-radius: 10px;
+  width:90px;
+  display: inline-block;
+  text-align: center;
+  padding: 1px;
+  color:rgb(226, 95, 95)
+  
+}
+
+.userinfo .user-button{
+  width: 30%;
+  height: 24px;
+  border-radius: 6px;
+  line-height: 24px;
+  color: white;
+  background-image: linear-gradient(to right,#ff5000,#ff7f00);
+  text-align: center;
+  display: inline-block;
+  margin: 10px 0;
+  font-size: 14px;
+  font-weight: 540;
+}
+
+.userinfo .bad{
+  background-color: #FFE4DD;
+  display: block;
+  text-align: center;
+  color: rgb(226, 95, 95);
+  font-size: 12px;
+  padding: 5px;
+  letter-spacing: 1px;
+}
+
+.userinfo .triangle{
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-bottom: 6px solid #FFE4DD;
+  border-left: 8px solid #ff5000;
+  border-right: 6px solid #FFE4DD;
+  border-top: 6px solid #FFE4DD;
+  vertical-align: middle;
+  position: relative;
+  left: 50px;
+}
+
+.user-list{
+  display: flex;
+  width:100%;
+  justify-content: space-evenly;
+  font-size: 13px;
+  margin: 10px 0;
+}
+
+.user-list>li{
+  box-sizing: border-box;
+  padding: 2px 3px;
+}
+.user-list .hover{
+  color:#ff5000;
+  border-bottom: 4px solid #ff5000
+
 }
