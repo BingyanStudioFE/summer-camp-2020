@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ol,ul{
+    list-style-type: none;
+}
+a{
+    color: #666666;
+    text-decoration: none;
+}
+/* 设置顶部 */
+#container1
+{
+    height: 52px;
+    width: auto;
+    border: 2px solid black;
+}
+#header
+{
+    height: 52px;
+    width: 1000px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#header #nav{
+    height: 50px;
+    width: 222px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+#header #nav ul{
+    height: 50px;
+    width: 222px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#header #nav li{
+    color: #B89EA6;
+}
+#header #search
+{
+    height: 24px;
+    width: 400px;
+    display: flex;
+}
+#header #userinfo
+{
+    height: 31px;
+    width: 268px;
+}

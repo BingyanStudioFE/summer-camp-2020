@@ -11,3 +11,4 @@ var obj2={
     sayName:fun
 }
 obj.sayName;
+
