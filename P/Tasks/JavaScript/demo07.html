@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="tool.js"></script>
+    <style>
+        * {
+            margin: 0; padding: 0;
+        }
+        #pic {
+            width: 200px; height: 200px;
+            position: absolute;
+            
+        }
+        img {
+            width: 100%; height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div id="pic">
+        <img src="./imgs/02.png" alt="">
+    </div>
+
+    <script>
+        var oPic = $('pic');
+        var cilcked = false;
+        var eX, eY;
+
+        oPic.onmousedown = function (ev) {
+            var e = getEvent(ev);
+            preventDefault(e);
+            //eX = e.offsetX;
+            //eY = e.offsetY;
+            eX = e.pageX - oPic.offsetLeft;
+            eY = e.pageY - oPic.offsetTop;
+                    //相比上方的优势在于可以考虑到margin属性
+                      //因为在定位的时候是按照margin的角为原点
+            cilcked = true;
+        }
+
+        oPic.onmousemove = function (ev) {
+            var e = getEvent(ev);
+            if(cilcked == true) {
+                oPic.style.top = e.pageY - eY + 'px';
+                oPic.style.left = e.pageX - eX + 'px';
+            }
+        }
+        oPic.onmouseup = function() {
+            cilcked = false;
+        }
+    </script>
+</body>
+</html>

@@ -1,3 +1,18 @@
+## 7.17
+
+#### 作息安排
+
+* 14:00-19:30 学JS
+* 19:30-20:00 吃饭
+* 20:00-20:30 学JS
+* 20:30-21:00 听分享
+
+#### 学了什么
+
+1. 继续看了一段时间的异步，了解了requestAnimationFrame()，并利用异步和rAF制作了一个[小游戏](./Tasks/JavaScript/demo05.html)(两个人一起来比拼反应速度的)
+2. 学了一些有关DOM的操作，对事件对象属性以及offset属性有了一定的认识，自己动手制作了一个[时钟](./Tasks/JavaScript/demo04.html)和一个[图片放大镜](./Tasks/JavaScript/demo06.html)以及一个[拖拽](./Tasks/JavaScript/demo07.html)的功能
+3. 笔记基本没记，就多了一点关于async和await的内容，（时间都拿去debug了(* ￣︿￣)）见[Note](./Notes/JavaScript.md) ，没有服务器(其实是有的，但是不会用)，不知道异步怎么练手。
+
 ## 7.16
 
 #### 作息安排
