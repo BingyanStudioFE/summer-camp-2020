@@ -134,3 +134,12 @@ CSS继续
 
 继续仿作，效果见[index.html](./Tasks/HTML&CSS/microsoft-homepage-clone)
 
+## DAY6
+
+昨天写赶ddl了
+
+所以今天补上
+
+今天主要学习了javascript，笔记见[JavaScript.md](./Notes/JavaScript.md)
+
+###### 
