@@ -3,6 +3,9 @@
     margin: 0;
     padding: 0;
 }
+html{
+    width: 150%;
+}
 
 body{
     font-family: initial;
@@ -92,7 +95,9 @@ ul{
     padding: 100px 80px;
     margin-bottom: 40px;
 }
-
+.showcase div{
+    white-space: nowrap;
+}
 .showcase h1{
     width: 40%;
     margin-bottom: 10px;
