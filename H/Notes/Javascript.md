@@ -240,7 +240,8 @@ var z = 3;
 变量声明会被提升，但赋值不会。如  
 `var a = 3;`  
 实际会被处理为  
-`var a;···;a = 3;`
+`var a;···;a = 3;`  
+注：函数声明优先于变量声明
 ### 闭包
 闭包是一个函数加上和其作用域链的链接。  
 或者说：闭包就是能够读取其他函数内部变量的函数。  
@@ -262,3 +263,224 @@ var z = 3;
 
 　　result(); // 999
 ```
+### IIFE：立即执行函数表达式
+声明函数的同时立即调用这个函数  
+```
+(function foo(){
+  var a = 10;
+  console.log(a);
+})(); 
+```
+作用相当于：
+```
+function foo(){
+  var a = 10;
+  console.log(a);
+}
+foo();
+```
+但IIFE具有的优点：**隔离作用域**  
+> JS只有全局作用域（global scope）、函数作用域（function scope），从ES6开始才有块级作用域（block scope）。对比来看，JS在访问控制这方面十分脆弱。那么如何实现作用域的隔离呢？在JS中，只有function才能实现作用域隔离，因此如果要将一段代码中的变量、函数等的定义隔离出来，只能将这段代码封装到一个函数中。
+
+参考资料：[Javascript IIFE](https://www.jianshu.com/p/5b5de313015c)
+
+### 闭包实现变量共享
+```
+var result = [];
+for (var i=0; i < 5; i++) {
+    result.push(function () { return i });  // (*)
+}
+console.log(result[1]()); // 5 (不是 1)
+console.log(result[3]()); // 5 (不是 3)
+```
+(*)行的返回值总是当前的i值，而不是当函数被创建时的i值。  
+解决方法：使用 IIFE：
+```
+for (var i=0; i < 5; i++) {
+    (function (i2) {
+        result.push(function () { return i2 });
+    }(i));  // 复制当前的i
+}
+```
+## 对象和继承
+字面量创建对象法：
+```
+var o1 = {
+    p:”I’m in Object literal”, // 属性1
+    alertP:function(){ // 属性2
+        alert(this.p);
+    }
+}
+//每个属性都是一对（键和值）
+```
+缺陷：每创建一个新的对象都需要写出完整的定义语句，不便于创建大量相同类型的对象，不利于使用继承等高级特性  
+
+构造函数+new表达式创建对象法：
+```
+// 设置实例数据
+function Point(x, y) {
+    this.x = x;
+    this.y = y;
+}
+// 方法 【Point.prototype属性包含对象的方法】
+Point.prototype.dist = function () {
+    return Math.sqrt(this.x*this.x + this.y*this.y);
+};
+var p = new Point(3, 5);
+> p.x
+3
+> p.dist()
+5.830951894845301
+```
+其中，p是Point一个实例
+
+**点操作符(.)** 可以读取/改写对象的属性，也可以用`[ ]`(动态读取)  
+**delete操作符** 可以删除对象的属性`delete jane.name`  
+**in操作符** 用来检测一个属性是否存在：
+```
+> 'newProperty' in jane
+true
+```
+若读取一个不存在的属性，将会得到undefined值。因此上面的检查也可以像下面这样：
+```
+> jane.newProperty !== undefined
+true
+```
+以上(.)规则只适用于标识符键名。若想用其他任意字符串作为键名，必须在对象字面量里加上引号，并使用方括号获取和设置属性。
+### 引用方法
+如果你引用一个方法（对象的函数），它将失去和对象的连接。就其本身而言，函数不是方法，其中的this值为undefined（严格模式下）。  
+
+解决办法是使用函数内置的bind()方法。它创建一个新函数，其this值固定为给定的值。
+
+## 数组
+字面量创建数组法：
+```
+var arr = [ 'a', 'b', 'c' ];
+```
+**length属性**总表示一个数组有多少项元素：
+```
+> arr.length
+3
+```
+若强行减小length的值会从后往前移除数组元素  
+**in操作符**也可以在数组上工作。
+```
+> 1 in arr // arr在索引为1处是否有元素？
+true
+```
+注:数组是对象，因此可以有对象属性：
+```
+> arr.foo = 123;
+> arr.foo
+123
+```
+### 数组方法
+```
+> var arr = [ 'a', 'b', 'c' ];
+
+> arr.slice(1, 2)  // 复制元素
+[ 'b' ]
+
+> arr.push('x')  // 在末尾添加一个元素
+4
+> arr
+[ 'a', 'b', 'c', 'x' ]
+
+> arr.pop()  // 移除最后一个元素
+'x'
+> arr
+[ 'a', 'b', 'c' ]
+
+> arr.shift()  // 移除第一个元素
+'a'
+> arr
+[ 'b', 'c' ]
+
+> arr.unshift('x')  // 在前面添加一个元素
+3
+> arr
+[ 'x', 'b', 'c' ]
+
+> arr.indexOf('b')  // 查找给定项在数组中的索引
+1
+> arr.indexOf('y') 
+-1
+
+> arr.join('-')  // 将元素拼接为一个字符串
+'x-b-c'
+> arr.join('')
+'xbc'
+> arr.join()
+'x,b,c'
+```
+以下两种方法可以遍历数组：
+forEach遍历整个数组，并将**当前元素**和它的**索引**传递给一个函数：
+```
+[ 'a', 'b', 'c' ].forEach(
+    function (elem, index) {  // 若括号内只有一个参数则无论怎么命名均代表element
+        console.log(index + '. ' + elem);
+    });
+```
+
+map创建一个新数组，通过**给每个存在数组元素应用一个函数**：
+```
+> [1,2,3].map(function (x) { return x*x })
+[ 1, 4, 9 ]
+```
+
+## 正则表达式
+正则表达式是构成搜索模式（search pattern）的字符序列  
+可用于执行所有类型的文本搜索和文本替换操作   
+具体实例和在线测试见[这里](https://c.runoob.com/front-end/854)
+
+## 数学
+Math是一个有算数功能的对象，如：
+```
+> Math.abs(-2)
+2
+
+> Math.pow(3, 2)  // 3^2
+9
+
+> Math.max(2, -1, 5)
+5
+
+> Math.round(1.9)
+2
+
+> Math.cos(Math.PI)  // 预定义常量π
+-1
+```
+
+## console控制台操作
+`console.log()`用于日志信息的常规输出。您可以在此方法中使用字符串替换和其他参数。  
+`console.clear()`
+清除控制台。  
+`console.count()`
+记录使用给定标签调用此行的次数。  
+`console.error()`
+输出错误信息。您可以在此方法中使用字符串替换和其他参数。    
+(现象同log)  
+`console.table()`
+将表格数据显示为表格(参数必须写成数组形式)。  
+`console.time()`
+使用指定为输入参数的名称启动计时器。给定页面上最多可以同时运行10,000个计时器。  
+`console.timeEnd()`
+停止指定的计时器并记录自启动以来经过的时间（以秒为单位）。  
+`console.timeLog()`
+将指定计时器的值记录到控制台。  
+注：后两句如果写成console.timeLog("answer time")会显示answer time:...ms否则直接显示...ms  
+`console.warn()`
+输出警告消息。您可以在此方法中使用字符串替换和其他参数。  
+(现象同log)  
+`console.info()`方法输出的信息性消息到Web控制台。  
+(现象同log)    
+
+使用字符串替换：
+```
+for (var i=0; i<5; i++) {
+  console.log("Hello, %s. You've called me %d times.", "Bob", i+1);
+}
+```
+## 日期Date
+多种方法见[这里](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
