@@ -21,6 +21,7 @@ body {
   list-style: none;
   display: inline-block;
   margin: 0 10px;
+  line-height: 40px
 }
 
 .nav {
@@ -28,22 +29,49 @@ body {
   height: 35px;
   width: 1190px;
   margin: auto;
+  background-color: #F4F4F4;
 }
 
+
+.nav .country{
+  position: absolute;
+  top:30px;
+  left:0;
+  z-index: 2;
+  background-color: #fff;
+  width:280px;
+  height:300px;
+  overflow: scroll;
+  display: inline-block;
+  color:#000;
+  display: none;
+}
+
+.nav .country>span:hover{
+  display: inline-block;
+  width:100%;
+  background-color: #F4F4F4;
+  color:#000
+}
+.nav .choose-img{
+  position: relative;
+  top:3px;
+  left:2px;
+}
 .nav > .nav-left {
   display: inline-block;
+  
 }
 
 .nav > .nav-right {
   float: right;
 }
 
-.nav li:hover {
+.nav ul li:hover {
   color: red;
 }
 
-.nav-left .nav-arrow {
-}
+
 
 .search-input {
   width: 600px;
@@ -63,12 +91,17 @@ input:focus {
   outline: none;
 }
 
+.all-search-container{
+  width: 100%;
+  background-color: #fff;
+}
 .search {
   height: 120px;
   width: 1190px;
   margin: auto;
   position: relative;
   padding-top: 40px;
+  background-color: #fff;
 }
 
 li {
@@ -183,9 +216,6 @@ ul {
   background: orangered;
 }
 
-#swiper {
-  
-}
 
 .store-bottom{
   position: relative;
@@ -228,10 +258,13 @@ ul {
   top: 0;
   margin: 10px;
 }
-.swiper-img{
-  width: 2600px;
+#swiper-img{
+  width: 2700px;
   height: 280px;
   display: inline-block;
+  position: absolute;
+  left:0;
+  top:0;
 }
 
 .hover-topic{
@@ -278,6 +311,7 @@ ul {
   height:520px;
   border: 1px solid #d39957;
   float:right;
+  background-color: #fff;
 }
 
 .hover-out{
@@ -360,4 +394,189 @@ ul {
   color:#ff5000;
   border-bottom: 4px solid #ff5000
 
+}
+
+.a-hover{
+  font-size:small;
+  width:100%;
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
+
+.a-hover a{
+  padding: 5px 0;
+  display: inline-block
+}
+
+.a-nohover{
+  display: none;
+}
+
+.a-hover a:nth-child(1){
+  color:#ff5000;
+}
+
+.tool{
+  background-color: #fff;
+}
+.tool>li{
+  padding: 5px;
+  text-align: center;
+  border:1px solid rgb(250, 250, 250);
+  width:24.6%;
+  box-sizing: border-box;
+  vertical-align: middle;
+  height:80px;
+  font-size: 12px;
+  margin-left:-1.6%
+}
+
+.tool>li:nth-child(-n+8){
+  border-bottom:2px solid rgb(250, 250, 250)
+}
+
+.tool>li:nth-child(1){
+  margin-left:0
+}
+.tool>li:nth-child(5){
+  margin-left:0
+}
+
+.tool>li:nth-child(-n+4){
+  border-top:2px solid rgb(250, 250, 250);
+  border-bottom:1px solid rgb(250, 250, 250)
+}
+
+.tool>li:nth-child(-n+3):hover{
+  border: 1px solid #ff5000;
+  border-bottom: 1px solid #fff;
+}
+
+.tool>li:hover{
+  color:#ff5000
+}
+
+.aliapp{
+  font-size: small;
+  font-weight: 550;
+  margin-left: 14px;
+  margin-right: 168px
+}
+
+.ali-more{
+  font-size: 12px;
+}
+
+.ali-more:hover{
+  color: #ff5000;
+  cursor: pointer;
+}
+
+.ali-img{
+  display: flex;
+  justify-content: space-evenly;
+  position: relative;
+}
+
+.ali-img>li{
+  position: relative;
+}
+
+.ali-img>li>img{
+  width:30px;
+  height:30px;
+  margin-top:10px;
+}
+
+.ali-img .scan{
+  display: none;
+  position: absolute;
+  top:-110px;
+  left:-40px;
+  width:100px;
+  height:110px;
+  font-size: 12px;
+  text-align: center;
+  background-color: #fff;
+  border:1px solid #999999
+}
+
+.main{
+  background-color: #f4f4f4;
+}
+
+.show{
+  width:1190px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  margin-top:10px;
+}
+.good-things,.love-street{
+  width: 49.6%;
+  background-color: #fff;
+  color: #999999;
+  font-size: 12px;
+}
+
+.show-list{
+  display: inline-block;
+  width: 100%;
+  
+}
+
+.show-list>li{
+  width:32%;
+  margin-left:-1.5%;
+
+}
+
+.show-list>li:nth-child(3n+1){
+  margin-left: 20px;
+}
+
+.show .show-img>img{
+  display: inline-block;
+  width: 90px;
+  height:30px;
+  margin: 20px;
+
+}
+
+.good-things>span:nth-child(2),.love-street>span:nth-child(2){
+  display: inline-block;
+  vertical-align: 150%;
+}
+
+.show-list>li span:nth-child(2){
+  font-size: 14px;
+  line-height: 30px;
+  color:#666666;
+}
+
+.show-list>li span{
+  margin: 20px;
+}
+
+.show .like{
+  margin:24px;
+  color: rgb(0, 195, 255);
+  line-height: 50px;
+}
+
+.show .like img{
+  position: relative;
+  top: 3px;
+  right: 4px;
+  
+}
+
+.show .love-street .like img{
+  border-radius: 50%;
+  top:10px;
+}
+
+.show .love-street .like{
+  color: #666666
 }
