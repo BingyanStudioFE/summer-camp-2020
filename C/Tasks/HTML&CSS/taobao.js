@@ -56,10 +56,14 @@ function lazyload() {
   var seeHeight = document.documentElement.clientHeight;
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   for (var i = n; i < num; i++) {
-    if (img[i].offsetTop < seeHeight + scrollTop) {
-      if (img[i].getAttribute("src") == "../img/default.png") {
+    if (img[i].offsetTop -100 < seeHeight + scrollTop) {
+      if (img[i].getAttribute("src") == "img/default.png") {
         img[i].src = img[i].getAttribute("data-src");
         console.log(img[i].src);
+        if(img[i].src=="https://img.alicdn.com/tfscom/i1/1581756766/TB2TF0ch0zJ8KJjSspkXXbF7VXa_!!1581756766.jpg_180x180xzq90.jpg_.webp")
+        {
+          console.log("jdfks")
+        }
       }
       n = i + 1;
     }
