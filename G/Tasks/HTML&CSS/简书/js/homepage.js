@@ -38,10 +38,10 @@ var before = function () {
   change();
 };
 
-var time = 20;
+var time = 30;
 
 setInterval(function () {
-  if (time == 20) {
+  if (time == 30) {
     next();
     time = 0;
   }
@@ -70,36 +70,45 @@ for (var i = 0; i < 2; i++) {
 // 点击展开
 var unfoldBtn = document.getElementsByClassName("unfold");
 var unfoldContent = document.getElementsByClassName("passage_info_content_txt");
+var textChange = document.getElementsByClassName("unfold");
 var passageNumber = 0;
-var judge = 0;
+var judge = new Array();
+
+for (var i = 0; i < textChange.length; i++) {
+  judge[judge.length] = 0;
+}
 
 function judgeFold() {
-  document.getElementById("fold_unfold").innerHTML =
-    judge == 0 ? "展开" : "收回";
+  textChange[passageNumber].innerHTML =
+    judge[passageNumber] == 0 ? "展开" : "收回";
 }
 
 var unfold = function () {
-  if (judge == 0) {
-    // judge = 1;
+  if (judge[passageNumber] == 1) {
     unfoldContent[passageNumber].className = "passage_info_content_txt";
   } else {
-    // judge = 0;
     unfoldContent[passageNumber].className =
       "passage_info_content_txt content_fold";
   }
 };
 
 for (var i = 0; i < unfoldContent.length; i++) {
+  var firstTime = 0;
   unfoldBtn[i].addEventListener("click", function () {
     var index = this.getAttribute("data-all");
     passageNumber = index;
-    judgeFold();
-    if (judge == 0) {
-      judge = 1;
+    if (firstTime == 0) {
+      judge[passageNumber] = 1;
     } else {
-      judge = 0;
+      if (judge[passageNumber] == 0) {
+        judge[passageNumber] = 1;
+      } else {
+        judge[passageNumber] = 0;
+      }
     }
+    firstTime = 1;
     unfold();
+    judgeFold();
   });
 }
 
@@ -152,14 +161,21 @@ allAuthorBtn.addEventListener("click", function () {
 
 // 关注
 var followBtn = document.getElementsByClassName("follow");
-var followed = new Array(10); //存放已关注的作者的序号
-var n = 0;
+var followed = new Array(); //存放已关注的作者的序号
+var followJudge = new Array();
 
 for (var i = 0; i < count; i++) {
   followBtn[i].addEventListener("click", function () {
-    followed[n] = this.getAttribute("data-follow");
-    n++;
-    console.log(followed[n]);
-    authors[followed[n]].className = "author hidden";
+    followed[followed.length] = this.getAttribute("data-follow") - 0;
+    authors[followed[followed.length - 1]].className = "author hidden";
+    followBtn[followed[followed.length - 1]].innerHTML = "已关注";
+
+    for (var j = 0; j < 5; j++) {
+      if (followed.indexOf(authorsNumber[j]) === -1) {
+        authors[authorsNumber[j]].className = "author";
+        followed[followed.length] = authorsNumber[j];
+        break;
+      }
+    }
   });
 }

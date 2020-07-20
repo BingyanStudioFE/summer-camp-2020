@@ -155,7 +155,8 @@ header {
   background-color: darkblue;
   background: url(../img/rotation1.png) no-repeat;
   background-size: contain;
-  display: none;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .images_list_item:nth-child(2) {
@@ -164,7 +165,7 @@ header {
 }
 
 .images_list_item.active {
-  display: block;
+  opacity: 1;
 }
 
 .button {
@@ -267,7 +268,6 @@ header {
   display: block;
   width: 30%;
   height: 10rem;
-  /* background-color: yellow; */
   background: url(../img/passage-img.png) no-repeat;
   background-size: contain;
 }
@@ -356,7 +356,6 @@ header {
 
 .describe {
   width: 13.2rem;
-  /* height: 4rem; */
   margin: 0.5rem 0 0.5rem 1rem;
   display: flex;
   flex-direction: column;
@@ -399,7 +398,6 @@ header {
   padding-bottom: 20%;
   margin-top: 1rem;
   display: flex;
-  /* background-color: wheat; */
 }
 
 .author.hidden {
@@ -408,7 +406,6 @@ header {
 
 .photo {
   display: block;
-  /* height: 4rem; */
   width: 21%;
   height: 0;
   padding-bottom: 16.5%;
@@ -431,6 +428,7 @@ header {
 }
 
 .follow {
+  cursor: pointer;
   color: rgb(66, 192, 46);
 }
 
