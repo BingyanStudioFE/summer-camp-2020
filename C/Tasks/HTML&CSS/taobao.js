@@ -1,65 +1,65 @@
-var hoverTopic = document.getElementsByClassName("hover-topic")
-var flex = document.getElementsByClassName("flex")
-console.log(flex)
+var hoverTopic = document.getElementsByClassName("hover-topic");
+var flex = document.getElementsByClassName("flex");
+console.log(flex);
 
 function toggleDisplay(node1, node2) {
   for (let i = 0; i < node1.length; i++) {
     node1[i].onmouseover = function () {
-      node2[i].style.display = "inline-block"
+      node2[i].style.display = "inline-block";
     };
     node1[i].onmouseout = function () {
-      node2[i].style.display = "none"
+      node2[i].style.display = "none";
     };
   }
 }
 
 for (let i = 0; i < flex.length; i++) {
-  console.log(i)
+  console.log(i);
   flex[i].onmouseover = function () {
-    hoverTopic[0].style.display = "inline-block"
+    hoverTopic[0].style.display = "inline-block";
   };
 
   flex[i].onmouseout = function () {
-    hoverTopic[0].style.display = "none"
+    hoverTopic[0].style.display = "none";
   };
 }
 
-var scans = document.getElementsByClassName("scan")
-var aliImgLi = document.getElementsByClassName("ali-img-li")
+var scans = document.getElementsByClassName("scan");
+var aliImgLi = document.getElementsByClassName("ali-img-li");
 
-toggleDisplay(aliImgLi, scans)
+toggleDisplay(aliImgLi, scans);
 
-var chooseCountry = document.getElementsByClassName("choose-country")
-var country = document.getElementsByClassName("country")
+var chooseCountry = document.getElementsByClassName("choose-country");
+var country = document.getElementsByClassName("country");
 
 chooseCountry[0].onmouseover = function () {
-  country[0].style.display = "inline-block"
-  chooseCountry[0].style.backgroundColor = "#fff"
+  country[0].style.display = "inline-block";
+  chooseCountry[0].style.backgroundColor = "#fff";
 };
 
 chooseCountry[0].onmouseout = function () {
   country[0].style.display = "none";
-  chooseCountry[0].style.backgroundColor = ""
+  chooseCountry[0].style.backgroundColor = "";
 };
 
 //懒加载
-var img = document.getElementsByTagName("img")
-var n = 0
-var num = img.length
+var img = document.getElementsByTagName("img");
+var n = 0;
+var num = img.length;
 
-lazyload()
+lazyload();
 
-window.onscroll = lazyload
+window.onscroll = lazyload;
 
 function lazyload() {
-  console.log("load")
+  console.log("load");
   var seeHeight = document.documentElement.clientHeight;
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   for (var i = n; i < num; i++) {
     if (img[i].offsetTop < seeHeight + scrollTop) {
       if (img[i].getAttribute("src") == "../img/default.png") {
-        img[i].src = img[i].getAttribute("data-src")
-        console.log(img[i].src)
+        img[i].src = img[i].getAttribute("data-src");
+        console.log(img[i].src);
       }
       n = i + 1;
     }
@@ -67,76 +67,80 @@ function lazyload() {
 }
 
 //轮播图
-var swipers = document.getElementById("swiper-img")
-var buttons = document.getElementById("buttons").getElementsByTagName("span")
-var swiperN = 0
+var swipers = document.getElementById("swiper-img");
+var buttons = document.getElementById("buttons").getElementsByTagName("span");
+var swiperN = 0;
 var time = setInterval(function begin() {
   for (let i = 0; i < 4; i++) {
     setTimeout(function () {
-
       for (let j = 0; j < buttons.length; j++) {
         if (j !== swiperN) {
-          buttons[j].className = ""
+          buttons[j].className = "";
         } else {
-          buttons[j].className = "on"
+          buttons[j].className = "on";
         }
-       
       }
 
-
-      swipers.style.left = -swiperN * 131 * (i + 1) + "px"
-      console.log(swipers.style.left)
-    }, 30 * i)
+      swipers.style.left = -swiperN * 131 * (i + 1) + "px";
+      console.log(swipers.style.left);
+    }, 30 * i);
   }
 
-  console.log(swipers.style.left)
-  swiperN++
-  console.log(swiperN)
+  console.log(swipers.style.left);
+  swiperN++;
+  console.log(swiperN);
   if (swiperN >= 5) {
-    swiperN = 0
+    swiperN = 0;
   }
 }, 3000);
 
 for (let k = 0; k < buttons.length; k++) {
   buttons[k].onclick = function () {
-    clearInterval(time)
-    swiperN = k+1
-
+    clearInterval(time);
+    swiperN = k;
+    let next = true;
     time = setInterval(function begin() {
-      console.log(swiperN)
-      for (let j = 0; j < buttons.length; j++) {
-        if (j !== swiperN) {
-          buttons[j].className = ""
-        } else {
-          buttons[j].className = "on"
-        }
-       
+      console.log(swiperN);
+
+      if (swiperN >= 5) {
+        swiperN = 0;
       }
 
-
-      
+      for (let j = 0; j < buttons.length; j++) {
+        let onButton = swiperN;
+        if (next === true) {
+          onButton++
+        }
+       
+        if(onButton>=5){
+          onButton = 0
+        }
+        if (j !== onButton) {
+          buttons[j].className = "";
+        } else {
+          buttons[j].className = "on";
+      }
+    }
       for (let i = 0; i < 4; i++) {
         setTimeout(function () {
-          swipers.style.left = -swiperN * 131 * (i + 1) + "px"
-        }, 30 * i)
+          swipers.style.left = -swiperN * 131 * (i + 1) + "px";
+        }, 30 * i);
       }
 
       console.log(swipers.style.left);
       swiperN++;
       if (swiperN >= 5) {
-        swiperN = 0
+        swiperN = 0;
       }
-    }, 3000)
-
-
+    }, 3000);
 
     for (let j = 0; j < buttons.length; j++) {
       if (j !== k) {
-        buttons[j].className = ""
+        buttons[j].className = "";
       } else {
-        buttons[j].className = "on"
+        buttons[j].className = "on";
       }
-      swipers.style.left = -k * 526 + "px"
+      swipers.style.left = -k * 526 + "px";
     }
   };
 }
