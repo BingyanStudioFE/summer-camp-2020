@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="tool.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      .slide {
+        position: relative;
+        width: 600px;
+        height: 30px;
+        border: 1.5px solid black;
+        margin: 100px auto;
+      }
+      .block {
+        width: 30px;
+        height: 30px;
+        background-color: blue;
+        position: absolute;
+        left: 100px;
+        top: 0;
+      }
+      .full {
+        width: 100px;
+        height: 30px;
+        background-color: orange;
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div class="slide">
+      <div class="block"></div>
+      <div class="full"></div>
+    </div>
+
+    <script>
+
+      let oSlide = document.getElementsByClassName('slide')[0];
+      let oBlock = document.getElementsByClassName('block')[0];
+      let oFull = document.getElementsByClassName('full')[0];
+      let mousePosX;
+
+      window.onload = function ( ) {
+        oBlock.style.left = localStorage['oBlock.style.left'];
+        oFull.style.width = localStorage['oFull.style.width'];
+      }
+
+      oBlock.onmousedown = function (ev) {
+        let e = getEvent(ev);
+        preventDefault(e);
+        mousePosX = e.pageX - oBlock.offsetLeft;
+          oSlide.onmousemove = function (ev) {
+          let e = getEvent(ev);
+          oBlock.style.left = e.pageX - mousePosX + 'px';
+          oFull.style.width = oBlock.offsetLeft + 'px';
+          if(oBlock.offsetLeft <= 0 || oBlock.offsetLeft >= oSlide.offsetWidth - oBlock.offsetWidth) {
+            oBlock.style.left = oBlock.offsetLeft <= 0 ? '0px' : oSlide.offsetWidth - oBlock.offsetWidth + 'px';
+            oFull.style.width = oBlock.offsetLeft <= 0 ? '0px' : oSlide.offsetWidth - oBlock.offsetWidth + 'px';
+          }
+          localStorage['oBlock.style.left'] = oBlock.style.left;
+          localStorage['oFull.style.width'] = oFull.style.width;
+        }
+      }
+
+      oSlide.onmouseleave = function () {
+        oSlide.onmousemove = null;
+      }
+      oBlock.onmouseup = function () {
+        oSlide.onmousemove = null;
+      }
+
+      
+
+
+      /*
+        本地存储技术
+          localStorage
+                  永久存储
+                  最大可存储5MB，又被称为客户端的微型数据库
+                  只能存储string
+          cookie
+                  可以设置过期时间
+                  最大可存储4KB
+                  每一个域名下面最多可存储50条数据
+          sessionStorage(结合后台使用)
+
+          localStorage对象
+            setItem(name, value);
+            getItem(name);
+            removeItem(name);
+      */
+
+      
+    </script>
+  </body>
+</html>
