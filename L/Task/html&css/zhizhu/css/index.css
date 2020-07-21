@@ -1,0 +1,404 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ol,ul{
+    list-style-type: none;
+}
+a{
+    color: #666666;
+    text-decoration: none;
+}
+/* 设置顶部 */
+#container1
+{
+    height: 52px;
+    width: auto;
+    /* border: 2px solid black; */
+}
+#header
+{
+    height: 52px;
+    width: 1000px;
+    margin: 0px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+#header #nav{
+    height: 50px;
+    width: 222px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+}
+#header #nav ul{
+    height: 50px;
+    width: 222px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#header #nav li{
+    color: rgb(133,144,166);
+}
+#header #search
+{
+    height: 40px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+#header #search .search1{
+    width: 320px;
+    height: 34px;
+    background-color: rgb(246,246,246);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   border-top-left-radius: 5px 5px;
+   border-top-right-radius: 5px 5px;
+   border-bottom-left-radius: 5px 5px;
+   border-bottom-right-radius: 5px 5px;
+
+}
+#header #search .search1 .news{
+    color: rgb(133,144,166);
+    padding-left: 15px;
+    font-size: 15px;
+}
+#header #search .search2{
+    width: 60px;
+    height: 34px;
+    border-top-left-radius: 5px 5px;
+    border-top-right-radius: 5px 5px;
+    border-bottom-left-radius: 5px 5px;
+    border-bottom-right-radius: 5px 5px;
+    background-color:rgb(0,119,230);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+#header #search .search2 .ask{
+    color:white;
+    font-size: 15px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#header #userinfo
+{
+    height: 31px;
+    width: 268px;
+    display: flex;
+    justify-content: flex-end;
+}
+#header #userinfo .xiaotubiao{
+    margin: 0px 20px;
+}
+/* 设置主体 */
+#container2{
+   background-color: rgb(246,246,246);
+   /* margin-top: 10px; */
+   display: flex;
+}
+/* 设置主体左边 */
+#container2 #main{
+    width: 1000px;
+    margin: 10px auto;
+    padding-left: 16px;
+    padding-right: 16px;
+   display: flex;
+}
+#container2 #main #main_left
+{
+    width: 694px;
+    margin-right: 0px;
+    /* border: 1px solid black; */
+}
+#container2 #main #skip{
+    height: 59px;
+    width: 694px;
+    display: flex;
+    justify-content: flex-start;
+    background-color: white;
+    border-bottom: 1px solid rgb(246,246,246);
+    flex-wrap:nowrap;
+}
+#container2 #main #skip ul{
+    display: flex;
+    align-items: center;
+}
+#container2 #main #skip li{
+    margin-left: 22px;
+    margin-right: 22px;
+}
+#container2 #main #answer{
+    width: 694px;
+}
+#container2 #main #answer .answer_content{
+    padding: 20px 20px;
+    width: 654px;
+    height: 185px;
+    background-color: white;
+    border-bottom: 1px solid rgb(246,246,246);
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+#container2 #main #answer .answer_content h3{
+    clear: both;
+    margin-bottom: 10px;
+}
+#container2 #main #answer .answer_content .img{
+    float: left;
+}
+#container2 #main #answer .answer_content .words{
+    float: left;
+    margin-left: 10px;
+    display: inline-block;
+    height: 66px;
+    width: 410px;
+    word-break: break-all;
+	word-wrap: break-word;
+	overflow: hidden;
+	display: -webkit-box;/*将对象作为弹性伸缩盒子模型显示。*/
+	-webkit-box-orient: vertical;/*从上到下垂直排列子元素（设置伸缩盒子的子元素排列方式）*/
+	-webkit-line-clamp: 3;/*这个属性不是css的规范属性，需要组合上面两个属性，表示显示2行。	*/
+}
+#container2 #main #answer .answer_content .readall{
+    color: #175199;
+    float: left;
+    display: inline-block;
+    margin-left: 10px;
+    display: inline-block;
+    width: 80px;
+    height: 24px;
+    font-size: 14px;
+}
+#container2 #main #answer .answer_content .readall a{
+    margin: 0px auto;
+    color: #175199;
+}
+#container2 #main #answer .answer_content #wenzi{
+    display: flex;
+    flex-wrap: wrap;
+    width: 446px;
+    height: 100px;
+    margin-left: 10px;
+    align-items: center;
+  
+}
+#container2 #main #answer .answer_content #answer_footer
+{
+    display: flex;
+    margin-top: 10px;
+}
+#container2 #main #answer .answer_content #answer_footer ul{
+    display: flex;
+    align-items: center;
+}
+#container2 #main #answer .answer_content #answer_footer #zantong
+{
+    margin-right: 5px;
+}
+#container2 #main #answer .answer_content #answer_footer li{
+    margin-left: 24px;
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgb(133,144,166);
+}
+}
+#answer_right li span{
+   margin-top: 5px;
+   border: 1px solid black;
+}
+/* 设置右边栏 */
+#container2 #asider{
+    width: 296px;
+    height: 1096px;
+    margin-left: 10px;
+}
+#container2 #asider #asider_1{
+    width: 296px;
+    height: 156px;
+    background-color: white;
+    display: flex;
+    margin-bottom: 10px;
+}
+#container2 #main #asider #asider_1 ul {
+    height: 64px;
+    width: 266px;
+    padding: 20px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgb(246,246,246);
+}
+#container2 #main #asider #asider_1 li{
+    height: 64px;
+    width: 50px;
+    margin-right: 22px;
+    font-size: 10px;
+}
+#container2 #main #asider #asider_1 li img{
+    margin-bottom: 5px;
+}
+#container2 #main #asider #asider_1 #lao4
+{
+    margin-right:0px;
+}
+#container2 #main #asider #asider_1 .shdcgx
+{
+    width: 296px;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    line-height: 51px;
+    font-size: 13px;
+    color: rgb(133,144,166);
+}
+#container2 #main #asider #asider_1  #shaohouda
+{
+    border-right: 1px solid rgb(246,246,246);
+    width: 147.5px;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+}
+#container2 #main #asider #asider_1  #shaohouda2
+{
+    width: 147.5px;
+    height: 51px;
+    display: flex;
+    justify-content: center;
+}
+#container2 #asider #asider_2
+{
+    width: 262px;
+    height: 52px;
+    padding-left: 17px;
+    padding-right: 17px;
+    margin-bottom: 10px;
+    background-color: white;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    font-size: 14px;
+}
+#container2 #asider #asider_2 #asider_2_left
+{
+    width: 131px;
+    line-height: 52px;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+
+}
+#container2 #asider #asider_2 #asider_2_left img
+{
+    margin-right: 8px;
+}
+#container2 #asider #asider_2 #asider_2_right
+{
+    width: 131px;
+    line-height: 52px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: rgb(0,132,255);
+}
+#container2 #asider #asider_2 #asider_2_right img
+{
+    margin-left: 8px;
+}
+#container2 #asider #asider_3
+{
+    height: 225px;
+    width: 296px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+}
+#container2 #asider #asider_3 #ads
+{
+    margin: 10px 10px -4px 10px;
+    width: 276px;
+    height: 44px;
+}
+#container2 #asider #asider_3 ul
+{
+    background-color: #fff;
+    clear: both;
+    margin-top: 20px;
+    margin-bottom: -5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 276px;
+    height: 160px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+#container2 #asider #asider_3 li
+{
+    width: 91.078px;
+    height: 55px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
+#container2 #asider #asider_3 #lao5 img
+{
+    margin-left: 15px;
+}
+#container2 #asider #asider_4
+{
+    margin-bottom: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 296px;
+    height: 280px;
+    padding: 8px 0px;
+    background-color: #fff;
+}
+#container2 #asider #asider_4 li
+{
+    width: 256px;
+    height: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    color: rgb(133,144,166);
+    font-size: 14px;
+}
+#container2 #asider #asider_4 ul img
+{
+    margin-right: 10px;
+}
+#container2 #asider #asider_5
+{
+    padding-left: 10px;
+    font-size: 13px;
+    color: rgb(133,144,166);
+    letter-spacing: px;
+    line-height: 200%;
+}
