@@ -24,6 +24,7 @@ git和markdown的基本语法和使用
 6.00-7.00html  
 7.00-7.40恰饭  
 7.40-8.30html  
+
 ## 2
 - 学习git，整理常用的用法，分支内容，解决远程冲突的内容  
 *详见Git2.md*
@@ -72,3 +73,11 @@ git和markdown的基本语法和使用
 ### 2
 - 制作知乎静态网页*详见L/task/htmL&css/zhihu* 
 
+# 7.21
+### 1
+2.00-6.00js
+6.00-6.30 恰饭
+6.30-9.36js&html5
+### 2
+- js>DOM,BOM,JQuery*详见L/task/js&L/notes/js*
+- html5>补充知识*详见L/notes/html&L/task/js*

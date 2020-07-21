@@ -56,6 +56,7 @@
 - in运算符
     - 通过该运算符可以检查一个对象中是否含有指定属性，有则返回true，没有则返回false
     - 语法`"属性名" in 对象`
+- 使用对象的`hasOwnProperty()来检查对象自身是否含有该属性`
 - 使用对象字面量来创建
     - 语法：`var object={属性名:属性值,属性名:属性值}`
     - 如果使用特殊属性名则需要在属性名上加引号
@@ -283,3 +284,190 @@ console.log(f() === window);  // true
     > f_strict()
     ReferenceError: foo2 is not defined
 ### 变量作用于和闭包
+
+### DOM
+#### DOM查找
+1. 按id属性查找，精确查找一个元素对象
+`var elem=document.getElementById("id")`
+    - getElementById只能用于document上
+    - 只用于精确查找一个元素
+    - 不是所有元素都有id
+2. 按标签名查找
+`var elem=parent.getElementsByTagName("tag")`查找指定parent节点下的所有标签为tag的子代标签
+    - 可用在任意父元素上
+    - 不进查直接子节点，而且查所有子代节点
+    - 返回一个动态集合，即使只找到一个元素，也返回一个集合，必须用[0]，取出唯一元素
+3. 通过name属性查找
+`document.getElemrntsByName('name属性值')`   
+可以返回DOM树中指定name属性值得所有子元素集合
+4. 通过class查找
+查找父元素下指定class属性的元素`var elems=parent.getElemnetsByClassName("class")`
+    - 有兼容性问题:IE9+
+5. 通过CSS选择器查找
+    1. 只找一个元素:`var elem=parent.querySelector("selector")`
+        - election支持一切css选择器
+        - 如果选择器匹配的有多个，只返回第一个
+    2. 找多个:`var elem=parent.querySelectorAll("selector")`
+        - selection API返回的是非动态集合
+#### DOM修改
+1. DOM标准
+    - 核心DOM：可操作一切结构化文档的API包括HTML和XML，万能但繁琐
+    - HTML DOM:专门操作HTML文档的简化版DOM API仅对常用的复杂API进行了简化
+    - 先用简单的，在用复杂的补充
+2. 核心DOM的4个操作
+    1. 读取属性值：2种
+        - 先获取属性节点对象，在获取节点对象的值：
+        
+                var attrNode=elem.attributes[下标/属性]
+                var attrNode=eleem.getAttributeNode(属性名)
+                attrNode.value----属性值
+        - 直接获取属性值
+
+                var value=elem.getAttribute("属性名")
+    2. 修改属性值
+    
+            var h1=document.getElementById("a1);
+            h1.setAttributeNode("name",zhangji);
+    3. 判断是否包括指定属性:`var bool=elem.hasAttribute(“属性名”)  //返回true or false`
+
+            document.getElementById("bt1").hasAttribute(onclick)    //检查id为bt1这个属性是否含有onclick属性
+    4. 删除属性:`elem.removeAttribute("属性名")`
+
+            <a id="alink" class="slink" herf="javascript:void(0) onclick="jump(0)">百度搜索</a>
+            var a=document.getElementById('alink');
+            a.removeAttribute('class');
+3. 修改样式
+        - 内联样式:elem.style.属性名
+        - 属性名:去横线，变驼峰
+        - eg：`css:backgound-colour=>backgroundColour`     
+#### DOM添加
+1. 添加元素的步骤
+    - 创建元素`var elem=document.createElement("元素名")
+    -  设置关键属性
+
+            a.innerHTML="go to tmooc"
+            a.herf="http://tmooc.cn"
+            <a herf="htttp://tmooc.cn">go to tmooc</a>
+        设置关键样式
+
+            a.style.opacity="1";
+            a.style.cssText="width:100px;height:100px";
+    - 将元素添加到DOM树
+    `parentNode.appendChild(childNode)`可用于将为一个父元素追加到最后一个节点中
+
+            var div=document.createElement('div');
+            var txt =document.createTextNode('版权声明')；
+            div.appendChild(txt);
+            document.body.appendChild(div);
+        `parentNode.insertBefore(newChild, existingChild)` 用于在父元素中的指定子节点之前添加一个新的子节点 
+
+            <ul id="menu">  
+             <li>首页</li>  
+             <li>联系我们</li>   
+             </ul>   
+             var ul = document.getElementById('menu');  
+             var newLi = document.createElement('li');  
+            ul.insertBefore(newLi, ul.lastChild);  
+2. 添加元素优化
+尽量少的操作DOM树  
+为什么: 每次修改DOM树，都导致重新layout
+    - 如果同时创建父元素和子元素时，建议在内存中先将 子元素添加到父元素，再将父元素一次性挂到页面
+    -  如果只添加多个平级子元素时, 就要将所有子元素， 临时添加到文档片段中。再将文档片段整体添加到页
+        文档片段: 内存中，临时保存多个平级子元素的虚拟父元素 用法和普通父元素完全一样
+
+            1.创建片段 `var frag=document.createDocumentFragment();`  
+            2.将子元素临时追加到frag中`frag.appendChild(child)`;  
+            3.将frag追加到页面 `parent.appendChild(frag)`; 强调: append之后，frag自动释放，不会占用元素
+
+### BOM
+专门操作浏览器窗口的API，没有标准，有兼容性问题
+1. 浏览器对象模型
+
+|对象|描述|
+|----|----|
+|window|代表整个窗口|
+|history|封装当前窗口打开后，成功访问过的历史url记录|
+|navigator|封装浏览器配置信息|
+|document|封装当前正在加载的网页内容|
+|location|封装当前窗口正在打开的url地址|
+|screen|封装了屏幕信息|
+|event|定义了网页中的事件机制|
+2. 窗口大小
+完整窗口大小：window.outerWidth/outerHeight
+文档县市区大小：window.innerWidth/innerHeight
+3. 定时器
+    1. 周期定时器
+        - 语法：selnterval(wxp,time)：周期性触发代码exp  
+                exp：执行时间
+                time：时间周期，单位毫秒为单位
+                `setInterval(function)(){console.log("hello")},1000)`
+        - 停止计时器：
+            - 给计时器取名  
+            `var timer=setInter(function(){console.log("hello world"),1000`
+            - 停止计时器
+            `clearInterval(timer)`
+    2. 一次性定时器
+    让程序延迟一段时间
+        - 语法:setTimeout(exp,time):一次性触发代码exp，time表示时间间隔
+### JQuery
+#### 增删改查操作
+- 选择器
+    1. 基本选择器
+    2. 层级选择器
+    3. 兄弟选择器
+    `$("...").next/prev()`紧邻的前一个或者后一个元素
+    `$("...").nextAll/prevAll()`之前或者之后的所有元素
+    `$("").siblings`除自己之外的所有兄弟
+- 属性
+    1 .访问元素属性
+        - 获取：`$("").attr("属性名")`
+        - 修改：`&("")attr("属性名",值）`
+
+                //获取北京节点的name属性值
+                $bj.attr("name")
+                //设置北京节点的name属性值
+                $bj.attr("name",值)
+- 内容
+    1. html操作
+    `html()`:读取或者修改节点的HTML内容
+
+            $("p).html();
+            $("p).html(<strong>你最喜欢的水果是？</strong>)
+    2. 文本操作
+    `text():`读取或者修改节点的文本内容
+
+            $("p).text()
+            $("p").text("你最喜欢的水果是)
+    3. 值操作
+    `val()`:读取或者修改节点的value属性值
+
+            //获取按钮的value值
+            $("input:eq(5)").val();
+            //设置按钮的value值
+            $("input")val("我被点击了")
+- 样式
+    1. 直接修改css属性
+    获取css样式（计算后的样式） `$("...).css（"属性名"）`
+    修改css样式`$("...").css("属性名",值)`
+    2. 通过修改class批量修改样式
+        - 判断是否含有指定class  `$("...").hasClass("类名")`
+        - 添加class`$("...").addClass("类名")`
+        - 移除class`$("....").removeClass("类名")`
+- 添加
+    1. 创建新元素
+    `var $new=$("html代码片段)`
+    2. 将新元素结尾添加到DOM树中
+    `&(parent).append($newelem)`
+
+            var $li=$("<li title='香蕉'>香蕉</li>");
+            var $parnet=$("ul");
+            $parent.append($li);
+- 删除
+`$("").remove`
+
+        //获取第二个<li>元素节点后，将他从网页中删除
+        `("ul li:eq(1)").remove()`;
+        //把<li>元素中属性title不等于苹果的<li>元素删除
+        `$("ul li").remove("li[title!=菠萝]");`
+#### 事件
+- 事件绑定

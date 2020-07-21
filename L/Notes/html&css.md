@@ -122,6 +122,58 @@
 	<th>…</th>          定义表格中的表头单元格
 	<tr>…</tr>          定义表格中的行
 	<td>…</td>          定义表格中的单元
+## HTML5
+### 新结构样式
+
+		<header><h1>HTML5结构新标签</h1> </header>  
+		<nav>  
+			<ul>  
+				<li><a href="#">菜单一</a></li>
+	   			<li><a href="#">菜单二</a></li> 
+	    		<li><a href="#">菜单三</a></li> 
+	    		<li><a href="#">菜单四</a></li> 
+	    	</ul> 
+	    </nav> 
+		<content>
+	    	<section>  
+	    		<header>内容标题</header> 
+	    		<article>文章内容</article> 
+	    		<footer>文章版权内容</footer> 
+	    	</section> 
+	    	<section> 
+	    		<header>内容标题</header> 
+	    		<article>文章内容</article> 
+	    		<footer>文章版权内容</footer> 
+	    	</section> 
+	    </content> 
+	    <aside>相关内容</aside> 
+	    <footer>页脚、页面版权内容</footer>
+### 音频
+支持.mp3    .wav   .ogg 格式音频文件  
+
+		<audio src="peppa.mp3" controls="controls"> 
+		浏览器不支持HTML5:audio 
+		</audio>
+### 视频
+支持.mp4    .webm .ogg 格式视频文件  
+
+		<video id="myVideo" width="420">  
+		<source src="course.mp4" type="video/mp4" /> 
+		浏览器不支持HTML5:video 
+		</video> 
+		<button onclick="playPause()" >播放/暂停 
+		</button> 
+		
+		<script> 
+		var v=document.getElementById("myVideo");
+	    function playPause() 
+	    { 
+	    	if (v.paused)
+	    	v.play(); 
+	   	 	else
+	        v.pause(); 
+	    } 
+	    </script>
 ## 快捷键  
 `! + Tab`基本html5标准的基本格式  
 `ctrl +\`转注释  
@@ -131,6 +183,7 @@
 `ul>li*3`  
 `lorem`快速生成文本内容  
 `lorem5`快速生成5个字的文本
+
 # CSS  
 ## CSS添加方式
 ### 行内添加
@@ -504,7 +557,7 @@ width，height
 	- ease 慢快慢
 	- ease-in慢快
 	- ease-out快慢
-	- ease-in-out慢快慢
+	- 慢快慢
 
 >div
         {
