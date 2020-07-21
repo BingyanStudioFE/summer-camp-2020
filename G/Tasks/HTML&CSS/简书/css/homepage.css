@@ -37,26 +37,33 @@ header {
 }
 
 .searchText {
-  width: 16.5rem;
+  width: auto;
   height: 3.6rem;
   border: 0.1rem;
   border-radius: 2rem;
   margin: 1rem 2rem;
   display: flex;
+  justify-content: space-between;
   background-color: rgb(238, 238, 238);
 }
 
 .textInput {
-  width: 12rem;
+  width: auto;
   line-height: 3.6rem;
   border-radius: 2rem;
   padding-left: 1.5rem;
 }
 
+.textInput input:focus {
+  width: 22rem;
+}
+
 .textInput input {
   width: 10rem;
+  height: 3.6rem;
   border: none;
   background-color: transparent;
+  transition: width 1s;
 }
 
 .searchButton {
