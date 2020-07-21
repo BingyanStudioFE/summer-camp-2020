@@ -38,10 +38,10 @@ var before = function () {
   change();
 };
 
-var time = 20;
+var time = 30;
 
 setInterval(function () {
-  if (time == 20) {
+  if (time == 30) {
     next();
     time = 0;
   }
@@ -69,30 +69,113 @@ for (var i = 0; i < 2; i++) {
 
 // 点击展开
 var unfoldBtn = document.getElementsByClassName("unfold");
-var foldBtn = document.getElementsByClassName("fold");
 var unfoldContent = document.getElementsByClassName("passage_info_content_txt");
+var textChange = document.getElementsByClassName("unfold");
 var passageNumber = 0;
+var judge = new Array();
+
+for (var i = 0; i < textChange.length; i++) {
+  judge[judge.length] = 0;
+}
+
+function judgeFold() {
+  textChange[passageNumber].innerHTML =
+    judge[passageNumber] == 0 ? "展开" : "收回";
+}
 
 var unfold = function () {
-  unfoldContent[passageNumber].className = "pict_unfold";
-  unfoldBtn[passageNumber].className = "unfold hidden";
-  foldBtn[passageNumber].className = "fold_appear";
-};
-var fold = function () {
-  unfoldContent[passageNumber].className = "passage_info_content_txt";
-  foldBtn[passageNumber].className = "fold";
-  unfoldBtn[passageNumber].className = "unfold";
+  if (judge[passageNumber] == 1) {
+    unfoldContent[passageNumber].className = "passage_info_content_txt";
+  } else {
+    unfoldContent[passageNumber].className =
+      "passage_info_content_txt content_fold";
+  }
 };
 
 for (var i = 0; i < unfoldContent.length; i++) {
+  var firstTime = 0;
   unfoldBtn[i].addEventListener("click", function () {
     var index = this.getAttribute("data-all");
     passageNumber = index;
+    if (firstTime == 0) {
+      judge[passageNumber] = 1;
+    } else {
+      if (judge[passageNumber] == 0) {
+        judge[passageNumber] = 1;
+      } else {
+        judge[passageNumber] = 0;
+      }
+    }
+    firstTime = 1;
     unfold();
+    judgeFold();
   });
-  foldBtn[i] = addEventListener("click", function () {
-    var index = this.getAttribute("data-brief");
-    passageNumber = index;
-    fold();
+}
+
+// 换一批、展开全部、关注
+var authors = document.getElementsByClassName("author");
+var changeBtn = document.getElementById("change");
+var allAuthorBtn = document.getElementById("allAuthor");
+var count = 10;
+var authorsNumber = new Array();
+
+// 给作者标序号
+for (var i = 0; i < count; i++) {
+  authorsNumber[i] = i;
+}
+
+// 随机排列作者序号
+function randomNumber() {
+  authorsNumber.sort(function () {
+    return 0.5 - Math.random();
+  });
+}
+
+// 清空hidden
+function clearHidden() {
+  for (var i = 0; i < count; i++) {
+    authors[authorsNumber[i]].className = "author";
+  }
+}
+
+// 数组前五个隐藏
+function changeRandom() {
+  for (var i = 0; i < 5; i++) {
+    authors[authorsNumber[i]].className = "author hidden";
+  }
+}
+
+changeRandom();
+
+// 随机换一批
+changeBtn.addEventListener("click", function () {
+  randomNumber();
+  clearHidden();
+  changeRandom();
+});
+
+// 展开全部
+allAuthorBtn.addEventListener("click", function () {
+  clearHidden();
+});
+
+// 关注
+var followBtn = document.getElementsByClassName("follow");
+var followed = new Array(); //存放已关注的作者的序号
+var followJudge = new Array();
+
+for (var i = 0; i < count; i++) {
+  followBtn[i].addEventListener("click", function () {
+    followed[followed.length] = this.getAttribute("data-follow") - 0;
+    authors[followed[followed.length - 1]].className = "author hidden";
+    followBtn[followed[followed.length - 1]].innerHTML = "已关注";
+
+    for (var j = 0; j < 5; j++) {
+      if (followed.indexOf(authorsNumber[j]) === -1) {
+        authors[authorsNumber[j]].className = "author";
+        followed[followed.length] = authorsNumber[j];
+        break;
+      }
+    }
   });
 }
