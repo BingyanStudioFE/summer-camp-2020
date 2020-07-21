@@ -484,3 +484,74 @@ for (var i=0; i<5; i++) {
 ```
 ## 日期Date
 多种方法见[这里](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)
+
+## 常见宿主环境及其全局对象
+[参考资料](https://bbs.dian.org.cn/topic/1272/javascript%E5%B8%B8%E8%A7%81%E5%AE%BF%E4%B8%BB%E7%8E%AF%E5%A2%83%E5%8F%8A%E5%85%B6%E5%85%A8%E5%B1%80%E5%AF%B9%E8%B1%A1)
+### 1.浏览器环境
+#### ①document对象
+通过访问document对象来访问html页面中的元素，如：
+`document.getElementById(id);`
+`document.getElementsByTagName(tagName);`
+`document.getElementsByClassName(className);`
+`document.querySelectorAll("");`通过CSS选择器查找
+#### ②event对象
+Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。  
+常与函数联用。
+#### ③window对象等等
+### 2.非浏览器环境
+#### ①node.js
+是运行在服务端的 JavaScript  
+具体笔记见[Node.md](Node.md)
+#### ②MongoDB
+旨在为 WEB 应用提供可扩展的高性能数据存储解决方案  
+是一个介于关系数据库和非关系数据库之间的产品
+
+## JS原型对象与原型链
+[参考资料](https://blog.csdn.net/qq_36996271/article/details/82527256?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.edu_weight)
+- 所有的函数都有一个’prototype’属性(这也叫显式原型，它也是一个普通的对象)，该属性的类型是对象。
+- 所有引用类型，它的’_ _ proto_ _'属性指向它的构造函数的’prototype’属性。
+- 当试图得到一个对象的属性时，如果这个对象本身不存在这个属性，那么就会去它的’_ _ proto_ _'属性(也就是它的构造函数的’prototype’属性)中去寻找。  
+写法：
+```
+//这是一个构造函数
+		function Foo(name,age){
+			this.name=name;
+			this.age=age;
+		}
+		/*根据要点3，所有的函数都有一个prototype属性，这个属性是一个对象
+		再根据要点1，所有的对象可以自由扩展属性
+		于是就有了以下写法*/
+		Foo.prototype={
+			// prototype对象里面又有其他的属性
+			showName:function(){
+				console.log("I'm "+this.name);//this是什么要看执行的时候谁调用了这个函数
+			},
+			showAge:function(){
+				console.log("And I'm "+this.age);//this是什么要看执行的时候谁调用了这个函数
+			}
+		}
+		var fn=new Foo('小明',19)
+		/*当试图得到一个对象的属性时，如果这个对象本身不存在这个属性，那么就会去它
+		构造函数的'prototype'属性中去找*/
+		fn.showName(); //I'm 小明
+		fn.showAge(); //And I'm 19
+```
+优点：节省资源/空间。如果把原型对象里的函数属性直接写到构造函数里，那么每创建一个对象，该函数都要占用一部分空间。  
+
+原型链：多个原型对象连接，如下图：
+![](pics/JS4.png)
+
+## 异步特性
+JavaScript通常是单线程的  
+异步地调用函数(比如，时间的推移，用户通过鼠标的交互，或者获取网络数据)使代码可以同时做几件事情，而不需要停止或阻塞主线程。
+### Async callbacks
+### Promise
+```
+console.log("registering click handler");
+
+button.addEventListener('click', () => {
+  console.log("get click");
+});
+
+console.log("all done");
+```
