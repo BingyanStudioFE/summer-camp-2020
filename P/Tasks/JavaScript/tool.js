@@ -43,8 +43,8 @@ function getCharCode (event) {
 
 function preventDefault(event) {
     //阻止浏览器默认行为
-    if(preventDefault == true) {
-        e.preventDefault();
+    if(event.preventDefault == true) {
+        event.preventDefault();
     }
     else {
         window.event.returnValue = false;
