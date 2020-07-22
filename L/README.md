@@ -81,3 +81,10 @@ git和markdown的基本语法和使用
 ### 2
 - js>DOM,BOM,JQuery*详见L/task/js&L/notes/js*
 - html5>补充知识*详见L/notes/html&L/task/js*
+# 7.22
+### 1
+2.00-6.20 js
+6.20-6.40恰饭
+6.40-22.22js
+### 2
+- date对象，math，正则表达式，DOM知识补充，包装，添加补充函数的部分知识点*详见L/task/js&L/notes/js*
