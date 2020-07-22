@@ -56,7 +56,7 @@ function lazyload() {
   var seeHeight = document.documentElement.clientHeight;
   var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
   for (var i = n; i < num; i++) {
-    if (img[i].offsetTop -100 < seeHeight + scrollTop) {
+    if (img[i].offsetTop - 100 < seeHeight + scrollTop) {
       if (img[i].getAttribute("src") == "img/default.png") {
         img[i].src = img[i].getAttribute("data-src");
         console.log(img[i].src);
