@@ -1259,3 +1259,783 @@ innerHTML += 添加元素的问题，原本子元素没有了，不是原本的�
 ```
 换元素
 ```
+
+## CSSOM视图模式(CSS Object Model View)
+
+文档及其内容的视觉属性，包括布局框定位、视区宽度和元素滚动
+
+#### Window视图属性
+
+- innerWidth/innerHeight
+
+```
+window.innerWidth window窗口的内部宽度，
+不包括用户界面元素，比如窗框
+window.innerHeight内部高度
+复制代码
+```
+
+#### Document文档视图
+
+- document.documentElement.clientWidth
+
+```
+document.documentElement.clientWidth==>浏览器窗口可视宽度
+document.documentElement.clientHeight==>浏览器窗口可视高度
+====》 可获取文档没有内容时候高度
+没有定义W3C的标准，则 IE为：
+document.documentElement.clientWidth ==> 0
+document.documentElement.clientHeight ==> 0
+复制代码
+```
+
+#### 元素视图属性
+
+- clientWidth/ clientHeight 可视宽高
+
+```
+clientWidth对象的——————–width + padding
+clientHeight 对象的——————height + padding
+==> 不包含子元素（一致）
+复制代码
+```
+
+- offsetWidth/ offsetHeight 可视宽高
+
+```
+offsetHeight:对象height + padding + border
+offsetWidth: 对象width + padding + border
+==> 不包含子元素（一致）
+复制代码
+```
+
+- scrollWidth/ scrollHeight 可视宽高
+
+```
+scrollWidth对象的width + padding
+scrollHeight应该等用于scrollTop + clientHeight
+如果元素没有隐藏的部分，则相关的值应该等用于clientWidth和clientHeight
+scrollHeight对象的height + padding
+==> 包含子元素内容,子元素定位,overflow:hidden`（一致）
+复制代码
+```
+
+- offsetParent 定位父级
+
+```
+获取元素最近的定位父级 如果没有定位父级 则参考body（ 元素必须是定位元素）
+复制代码
+```
+
+- offsetTop/offsetLeft
+
+```
+offsetLeft:获取对象相对于offsetParent(left)位置
+offsetTop:获取对象相对于offsetParent(top)位置
+复制代码
+```
+
+- scrollTop/scrollLeft 滚动宽,滚动高
+
+```
+可读可写，有内容溢出元素才有效果
+ele.scrollTop 元素Y轴滚动的距离
+ele.scrollLeft 元素X轴滚动的距离
+设置时不能给px 单位，否则会出错！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+document.getElementsByTagName("body")[0].scrollTop = 100;
+复制代码
+```
+
+- document.body.scrollTop/ scrollLeft
+
+```
+网页被卷去的高： document.body.scrollTop
+网页被卷去的左： document.body.scrollLeft
+ IE, firfox：document.documentElement.scrollTop ! ! ! ! ! ! ! ! ! ! ! ! ! !
+复制代码
+```
+
+#### 元素方法
+
+- getBoundingClientRect():
+
+```
+getBoundingClientRect():得到矩形元素的界线，返回的是一个对象，
+包含 top, left, right, bottom四个属性值，大小都是相对于浏览器窗口top,left 的距离。
+返回内容类似于：
+{ top: 143, right: 1196, bottom: 164, left: 889}
+复制代码
+```
+
+- scrollIntoView():
+
+```
+ele.scrollIntoView() 让元素滚动到可视区域（HTML5标准),参数 true 与浏览器对齐，false元素在窗口居中显示
+复制代码
+```
+
+- event.clientX/event.clientY
+
+```
+相对于window，为鼠标相对于浏览器窗口的偏移
+event.clientX 鼠标在文档的水平座标
+event.clientY 鼠标在文档的垂直座标
+复制代码
+```
+
+## BOM对象
+
+浏览器对象模型 (BOM) 使 JavaScript 有能力与浏览器“对话”。
+
+```
+Window 对象 它表示浏览器窗口。
+所有 JavaScript 全局对象、函数以及变量均自动成为 window 对象的成员。
+全局变量是 window 对象的属性。
+全局函数是 window 对象的方法。
+HTML DOM 的 document 也是 window 对象的属性之一
+window.document.getElementById("header");
+复制代码
+```
+
+#### Window 对象属性
+
+- document Document 对象
+- location 浏览器地址信息
+
+```
+Location 对象属性:
+对象属性	                    描述
+window.location.href	    设置或返回完整的 URL。
+window.location.search      设置或返回 url?,?+后面的内容。
+window.location. hash	    设置或返回 url#后面的内容
+window.location.port	    设置或返回当前 URL 的端口号。
+window.location.hostname    设置或返回当前 URL 的主机名。
+window.location.host	    设置或返回主机名和当前 URL 的端口号
+window.location.pathname    设置或返回当前 URL 的路径部分
+window.location.protocol    设置或返回当前 URL 的协议
+复制代码
+```
+
+- history 历史记录
+
+History 对象包含用户（在浏览器窗口中）访问过的 URL。
+
+```
+属性
+length 返回浏览器历史列表中的 URL 数量。
+方法
+back() 加载 history 列表中的前一个 URL。
+forward() 加载 history 列表中的下一个 URL。
+go() 加载 history 列表中的某个具体页面。
+下面一行代码执行的操作与单击两次后退按钮执行的操作一样：
+history.go(-2)
+复制代码
+```
+
+- Navigator 对 Navigator 对象的只读引用
+
+```
+window.`navigator.userAgent` 浏览器信息
+复制代码
+```
+
+#### Window 对象方法
+
+- open() 打开一个新的浏览器窗口或查找一个已命名的窗口。
+
+```
+window.open(url,target)
+open(地址默认是空白页面，打开方式默认新窗口) 打开一个新窗口
+window.open('http://www.baidu.com', '_self');
+var opener = window.open();//返回值 返回的新开页面的window对象
+opener.document.body.style.background = 'red';
+window.close()
+opener.close();//可以通过关闭用window.open方法打开的窗口
+复制代码
+```
+
+- close() 关闭浏览器窗口。
+- setInterval() 按照指定的周期（以毫秒计）来调用函数或计算表达式。
+- setTimeout() 在指定的毫秒数后调用函数或计算表达式。
+- clearInterval() 取消由 setInterval() 设置的 timeout。
+- clearTimeout() 取消由 setTimeout() 方法设置的 timeout。
+- scrollTo() 把内容滚动到指定的坐标。
+
+```
+document.onclick = function(){
+    window.scrollTo(0,500);
+}
+复制代码
+```
+
+- scrollBy()
+
+```
+scrollBy(xnum,ynum) 指定的像素值来滚动内容。不带px
+xnum 必需。把文档向右滚动的像素数 。
+ynum 必需。把文档向下滚动的像素数。
+document.onclick = function(){
+    window.scrollTo(0,500);
+}
+复制代码
+```
+
+- alert( 内容 ) 警告框
+
+```
+alert( 内容 )``警告框经常用于弹出警告信息，无返回值
+复制代码
+```
+
+- confirm(“文本”) 确认框
+
+```
+confirm(“文本”)``确认框用于使用户可以验证或者接受某些信息。
+如果用户点击确认，那么返回值为 true。如果用户点击取消，那么返回值为 false。
+复制代码
+```
+
+- prompt(“文本”,”默认值”)
+
+```
+prompt(“提示”,”默认值”)提示框经常用于提示用户在进入页面前输入某个值。
+如果用户点击确认，那么返回输入的值。如果用户点击取消，那么返回值为 null。
+function disp_prompt(){
+    var name=prompt("请输入您的名字","Bill")
+    if (name!=null && name!=""){
+        document.write("你好！" + name + " 今天过得怎么样？")
+    }
+}
+复制代码
+```
+
+#### window对象常用事件
+
+- onload 文档加载完毕
+- onscroll 滚动的时候
+- onresize 调整尺寸的时候
+
+### event对象 阻止冒泡 注册/ 移除监听事件
+
+#### 事件event对象
+
+Event对象 用来获取事件的详细信息：鼠标位置、键盘按键
+
+**兼容**
+
+```
+标准下 : 事件对象是通过事件函数的第一个参数
+传入 如果一个函数是被事件调用的那么，这个函数定义的第一个参数就是事件对象
+ie: event是一个内置全局对象
+
+var obj.onclick = function (ev) {
+    var ev = ev || window.event;
+}
+
+Event对象的兼容：ev = ev || window.event;
+Event对象下的获取鼠标位置：e.clientX || e.clientY
+复制代码
+```
+
+#### 事件冒泡
+
+事件冒泡指子元素触发事件的时候，会 冒泡（触发）父级的相同的事件
+
+```
+阻止冒泡:
+    非标准：ev.stopPopagation();
+    非标准：ev.cancelBubble = true;
+复制代码
+```
+
+#### 注册处理事件
+
+- 标准：obj.addEventListener(事件名称，事件函数，是否捕获);
+
+```
+是否捕获
+false冒泡
+true捕获
+先捕获后冒泡
+有捕获
+事件名称没有on
+事件执行的顺序是正序
+this触发该事件的对象
+复制代码
+```
+
+- 低版ie：obj.attachEvent(事件名称，事件函数);
+
+```
+没有捕获
+事件名称有on
+事件函数执行的顺序：标准ie-》正序 非标准ie-》倒序
+this指向window
+复制代码
+```
+
+- 移除 obj.removeEventListener(事件名称，事件函数)
+- 移除 object.detachEvent(事件名称,function);
+
+#### 拖拽
+
+- onmousedown 鼠标按下
+- onmousemove 鼠标移动
+- onmouseup   鼠标抬起
+
+#### 默认事件
+
+右键菜单 : oncontextmenu
+
+```
+解决：文字选中再的问题
+标准：解决办法 return false (阻止默认事件)
+非标准ie：全局捕获
+onselectstart = "return false"` 处理文字选中
+ondragstart = "return false" 处理图片拖动
+复制代码
+```
+
+**标准下阻止默认事件，可以拖拽图片啦**
+
+#### 鼠标滚轮事件
+
+```
+Ie/chrome: onmousewheel
+event.wheelDelta
+上：120
+下：-120
+firefox : DOMMouseScroll 必须用addEventListener()添加
+
+fire: event.detail
+上：-3
+下：3
+滚轮属性：event.wheelDelta \ event.detail
+复制代码
+```
+
+**兼容**
+
+```
+obj.onmousewheel = handle; // 兼容ie chrome
+obj.addEventListener ? obj.addEventListener('DOMMouseScroll', handle,boolean) : false;   // 兼容firefox
+
+// 滚动函数event对象处理
+function handle(e){
+    e = e || window.event;
+    e.wheel = e.wheelDelta ? e.wheelDelta : -e.detail * 40;
+}
+复制代码
+```
+
+**阻止默认事件：**
+
+```
+标准：event.preventDefault()
+非标准：event.returnValue = false;
+
+return false阻止的是 obj.on事件名称=fn 所触发的默认行为
+addEventListener绑定的事件需要通过event下面的event.preventDefault();
+detachEvent绑定的事件需要通过event下面的event.returnValue = false;
+鼠标滚轮与自定义滚动条结合
+复制代码
+```
+
+#### 全兼容添加/删除事件 封装
+
+```
+function addEvent(obj, type, fn, boolean){
+    boolean = boolean || false; // 处理捕获冒泡
+    obj[type + fn.name] = handle;//添加方法
+    obj.addEventListener ? obj.addEventListener(type, obj[type+fn.name], boolean) :
+    obj.attachEvent('on'+type,obj[type+fn.name]);
+    // 滚轮事件
+    if(type == 'mousewheel'){
+        // obj['on'+type]= handle; // chrome 及ie
+        //兼容火狐
+        obj.addEventListener ? obj.addEventListener('DOMMouseScroll', obj[type+fn.name], boolean) : '';
+    }
+    // 处理event对象
+    function handle(e){
+        e = e|| window.event;
+        e.wheel = e.wheelDelta?e.wheelDelta:e.detail*(-40); // 处理滚轮方向
+        fn.call(obj,e);
+        e.preventDefault ? e.preventDefault() : e.returnValue = false;
+    }
+}
+
+function removeEvent(obj,type,fn,boolean){
+    boolean = boolean || false; // 处理捕获冒泡
+    obj.removeEventListener ? obj.removeEventListener(type, obj[type+fn.name], boolean) :
+    obj.detachEvent('on'+type,obj[type+fn.name]);
+    // 滚轮事件
+    if (type == 'mousewheel') {
+        //兼容火狐
+        obj.removeEventListener ? obj.removeEventListener('DOMMouseScroll', obj[type+fn.name], boolean) : '';
+    }
+}
+复制代码
+```
+
+### 表单事件 事件委托 onready封装 键盘事件
+
+#### 表单中的操作
+
+焦点事件
+
+- onfocus 获取焦点事件 input、textarea 以及 select 和 a 元素
+- onblur 获取焦点事件 input、textarea 以及 select 和 a 元素
+- onchange 内容改变触发 input、textarea 以及 select 元素
+- onsubmit 事件 表单提交时间
+- onreset 事件  重置表单
+
+```
+obj.focus() 给指定的元素设置焦点
+复制代码
+```
+
+#### 事件委托
+
+标准：e.target 指向事件触发对象
+
+非标准：e.srcElement 指向事件触发对象
+
+#### window.onready
+
+```
+文档的onreadystatechange 事件
+当文档的readyState 属性发生变化的时候触发
+readyState 属性返回当前文档的状态（载入中……）。
+该属性返回以下值:
+uninitialized - 还未开始载入
+loading - 载入中
+interactive - 已加载，文档与用户可以开始交互
+complete - 载入完成
+复制代码
+```
+
+#### 键盘事件
+
+不是所有元素都能够接收键盘事件，能够响应用户输入的元素，能够接收焦点的元素就能够接收键盘事件,document能够响应
+
+```
+keydown：用户在键盘上按下某按键是发生。一直按着某按键则会不断触发（opera浏览器除外）。
+keypress：用户按下一个按键，并产生一个字符时发生（也就是不管类似shift、alt、ctrl之类的键，
+就是说用户按了一个能在屏幕上输出字符的按键keypress事件才会触发）。一直按着某按键则会不断触发。
+keyup：用户释放某一个按键是触发。
+
+event.keyCode : 数字类型 键盘按键的值 键值
+ctrlKey,shiftKey,altKey 布尔值
+
+当一个事件发生的时候，如果ctrl || shift || alt 是按下的状态，返回true，否则返回false
+复制代码
+```
+
+第十八章 RegExp
+
+#### 什么是正则表达式
+
+```
+正则表达式是描述字符模式的对象。
+
+正则表达式用于对字符串模式匹配及检索替换，是对字符串执行模式匹配的强大工具。
+而String和RegExp都定义了使用正则表达式进行强大的模式匹配和文本检索与替换的函数。
+正则表达式主要用来验证客户端的输入数据。可以节约大量的服务器端的系统资源，并且提供更好的用户体验。
+复制代码
+```
+
+#### 创建正则表达式
+
+- 直接量
+
+```
+语法：Reg = /pattern/modifiers;
+
+var Reg = /box/gi;
+复制代码
+```
+
+- new RegExp
+
+```
+语法 Reg = new RegExp( pattern , modifiers ); // pattern, modifiers此时是字符串
+var Reg = new RegExp(“box”, ”gi”);
+
+何种方法创建都是一样的
+pattern 模式 模板，要匹配的内容
+modifiers 修饰符
+复制代码
+```
+
+#### 正则表达式用法及区别
+
+- String中正则表达式方法
+
+```
+方法	                描述
+match(Reg)	        返回RegExp匹配的包含全部字符串的数组或null
+search(Reg)	        返回RegExp匹配字符串首次出现的位置
+replace(Reg，newStr)	用newStr替换RegExp匹配结果，并返回新字符串
+split(Reg)	        返回字符串按指定RegExp拆分的数组
+
+例子:
+var str = 'hello';
+var Reg = /e/i;
+str.match(Reg);
+复制代码
+```
+
+- RegExp对象的方法
+
+```
+方法    	描述
+exec（）	在字符串中执行匹配搜索，返回首次匹配结果数组,
+test（）	在字符串中测试模式匹配，返回true或false
+
+例子:
+var pattern = new RegExp(“box”,”gi”);
+pattern.test(str);
+pattern.exec(str);
+复制代码
+```
+
+**注意区别正则方法和字符串方法使用避免混淆**
+
+```
+正则方法：pattern.test(str); 方法的主体是正则表达式
+字符串方法：str.match(pattern);方法的主体是字符串
+复制代码
+```
+
+#### 修饰符
+
+修饰符用于执行区分大小写和全局匹配:
+
+- i 忽略大小写匹配
+- g 全局匹配，默认只匹配第一个元素，就不在进行匹配
+- m 执行多行匹配
+
+```
+例子: 
+var patt =  /pattern/i;         //忽略大小写匹配
+var patt =  /pattern/g;         //全局匹配
+var patt =  /pattern/m;         //执行多行匹配
+复制代码
+```
+
+#### pattern 模式
+
+- 基本匹配
+
+```
+xxx ———————————匹配xxx字符
+var Reg = /abc/;
+
+x|y|z —————————-匹配x或y或z字符
+var Reg = /abc|bac|cba/;
+复制代码
+```
+
+- []
+
+```
+[abc]———————————–匹配abc之中的任何一个字符
+
+非
+[^abc]———————————匹配非a非b非c字符的
+
+到
+[0-9] ———————————匹配0至9之间的数字
+[a-z] ———————————匹配小写a至小写z的字符
+[A-Z] ———————————匹配大写A至大写Z的字符
+[\u4e00-\u9fa5]———匹配中文 
+
+还可以组合
+var Reg  = /hello [0-9a-zA-z]/;
+复制代码
+```
+
+- 元字符(转义字符)
+
+```
+. —————————————–匹配单个字符，除了换行和行结束符
+\w—————————————匹配单词字符,数字,_(下划线)
+\W—————————————匹配非（单词字符和_(下划线)）
+\d —————————————匹配数字
+\D —————————————匹配非数字
+\s —————————————匹配空白字符（空格）
+\S —————————————匹配非空格字符
+\b —————————————匹配单词边界 ( 除了 （字)字母 数字_ 都算单词边界)
+\B —————————————匹配非单词边界
+\n —————————————匹配换行符
+
+特殊的转译字符. \ /
+
+1.var reg = /\./;//匹配.
+2.var reg = /\\/;//匹配\
+3.var reg = /\//;//匹配/
+复制代码
+```
+
+#### 量词
+
+```
+n?———————————匹配0个或一个n的字符串
+n*———————————匹配0个或多个字符串(任意个)
+n+———————————匹配至少一个n字符串
+n{X}——————————匹配包含X个n的序列的字符串
+n{X,Y}————————–匹配包含至少X或至多Y个n的序列的字符串
+n{x,}—————————-匹配至少X个n的序列字符串
+
+^n———————————匹配以n开头的字符串
+n$———————————匹配以n结尾的字符串
+复制代码
+```
+
+#### 贪婪惰性
+
+```
+贪婪: 尽可能多的匹配
+惰性: 尽可能少的匹配
+前提条件都是要匹配到内容
+
+—— 贪 婪 ——	—— 惰 性 ——
++	            +?
+?	            ??
+*	            *?
+{n}	            {n}?
+{n,m}	            {n,m}?
+{n,}                {n,}?
+
+复制代码
+```
+
+#### 子组(子表达式)
+
+```
+子组:使用()小括号,指定一个子表达式后,称之为分组
+捕获型
+非捕获型
+复制代码
+```
+
+- 捕获型
+
+```
+1.var str = 'abcdefg';
+2.var reg = /(abc)d/;//匹配abcd
+3.var val = reg.exec( str);
+4.console.log( val );   //["abcd", "abc", index: 0, input: "abcdefg"]
+
+索引0 为匹配的结果
+索引1 为第一个子表达式 匹配结果
+index :首次匹配成功的索引值，
+input: 匹配目标
+
+
+—— 字符 ——		引用
+(pattern)	匹配pattern并捕获结果，自动设置组号,是从1开始的正整数	\num
+引用是值的引用，匹配结果的引用不是匹配形式引用
+```
+
+- 非捕获型
+
+```
+(？:pattern)
+(?=pattern) 零宽度正向预言
+1.Windows (?=2000) //匹配windows且后面跟2000
+匹配 “Windows2000” 中的 “Windows”
+不匹配 “Windows3.1” 中的 “Windows”。
+
+(?!pattern) 零宽度负向预言
+1. Windows (?!2000)//匹配windows且后面非2000
+匹配 “Windows3.1” 中的 “Windows”
+不匹配 “Windows2000” 中的 “Windows”。
+复制代码
+```
+
+### cookie
+
+```
+cookie : 存储数据，当用户访问了某个网站（网页）的时候，我们就可以通过cookie来向访问者电脑上存储数据
+
+1.不同的浏览器存放的cookie位置不一样，也是不能通用的
+2.cookie的存储是以域名形式进行区分的
+3.cookie的数据可以设置名字的
+4.一个域名下存放的cookie的个数是有限制的，不同的浏览器存放的个数不一样
+5.每个cookie存放的内容大小也是有限制的，不同的浏览器存放大小不一样
+复制代码
+```
+
+- 访问cookie
+
+```
+要在服务器环境下我们通过document.cookie来获取当前网站下的cookie的时候，
+得到的字符串形式的值，他包含了当前网站下所有的cookie。他会把所有的cookie通过一个分号+空格的形式串联起来
+console.log( document.cookie );
+复制代码
+```
+
+- 存储cookie
+
+```
+document.cookie = '数据名=值';
+```
+
+- 设置cookie过期时间
+
+```
+cookie默认是临时存储的，当浏览器关闭进程的时候自动销毁,
+如果我们想长时间存放一个cookie。需要在设置这个cookie的时候同时给他设置一个过期的时间
+
+过期时间必须是一个日期对象转换成的字符串（时间戳.toGMTString()）
+document.cookie = ‘数据名=值; expires=过期时间’;
+
+例如:
+var oDate = new Date();
+oDate.setDate( oDate.getDate() + 5);
+oDate.toGMTString();//转换为日期字符串
+document.cookie='age=20; expires='+oDate;
+```
+
+- cookie封装
+
+```
+// 设置cookie封装
+function setCookie(obj, time) {
+    for (key in obj) {
+        var d = new Date();
+        d.setDate( d.getDate() + time );
+        document.cookie = key + '=' + obj[key] +'; expires = ' + d.toUTCString();
+    }
+}
+setCookie({
+    name:'hello',
+    sex:'man',
+    love:'逛街',
+}, 5)
+
+// 获取cookie封装
+function getCookie() {
+    var cookie = document.cookie;
+    var result = {};
+    for(key in arguments){
+        var val = '\\b'+arguments[key]+'=(\\w*)+';
+        var reg =new RegExp(val,'i');
+        val = reg.exec(cookie);
+        result[arguments[key]] = val? decodeURI(val[1]):null;
+    }
+    return result;
+}
+getCookie('age', 'name')
+
+// 移除Cookie
+function removeCookie() {
+    for(key in arguments){
+        var json ={};
+        json[arguments[key]]=null;
+        setCookie(json,-1);
+    }
+}
+removeCookie('name');
+```

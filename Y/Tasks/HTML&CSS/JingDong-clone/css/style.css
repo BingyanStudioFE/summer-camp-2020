@@ -1,0 +1,296 @@
+body{
+    margin: 0;
+    background-color: #ebecea;
+    font-family:"Microsoft YaHei",tohoma,arial,"Hiragino Sans GB";
+    color: #666;
+    -webkit-font-smoothing: antialiased; /*去锯齿*/  
+}
+
+ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+div,ul,li{
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+}
+
+input,button{
+    border: none;
+    outline: none;
+}
+ 
+/* 清除浮动 */
+.clearfix{               
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.layer{
+    width: 1190px;
+    margin: 0 auto;
+}
+
+/* site-nav-cover */
+.site-nav-cover{
+    width: 100%;
+    background-color: #e3e4e5;
+    border-bottom: 1px solid #ddd;
+}
+
+.site-nav{
+    height: 30px;
+    color: #999;
+    font-size: 12px;
+}
+
+.site-nav a{
+    color: #999;
+}
+
+.site-nav a:hover{
+    color: #f10215;
+}
+
+.site-nav a:hover .fa{
+    color: #999;
+}
+
+.site-nav .nav-fl{
+    float: left;
+}
+
+.site-nav .nav-fl .nav-item{
+    width: 58px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.site-nav .nav-fl .nav-item .fa{
+    font-size: 18px;
+    color: #f10215;
+    vertical-align: -2px;
+    margin-right: 3px;
+    margin-left: 10px;
+}
+
+.site-nav .nav-fr{
+    float: right;
+}
+
+.site-nav .nav-fr .nav-item{
+    float: left;
+    height: 30px;
+    line-height: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.site-nav .nav-fr .nav-item .nav-dd{
+    border-left: 1px solid transparent;
+    border-right: 1px solid transparent;
+}
+
+.site-nav .nav-fr .nav-item .nav-dd:hover{
+    display: block;
+    background-color: white;
+    border-color: #ccc;
+}
+
+.site-nav .nav-fr .nav-item .hl{
+    color: #f10215;
+}
+
+.site-nav .nav-fr .nav-item .hl .fa{
+    color: #999;
+}
+
+.site-nav .nav-fr li.spacer {
+        overflow: hidden;
+        margin: 11px 5px 0;
+        width: 1px;
+        height: 10px;
+        background-color: #ccc;
+}
+
+.fa.fa-chevron-down{
+    font-size: 1px;
+    vertical-align: 2px;
+}
+
+.site-nav .nav-fr .nav-item .qr-code{
+    position: absolute;
+    top: 30px;
+    width: 76px;
+    height: 76px;
+    margin-left: -14px;
+    border: 1px solid #ccc;
+}
+
+.site-nav .nav-fr .nav-item .qr-code img{
+    width: 66px;
+    width: 76px;
+}
+
+.site-nav .nav-fr .nav-item .qr-pop{
+    display: none;
+    width: 190px;
+    height: 310px;
+    top: -1px;
+    left: -110px;
+    position: absolute;
+    background-color: white;
+    border: 1px solid #cfcfcf;
+    border-bottom: 3px solid #60575a;
+}
+
+.site-nav .nav-fr .nav-item.nav-pop:hover .qr-pop{
+    display: block;
+}
+
+.site-nav .nav-fr .nav-item .qr-pop ul li{
+    margin: 15px;
+}
+/* header */
+.header-cover{
+    height: 140px;
+    background-color: white;
+    border-bottom: 1px solid #ddd;
+}
+
+.header{
+    height: 140px;
+    position: relative;
+}
+
+.header .logo-bd{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 190px;
+    height: 140px;
+    background-color:white;
+    border-bottom: 1px solid #eded;
+}
+.header .logo-bd img{
+    margin-top: 10px;
+}
+
+/* main-showcase */
+.main-showcase{
+    margin-bottom: 30px;
+}
+
+.main-showcase .nav-menu{
+    float: left;
+    width: 190px;
+    height: 480px;
+    margin-top: 10px;
+    background-color:white;
+}
+
+.main-showcase .slider{
+    float: left;
+    width: 590px;
+    height: 480px;
+    margin-left: 10px;
+    padding-top: 10px;
+}
+
+.main-showcase .slider .slider-wrap{
+    width: 100%;
+    height: 100%;
+    background-color: yellowgreen;
+}
+
+.main-showcase .sales{
+    float: left;
+    width: 190px;
+    height: 480px;
+    margin-left: 10px;
+}
+
+.main-showcase .sales .sales-wrap{
+    height: 100%;
+    overflow: hidden;
+}
+
+.main-showcase .sales .sales-wrap .sales-item{
+    height: 150px;
+    margin-top: 10px;
+    background-color: yellow;
+}
+
+.main-showcase .funcs{
+    float: right;
+    width: 190px;
+    height: 480px;
+}
+
+.main-showcase .funcs .funcs-user{
+    height: 150px;
+    margin-top: 10px;
+    background-color: pink;
+}
+
+.main-showcase .funcs .funcs-notice{
+    height: 130px;
+    background-color: purple;
+}
+
+.main-showcase .funcs .funcs-service{
+    height: 190px;
+    background-color: sandybrown;
+}
+
+/* countdown showcase */
+.countdown-showcase{
+    height: 275px;
+    margin-bottom: 20px;
+    background-color: skyblue;
+}
+
+/* show area */
+
+.show-area{
+    height: 305px;
+    background-color: thistle;
+}
+
+.show-area .daily-sales{
+    float: left;
+    width: 590px;
+    height: 305px;
+    margin-bottom: 20px;
+    background-color: tomato;
+}
+
+.show-area .get-brand{
+    float: right;
+    width: 590px;
+    height: 305px;
+    margin-bottom: 20px;
+    background-color: tomato;
+}
+
+.show-area .discover-goods{
+    float: left;
+    width: 190px;
+    height: 260px;
+    background-color: salmon;
+    margin-bottom: 30px;
+}
+
+.show-area .discover-goods-slider{
+    float: right;
+    width: 990px;
+    height: 260px;
+    background-color: salmon;
+    margin-bottom: 30px;
+}
