@@ -679,3 +679,583 @@ for (let attr in arr) { //attr 为属性，attr不是必须的，可以为任意
 ```
 
 **for循环不能遍历JSON**
+
+#### JSON对象仿jQuery 链式操作 css html
+
+```
+function $ (option) {
+    var t = typeOf option
+    if (t == 'function') {
+        window.onload = option
+    } else if (t.toLowerCase() == 'string') {
+        var ele = option.subString(1, option.length)
+        el = document.getElementById(ele)
+    }
+    var obj = {
+        css: function (attr, val) {
+            el.style[attr] = val
+            return obj;
+        },
+        html: function (val) {
+            el.innerHTML = val
+            return obj
+        }
+    }
+    return obj
+}
+$('#box').css('backgroundColor','red').html('hello');
+```
+
+#### JSON.parse() 对象化 / JSON.stringify() 对象字符化
+
+- JSON.parse() 
+
+  JSON.parse(obj )方法解析一个JSON字符串，构造由字符串描述的JavaScript值或对象。可以提供可选的reviver函数以在返回之前对所得到的对象执行变换。
+
+- JSON.stringify() JSON.stringify( obj )与JSON.parse()进行的是反操作
+
+```
+JSON.stringify({});                     // '{}'
+JSON.stringify(true);                   // 'true'
+JSON.stringify("foo");                  // '"foo"'
+JSON.stringify([1, "false", false]);    // '[1,"false",false]'
+JSON.stringify({ x: 5 });               // '{"x":5}'
+JSON.stringify({x: 5, y: 6});           // "{"x":5,"y":6}"
+```
+
+#### Function call() applay() bind()方法
+
+- call()和apply都用于函数调用
+
+```
+function fn () {
+    console.log(this)
+}
+fn() // window
+fn.call('hello') // String {"hello"}
+fn.call(123) // Number {123}
+```
+
+**区别**
+
+call( thisvalue, val1，val2，….)
+
+```
+// thisvalue 是函数内部this的值
+// 后面是参数列表
+```
+
+apply( thisvalue, [val1，val2，….])
+
+```
+// thisvalue 是函数内部this的值
+// 后面是参数数组，所有参数放数组里面
+复制代码
+```
+
+- bind()都用于创建中
+
+```
+1) 适用于匿名函数
+var fn = function (a, b) {
+    console.log(this, a, b)
+}.bind('hello', 1, 2)
+fn() // String {"hello"} 1 2
+
+2)有名函数,有些特殊
+function fn() {
+    console.log(this)
+}
+fn.bind('hello')() // String {"hello"}
+
+3)自执行函数
+(function fn() {
+    console.log(this)
+}.bind('hello')())  // String {"hello"}
+
+(function fn() {
+    console.log(this)
+}.bind('hello'))() // String {"hello"}
+
+(function fn() {
+    console.log(this)
+}).bind('hello')() // String {"hello"}
+```
+
+### 定时器 Math函数
+
+#### 定时器
+
+- setInterval()
+
+setInterval(function(){}, 1000) 多用于动画
+
+第一个参数是一个函数
+
+第二个参数是事件, 表示1秒(1000毫秒)后调用一次, 然后每个1秒调用执行一次第一个函数里面的内容
+
+```
+1) 一般使用
+var a = 0;
+setInterval(function () {
+    a++;
+    console.log(a) // 每隔一秒打印a 并且a在自增
+}, 1000)
+
+var a = 0;
+function fn() {
+    a++;
+    console.log(a)
+}
+setInterval(fn, 1000)  // 和上面的写法数据一样
+
+2)第一个参数fn 与 fn()的区别, fn()会不等延迟直接调用, 后面不在调用
+var a = 0;
+function fn() {
+    a++;
+    console.log(a)
+}
+setInterval(fn(), 1000)  // 1 打印1,然后就不在调用
+
+3) 带return值的fn
+var a = 0;
+function fn() {
+    a++;
+    console.log(a)
+    return function(){console.log('ok')}
+}
+setInterval(fn(), 1000) // 1 打印1,然后就不在调用
+```
+
+- clearInterval() 清除定时器
+
+```
+clearInterval(timerManger) 里面的参数是定时管理器
+var timer = setInterval(function(){}, 1000) // 设置变量timer为定时管理器
+clearInterval(timer) // 清除timer定时管理器
+```
+
+- setTimeout() 一次定时器
+
+setTimeout( function(){},1000 )
+
+第一个参数是一个函数
+
+第二参数是时间，表示1秒（1000毫秒）后调用一次，然后不再调用
+
+```
+var a = 0;
+setTimeout(function () {
+    a++;
+    console.log(a) // 1 只有一次打印
+})
+```
+
+- clearTimeout() 清除定时器
+
+```
+clearTimeout(timerManger) 里面的参数是定时管理器
+var timer = clearTimeout(function(){}, 1000) // 设置变量timer为定时管理器
+clearTimeout(timer) // 清除timer定时管理器
+```
+
+#### Math 数字函数
+
+Math对象用于执行数学任务 Math对象 无需new，直接调用Math方法就行
+
+- Math.random() 求随机值 左闭右开区间
+
+```
+// 随机 0~1之间的数
+var rand = Math.random()
+console.log(rand) // 0~1之间的数
+
+// 随机 5~10之间的数
+var rand =  Math.random() *(10-5) + 5; 
+console.log(rand) // 5~10之间的数
+
+// 封装随机x至y之间的数
+function random(x, y) {
+    var rand = x + Math.random() * (y - x)
+    return rand
+}
+```
+
+- Math.round()————四舍五入
+
+```
+var num = 12.6
+Math.round(num) // 13
+
+var num = 12.3
+Math.round(num) // 12
+```
+
+- Math.ceil() ————向上取整 (上舍入)
+- Math.floor()————向下取整 (下舍入)
+- Math.abs()—————求绝对值
+- Math.pow(x,y)———–x的y次幂（x的y次方）
+- Math.sqrt(x) —————返回数的平方根
+- Math.max(x,y,z...)——-求x和y的最大值
+- Math.min(x,y,z...)——-求x和y的最小值
+
+- Math.sin（弧度） 正弦 对边比斜边 一个以弧度表示的角
+- Math.cos（弧度）余弦 邻边比斜边 是 -1.0 到 1.0 之间的数
+- Math.PI
+
+### 日期对象Date
+
+#### 日期
+
+- new Date() 本地时间
+
+```
+var d = new Date()
+console.log(d) // Mon Sep 16 2019 15:48:31 GMT+0800 (中国标准时间)
+复制代码
+```
+
+- toUTCString() 当前 世界时
+
+toUTCString() 根据世界时，把 Date 对象转换为字符串。
+
+```
+var d = new Date();
+var utc =  d.toUTCString()
+console.log(ytc) // "Mon, 16 Sep 2019 07:48:31 GMT"
+复制代码
+```
+
+- 获取具体时间
+
+```
+getFullYear()       // 年
+getMonth()          // 月( 0 ~ 11 )
+getDate()           // 天( 1 ~ 31 )
+getDay()            // 星期( 0 ~ 6 )
+getHours()          // 时
+getMinutes()        // 分
+getSeconds()        // 秒
+getMilliseconds()   // 毫秒
+getTime()           // 返回 1970 年 1 月 1 日至今的毫秒数
+复制代码
+```
+
+#### 日期格式化
+
+var date = new Date()
+
+- date.toLocaleString() ——————–按照本地时间输出
+- date.toLocaleDateString() —————本地时间 年 月 日
+- date.toLocaleTimeString() ————–本地时间 时 分 秒
+- date.toTimeString()————————本地 时 分 秒 时区
+- date.UTC() ————————————世界时返回 1970 年 1 月 1 日 到指定日期的毫秒数
+
+**更多方法参考[www.w3school.com.cn/tags/html_r…]()**
+
+### 动画运动
+
+requestAnimationFrame()
+
+当然最原始的你还可以使用window.setTimout()或者window.setInterval()通过不断更新元素的状态位置等来实现动画，前提是画面的更新频率要达到每秒60次才能让肉眼看到流畅的动画效果。 现在又多了一种实现动画的方案，那就是window.requestAnimationFrame()方法。
+
+- 基本使用方式
+
+```
+var num = 0;
+function fn() {
+    num++;
+    document.title = num;
+    requestAnimationFrame(fn) //在内部根据用户浏览器(电脑性能)情况,重复调用 fn
+}
+fn() // 页面不断变化,数字自增
+```
+
+- cancelRequestAnimationFrame( timer ) 添加manager定时管理器
+
+```
+var num = 0;
+var timer;
+function fn() {
+    num++;
+    document.title = num;
+    timer = requestAnimationFrame(fn) //在内部根据用户浏览器(电脑性能)情况,重复调用 fn
+    if (num == 250) {
+        cancelAnimationFrame( timer ); // 清除停止运动
+    }
+}
+fn() // 页面不断变化,数字自增
+```
+
+把 requestAnimationFrame(fn) 赋值给 timer，timer 就是定时管理器
+
+- RequestAnimationFrame( )兼容
+
+```
+// RequestAnimationFrame的兼容
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+window.webkitRequestAnimationFrame || window.msRequestAnimationFrame || function (fn){
+    setTimeout(fn,1000/60)
+}
+
+// cancelAnimationFrame 兼容
+window.cancelAnimationFrame = window.cancelAnimationFrame || window.mozCanceltAnimationFrame ||
+window.webkitCancelAnimationFrame || window.msCancelAnimationFrame || clearTimeout;
+```
+
+#### 速度版运动框架
+
+```
+<style>
+    #elem-container{
+    position: absolute;
+    left:     100px;
+    top:      200px;
+    height:   100px;
+    }
+</style>
+<div id="elem-container">dummy</div>
+<script>
+    let ele = document.getElementById("elem-container");
+    let theCSSprop = window.getComputedStyle(ele,null)['left']
+    console.log(theCSSprop) // 100px
+    
+    move(ele, 'left', 20, -6) // 调用move函数, 指定传递实参 目标标签/更改的属性/目标值/步长
+    function move(ele, attr, target, speed) { // 指定接受形参 目标标签/更改的属性/目标值/步长
+        target = parseFloat(target) // 转化为number
+        var initCss = parseFloat(getStyle(ele, attr)) // 获取初始样式值
+        var timer; // 动画管理器
+        (function requ() {
+            initCss += speed
+            timer = requestAnimationFrame(requ) // 调用reque函数
+            if (Math.abs(target-init) <= Math.abs(speed)) { // 用绝对值判断是否到达目标值
+                initCss = target
+                cancelAnimationFrame(timer); // 删除requestAnimationFrame动画
+            }
+            ele.style[attr] = initCss + 'px';//设置样式
+        })()
+    } 
+    
+    //定义获取样式函数
+    function getStyle(ele, attr) {
+        // 处理好兼容
+        return window.getComputedStyle ? window.getComputedStyle(obj)[attr] : obj.currentStyle[attr];
+    }
+</script>
+```
+
+#### 时间版运动框架
+
+```
+<style>
+    #elem-container{
+    position: absolute;
+    left:     100px;
+    top:      200px;
+    height:   100px;
+    }
+</style>
+<div id="elem-container">dummy</div>
+<script>
+    let ele = document.getElementById("elem-container");
+    let theCSSprop = window.getComputedStyle(ele,null)['left']
+    console.log(theCSSprop) // 100px
+    
+    move(ele, 'left', '800px', 1000) // 调用move函数, 指定传递实参 目标标签/更改的属性/目标值/时间
+    function move(ele, attr, target, target_t) { // 指定接受形参 目标标签/更改的属性/目标值/时间
+        target = parseFloat(target) // 转化为number
+        var initCss = parseFloat(getStyle(ele, attr)) // 获取初始样式值
+        var initTime = new Date() // 获取开始时间
+        var styleValue;
+        (function requ() {
+            var cur_t = new Date() - initTime // 获取动画时长
+            var prop = cur_t / target_t
+            if (prop >= 1) { // 动画执行时长与动画预设总时间比值大于等于1时
+                prop = 1
+            } else {
+                window.requestAnimationFram(requ)
+            }
+            styleValue = (target - initCss) * prop // 根据时间比例获取运动路程比例
+            ele.style[attr] = initCss + styleValue + 'px'; // 设置样式
+        })()
+    } 
+    
+    //定义获取样式函数
+    function getStyle(ele, attr) {
+        // 处理好兼容
+        return window.getComputedStyle ? window.getComputedStyle(obj)[attr] : obj.currentStyle[attr];
+    }
+</script>
+```
+
+#### 时间加速版运动框架
+
+```
+move(Obox, 'left', '800px', 1500); // 调用move函数,指定传递实参
+fucntion move(obj,attr,target,tar_t) { // 指定接受形参
+  target = parseFloat(target); // 转化为number  
+  var init = parseFloat( getStyle(obj,attr)); // 获取初始样式值
+  var init_time = new Date(); // 获取开始时间
+  var sty_v;
+  var a = 2 * (target-init) / Math.pow(tar_t,8); // 获取加速度
+  (function requ() {
+      var cur_t = new Date()- init_time; // 获取动画时长
+      if( cur_t >= tar_t ){//动画执行时长与动画预设总时间比值大于等于1时,
+          cur_t = tar_t;
+      } else {
+          window.requestAnimationFrame(rQAF);
+      }
+      sty_v = a * Math.pow(cur_t,8) / 2;//根据时间比例获取运动路程比例
+      obj.style[attr] = init+ sty_v + 'px';//设置样式
+  })()
+}
+
+//定义获取样式函数
+function getStyle(ele, attr) {
+    // 处理好兼容
+    return window.getComputedStyle ? window.getComputedStyle(obj)[attr] : obj.currentStyle[attr];
+}
+复制代码
+```
+
+#### 多值时间版运动框架
+
+```
+move(obox, {
+    width: '200px',
+    height: '200px',
+    left: '800px',
+    opacity: 1
+}, 2000, function(){console.log('已经达到目标值')}) // 调用move函数,指定传递实参
+
+function move(obj,json,targ_t,callback){    //指定接受形参
+    var target = {} // 目标值
+    init ={},       // 初始值
+    styleV;         // 样式
+    for (var attr in json) {
+        target[attr] = parseFloat(json[attr]) // 将目标值转为number类型
+        init[attr] = parseFloat( getStyle(obj,attr) ) // 获取初始样式值并转化为number类型
+    }
+    var init_t = new Date(); // 获取开始时间
+    (function rQAF(){
+        var cur_t = new Date()-init_t; // 获取当前时间与开始时间的差值--动画执行时长
+        if( cur_t>=targ_t){ // 判断动画执行时长是否大于预设目标
+            cur_t=targ_t; // 让动画执行时长等于预设目标
+        } else {
+            window.requestAnimationFrame(rQAF); // 调用rQAF函数一次
+        }
+        for (var attr in json) {
+            var a = 2 * (target[attr] - init[attr]) / Math.pow(targ_t,2); // 获取对象属性的加速度
+            styleV = a * Math.pow(cur_t,2) / 2; // 根据动画时长设置样式
+            if(attr == 'opacity'){
+                obj.style[attr] = init[attr] + styleV;//设置样式
+                obj.style.filter = 'alpha(opacity = ' + styleV * 100 + ')'; // opacity兼容
+            } else {
+                obj.style[attr] = init[attr] + styleV + 'px';//设置样式
+            }
+        }
+        // 根据动画时长是否等于了预设目标，true执行回调函数，并绑定this
+        cur_t == targ_t ? callback && callback.call(obj) : '';
+    })()
+}
+
+//定义获取样式函数
+function getStyle(ele, attr) {
+    // 处理好兼容
+    return window.getComputedStyle ? window.getComputedStyle(obj)[attr] : obj.currentStyle[attr];
+}
+```
+
+### DOM文档对象模型
+
+DOM(Document Object Model) 文档树对象模型
+
+#### 节点属性
+
+- childNodes \ children
+
+```
+Ele.childNodes ————————–子节点集合
+元素.childNodes : 只读 属性 子节点列表集合
+标准下： 包含了文本和元素类型的节点，也会包含非法嵌套的子节点
+非标准下：只包含元素类型的节点，ie7以下不会包含非法嵌套子节点
+childNodes 只包含一级子节点，不包含后辈孙级
+
+ele.children————————– 获取第一级子元素
+nodeType : 只读 属性 当前元素的节点类型 共12种
+    元素节点
+    属性节点: wrap.attributes[0].nodeType
+    文本节点
+nodeName 节点名称
+
+元素节点属性
+    ele.tagName 元素标签名称
+    有关属性节点操作:
+        获取 ： obj.getAttributeNode() 方法获取指定的属性节点。
+        创建 ： document.createAttribute(name) 创建拥有指定名称的属性节点，并返回新的 Attr 对象。
+        添加 ： obj.setAttributeNode() 方法向元素中添加指定的属性节点。
+复制代码
+```
+
+- firstChild \ firstElementChild 第一个子节点
+
+```
+ele.firstChild : 只读 属性
+标准下：firstChild会包含文本类型的节点
+非标准下：只包含元素节点
+
+ele.firstElementChild : 只读 属性 标准下获取第一个元素类型的子节点
+非标准下：无
+```
+
+- lastChild \ lastElementChild最后一个子节点
+
+- nextSibling \ nextElementSibling 下一个兄弟节点
+
+- previousSibling \ previousElementSibling 上一个兄弟节点
+
+- parentNode获取父节点
+- offsetParent 最近定位父级
+- childElementCount 子元素节点个数
+
+```
+元素类型子节点数量，等同于 children.length
+```
+
+#### 创建节点
+
+- document.createElement('') 创建元素节点
+
+```
+innerHTML += 添加元素的问题，原本子元素没有了，不是原本的元素了
+```
+
+- document.createTextNode(str) 创建文本节点
+- element.cloneNode() 参数true克隆元素及后代不会克隆属性及事件，false克隆本元素
+
+#### 元素节点操作
+
+- parent.insertBefore(new, node) 在已有元素前插入
+
+```
+插入子元素 ,在指定的子元素前面插入
+```
+
+- parent.appendChild(new) 在已有元素后插入
+
+```
+插入插入子元素，在指定的子元素前面插入
+例子：留言板插入内容
+```
+
+- parent.removeChild(节点)删除一个节点
+
+```
+删除DOM元素
+```
+
+- parent.replaceChild(new, old)替换节点
+
+```
+换元素
+```
