@@ -745,3 +745,23 @@ element.scrollHeight//返回自身实际的高度，不含边框，没有单位
 - 类似 mouseover，它们两者之间的差别是mouseover 鼠标经过自身盒子会触发，经过子盒子还会触发。mouseenter  只会经过自身盒子触发
 - 之所以这样，就是因为mouseenter不会冒泡
 - 跟mouseenter搭配鼠标离开 mouseleave  同样不会冒泡
+
+# Ajax
+
+## Ajax的实现步骤
+
+```javascript
+//1.  创建 Ajax 对象
+var xhr = new XMLHttpRequest();
+//2.  告诉 Ajax 请求地址以及请求方式
+xhr,open('方式','地址')
+//3.  发送请求
+xhr.send();
+//4.  获取服务器端给与客户端的响应数据
+xhr.onload=function(){
+    console.log(xhr.responseText);
+}
+```
+
+**服务器端大多数情况下会以 JSON 对象作为响应数据的格式。当客户端拿到响应数据时， 要将 JSON 数据和 HTML 字符串进行拼接，然后将拼接的结果展示在页面中。**
+
