@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="stylesheet" href="css/todos.css">
+    <script src="./iconfont/iconfont.js"></script>
+    <script src="js/todos.js" defer></script>
+  </head>
+  <body>
+    <div class="title">todos</div>
+    <div class="box">
+      <div class="add-todo">
+        <button class="tagge-all">
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-huabanfuben"></use>
+          </svg>
+        </button>
+        <input type="text" placeholder="What needs to be done?">  
+      </div>
+      <div class="todo-list">
+        <div class="active">
+          <div class="tagge">
+            <input type="checkbox">
+            <svg class="icon" aria-hidden="true">
+              <use xlink:href="#icon-duihao"></use>
+            </svg>
+            <svg class="icon del" aria-hidden="true">
+              <use xlink:href="#icon-cuo"></use>
+            </svg>  
+          <input type="text" value="" readonly="true">
+        </div>
+        </div>
+      </div>
+      <div class="menu">
+        <div class="operate">
+          <div class="left">1 item left</div>
+          <div class="status">
+            <div class="now">All</div>
+            <div>Active</div>
+            <div>Completed</div>
+          </div>
+          <div class="clear">Clear completed</div>
+          </div>
+      </div>
+    </div>
+    <div class="decoration _1"></div>
+    <div class="decoration _2"></div>
+  </body>
+</html>
