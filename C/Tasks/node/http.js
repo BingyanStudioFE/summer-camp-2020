@@ -21,6 +21,7 @@ const server = http.createServer((req, res) => {
 //   console.log(req.query)
 
 //   res.end("Hello,world!");
+res.end("Hello,world")
 });
-
-server.listen(7000);
+console.log("success")
+server.listen(8000,);
