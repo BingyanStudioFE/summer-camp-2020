@@ -461,6 +461,7 @@ console.log(f() === window);  // true
     1. 只找一个元素:`var elem=parent.querySelector("selector")`
         - election支持一切css选择器
         - 如果选择器匹配的有多个，只返回第一个
+        - 需要一个选择器的字符串作为参数，根据一个css选择器查询
     2. 找多个:`var elem=parent.querySelectorAll("selector")`
         - selection API返回的是非动态集合
 ##### 获取元素节点子节点
@@ -488,6 +489,46 @@ console.log(f() === window);  // true
 	- 获取前一个兄弟元素，IE8以下不支持
 3. nextSibling
 	- 属性，表示当前节点的后一个兄节点
+##### 其他获取
+1. `var body=document.body`
+    - 获取body
+2. `var html=document.documentElement`
+    - 保存html根标签
+3. `var all=document.al`or`var all=document.getElementByTagName("*")`
+    - 获取页面中所有元素
+
+### DOM增删改基本语法
+- document.createElement()
+	- 可以用于创建一个元素节点对象，
+	- 它需要一个标签名作为参数，将会根据该标签名创建元素节点对象，
+	- 并将创建好的对象作为返回值返回
+- document.createTextNode()
+	- 可以用来创建一个文本节点对象
+	- 一个文本内容作为参数，将会根据该内容创建文本节点，并将新的节点返回
+- appendChild()
+	- 向一个父节点中添加一个新的子节点
+	- 用法：父节点.appendChild(子节点);
+- insertBefore()
+	- 可以在指定的子节点前插入新的子节点
+	- 语法：
+	- 父节点.insertBefore(新节点,旧节点);
+- replaceChild()
+	- 可以使用指定的子节点替换已有的子节点
+	- 语法：父节点.replaceChild(新节点,旧节点);
+- removeChild()
+	
+	- 可以删除一个子节点
+	- 语法：父节点.removeChild(子节点);
+	
+	- 子节点.parentNode.removeChild(子节点);
+- innerHTML
+	- 使用innerHTML也可以完成DOM的增删改的相关操作,一般我们会两种方式结合使用
+	- >创建一个li
+					var li = document.createElement("li");
+					//向li中设置文本
+					li.innerHTML = "广州";
+					//将li添加到city中
+					city.appendChild(li);
 #### DOM修改
 1. DOM标准
     - 核心DOM：可操作一切结构化文档的API包括HTML和XML，万能但繁琐
