@@ -1,0 +1,53 @@
+
+/*banner start*/
+*{
+    margin: 0;
+    padding: 0;
+}
+ul{
+    list-style: none;
+}
+#banner{
+    position: relative;
+    height: 680px;
+    overflow: hidden;
+    text-align: center;
+}
+#banner .banner-list{
+    height: 680px;
+}
+#banner .banner-list li{
+    display: none;
+    position: relative;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    width: 100%;
+}
+#banner .banner-list .bannerOn{
+    display: inline;
+    opacity: 1;
+    filter: alpha(opacity=100);
+}
+#banner #indexList{
+    position: absolute;
+    bottom: 20px;
+    right: 50%;
+    width: 60px;
+    height: 10px;
+}
+#banner #indexList li{
+    float: left;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin-right: 10px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+#banner #indexList .indexOn{
+    background-color: #333;
+}
+
+
+/*banner end*/
