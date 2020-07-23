@@ -7,15 +7,18 @@
 </head>
 <body>
     <script>
-        function MyClass()
-        {
+        // function MyClass()
+        // {
 
-        }
-        MyClass.prototype.name="原型中的名字"
-        var mc= new MyClass();
-        console.log(mc.name);
-        console.log("name" in mc);
-        console.log(mc.hasOwnProperty("name"))
+        // }
+        // MyClass.prototype.name="原型中的名字"
+        // var mc= new MyClass();
+        // // console.log(mc.name);
+        // // console.log("name" in mc);
+        // // console.log(mc.hasOwnProperty("name"))
+        // console.log(mc.__proto__.__proto__.hasOwnProperty("toString"));
+        str="hello atatat";
+        console.log(str[4]);
     </script>
 </body>
 </html>
