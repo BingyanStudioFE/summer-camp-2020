@@ -691,3 +691,365 @@ console.log(f() === window);  // true
         `$("ul li").remove("li[title!=菠萝]");`
 #### 事件
 - 事件绑定
+### 异步
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Simple XHR async callback example</title>
+  </head>
+  <body>
+    <script>
+      function loadAsset(url, type, callback) {
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        xhr.responseType = type;
+
+        xhr.onload = function() {
+          callback(xhr.response);
+        };
+
+        xhr.send();
+      }
+
+      function displayImage(blob) {
+        let objectURL = URL.createObjectURL(blob);
+
+        let image = document.createElement('img');
+        image.src = objectURL;
+        document.body.appendChild(image);
+      }
+
+      loadAsset('coffee.jpg', 'blob', displayImage);
+    </script>
+  </body>
+</html>
+```
+```
+function taskAsync = function(callback){
+  var result = setTimeout(function(){
+    callback('异步任务的结果')
+  }, 3000)
+  return result
+}
+
+taskAsync(function callback(result){
+  console.log(result) // 三秒钟后，这个 callback 函数会被执行
+})
+otherTask()              // 立即执行其他任务，不等异步任务结束
+```
+- 用到异步的情况
+现在有三个函数，taskA()、taskB() 和 taskC()，三个任务互不影响。
+taskA 和 taskC 执行得很快，但是 taskB 执行需要 10 秒钟。
+```
+// 同步的写法
+function taskB(){
+  var response = $.ajax({
+    url:"/data.json",
+    async: false // 注意这里 async 为 false，表示是同步
+  })
+  return response // 十秒钟后，返回 response
+}
+
+taskA()
+taskB()
+taskC()
+```
+taskC 一定要等 taskB 执行完了才能执行，这就是同步。
+执行顺序为：A B AJAX请求 C
+
+异步写法：
+```
+// 异步的写法
+function taskB(){
+  var result = $.ajax({
+    url:"/data.json",
+    async: true // 异步
+  })
+  return result // 一定要注意，现在的 result 不是上面的 response
+}
+taskA()
+taskB()
+taskC()
+```
+执行顺序
+A B C (AJAX请求)
+就是说 AJAX 请求和任务C 同时执行。
+但是请注意执行的主体。AJAX 请求是由浏览器的网络请求模块执行的，taskC 是由 JS 引擎执行的。
+综上，如果几个任务互相独立，其中一个执行时间较长，那么一般就用异步地方式做这件事。
+[具体原理](https://blog.csdn.net/qq_22855325/article/details/72958345?utm_source=app)
+
+### ES6
+
+-  JavaScript let
+
+ let 语句允许您使用块作用域声明变量。
+
+ ```
+  var x = 10;
+  // Here x is 10
+  { 
+    let x = 2;
+    // Here x is 2
+  }
+  // Here x is 10
+ ```
+- JavaScript const
+const 语句允许您声明常量（具有常量值的 JavaScript 变量）。
+常量类似于 let 变量，但不能更改值。
+```
+var x = 10;
+// Here x is 10
+{ 
+  const x = 2;
+  // Here x is 2
+}
+// Here x is 10
+```
+- 指数运算符
+取幂运算符（**）将第一个操作数提升到第二个操作数的幂。
+x ** y 的结果与 Math.pow(x,y) 相同：
+- 默认参数值
+ES6 允许函数参数具有默认值
+```
+function myFunction(x, y = 10) {
+  // y is 10 if not passed or undefined
+  return x + y;
+}
+myFunction(5); // 将返回 15
+```
+-  Array.find()
+find() 方法返回通过测试函数的第一个数组元素的值。此例查找（返回）第一个大于 18 的元素（的值）：
+```
+var numbers = [4, 9, 16, 25, 29];
+var first = numbers.find(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+```
+请注意此函数接受 3 个参数：
+项目值
+项目索引
+数组本身
+- Array.findIndex()
+findIndex() 方法返回通过测试函数的第一个数组元素的索引。
+```
+var numbers = [4, 9, 16, 25, 29];
+var first = numbers.findIndex(myFunction);
+
+function myFunction(value, index, array) {
+  return value > 18;
+}
+```
+- 新的数字属性
+ES6 将以下属性添加到 Number 对象
+	- EPSILON
+	- MIN_SAFE_INTEGER
+	- MAX_SAFE_INTEGER
+- 新的数字属性
+	- ES6  为 Number 对象添加了 2 个新方法
+	- Number.isInteger()
+	如果参数是整数，则 Number.isInteger() 方法返回 true
+	- Number.isSafeInteger() 方法
+	安全整数是可以精确表示为双精度数的整数。
+	如果参数是安全整数，则 Number.isSafeInteger() 方法返回 true。
+	安全整数指的是从 -(253 - 1) 到 +(253 - 1) 的所有整数。
+	这是安全的：9007199254740991。这是不安全的：9007199254740992。
+- 新的全局方法
+ES6 还增加了 2 个新的全局数字方法
+	- isFinite()
+	如果参数为 Infinity 或 NaN，则全局 isFinite() 方法返回 false。
+	```
+	isFinite(10/0);       // 返回 false
+	isFinite(10/1);       // 返回 true
+	```
+	- isNaN()
+	如果参数是 NaN，则全局 isNaN() 方法返回 true。否则返回 false：
+- 箭头函数
+箭头函数允许使用简短的语法来编写函数表达式。
+您不需要 function 关键字、return 关键字以及花括号。
+```
+// ES5
+var x = function(x, y) {
+   return x * y;
+}
+
+// ES6
+const x = (x, y) => x * y;
+```
+箭头功能没有自己的 this。它们不适合定义对象方法。
+箭头功能未被提升。它们必须在使用前进行定义。
+使用 const 比使用 var 更安全，因为函数表达式始终是常量值。
+如果函数是单个语句，则只能省略 return 关键字和花括号。因此，保留它们可能是一个好习惯：
+`const x = (x, y) => { return x * y };`
+### JSON
+#### JSON数据—名称和值
+JSON 数据的书写方式是名称/值对，类似 JavaScript 对象属性。
+名称/值对由（双引号中的）字段名构成，其后是冒号，再其后是值：
+```
+"firstName":"Bill"
+```
+JSON 名称需要双引号。JavaScript 名称不需要。
+#### JSON对象
+JSON 对象是在花括号内书写的。
+类似 JavaScript，对象能够包含多个名称/值对：
+```
+{"firstName":"Bill", "lastName":"Gates"}
+```
+在上面的例子中，对象 "employees" 是一个数组。它包含了三个对象。
+每个对象代表一个人的一条记录（带有名和姓）。
+
+#### JSON 数组
+JSON 数组在方括号中书写。
+类似 JavaScript，数组能够包含对象：
+```
+"employees":[
+    {"firstName":"Bill", "lastName":"Gates"}, 
+    {"firstName":"Steve", "lastName":"Jobs"}, 
+    {"firstName":"Alan", "lastName":"Turing"}
+]
+```
+在上面的例子中，对象 "employees" 是一个数组。它包含了三个对象。
+每个对象代表一个人的一条记录（带有名和姓）。
+#### 把 JSON 文本转换为 JavaScript 对象
+JSON 的通常用法是从 web 服务器读取数据，然后在网页中显示数据。
+为了简单起见，可以使用字符串作为输入演示。
+首先，创建包含 JSON 语法的 JavaScript 字符串：
+```
+var text = '{ "employees" : [' +
+'{ "firstName":"Bill" , "lastName":"Gates" },' +
+'{ "firstName":"Steve" , "lastName":"Jobs" },' +
+'{ "firstName":"Alan" , "lastName":"Turing" } ]}';
+```
+然后，使用 JavaScript 的内建函数 JSON.parse() 来把这个字符串转换为 JavaScript 对象：
+```
+var obj = JSON.parse(text);
+```
+最后，请在您的页面中使用这个新的 JavaScript 对象：
+```
+<p id="demo"></p>
+<script>
+document.getElementById("demo").innerHTML =
+obj.employees[1].firstName + " " + obj.employees[1].lastName;
+</script>
+```
+### JavaScript 表单
+#### JavaScript 表单验证
+HTML 表单验证能够通过 JavaScript 来完成。
+如果某个表单字段（fname）是空的，那么该函数会发出一条警告消息，并返回 false，以防止表单被提交出去：
+```
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function validateForm() {
+  var x = document.forms["myForm"]["fname"].value;
+  if (x == "") {
+    alert("必须填写姓名！");
+    return false;
+  }
+}
+</script>
+</head>
+<body>
+
+<form name="myForm" action="/demo/action_page.php" onsubmit="return validateForm()" method="post">
+  姓名：<input type="text" name="fname">
+  <input type="submit" value="提交">
+</form>
+
+</body>
+</html>
+```
+#### JavaScript 能够验证数字输入
+```
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript 能够验证输入</h2>
+
+<p>请输入 1 与 10 之间的数：</p>
+
+<input id="numb">
+
+<button type="button" onclick="myFunction()">提交</button>
+
+<p id="demo"></p>
+
+<script>
+function myFunction() {
+  var x, text;
+
+  // 获取 id="numb" 的输入字段的值
+  x = document.getElementById("numb").value;
+
+  // 如果 x 不是数字或小于 1 或大于 10
+  if (isNaN(x) || x < 1 || x > 10) {
+    text = "输入无效";
+  } else {
+    text = "输入有效";
+  }
+  document.getElementById("demo").innerHTML = text;
+}
+</script>
+
+</body>
+</html>
+```
+#### 自动HTML表单验证
+HTML 表单验证能够被浏览器自动执行：
+如果表单字段（fname）是空的，required 属性防止表单被提交：
+```
+<!DOCTYPE html>
+<html>
+<body>
+
+<form action="/demo/action_page.php" method="post">
+  <input type="text" name="fname" required>
+  <input type="submit" value="提交">
+</form>
+
+<p>如果单击“提交”，而不填写文本字段，您的浏览器将显示错误消息。</p>
+
+</body>
+</html>
+
+```
+#### HTML约束验证
+HTML5 引入了一种新的 HTML 验证概念，名为约束验证（constraint validation）。
+HTML 约束验证基于：
+约束验证 HTML 输入属性
+	- disabled：规定 input 元素应该被禁用
+	- max：规定 input 元素的最大值
+	- min：规定 input 元素的最小值
+	- pattern：规定 input 元素的值模式
+	- required：规定输入字段需要某个元素
+	- type：规定 input 元素的类型
+约束验证 CSS 伪选择器
+	- :disabled	选择设置了 "disabled" 属性的 input 元素。
+	- :invalid	选择带有无效值的 input 元素。
+	- :optional	选择未设置 "required" 属性的 input 元素。
+	- :required	选择设置了 "required" 属性的 input 元素。
+	- :valid	选择带有有效值的 input 元素。
+约束验证 DOM 属性和方法
+	- checkValidity() 方法
+	```
+        <input id="id1" type="number" min="100" max="300" required>
+    <button onclick="myFunction()">OK</button>
+
+    <p id="demo"></p>
+    
+    <script>
+     function myFunction() {
+        var inpObj = document.getElementById("id1");
+        if (inpObj.checkValidity() == false) {
+            document.getElementById("demo").innerHTML = inpObj.validationMessage;
+        }
+    }
+    </script>
+
+
+[更多可见](https://www.w3school.com.cn/js/js_validation_api.asp)
