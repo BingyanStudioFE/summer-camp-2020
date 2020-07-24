@@ -11,7 +11,7 @@ body {
     font-weight: 300;
 }
 
-section {
+.todo {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -38,28 +38,32 @@ section {
 
 .div{
     background-color: white;
-    box-shadow: inset 0px -2px 1px rgba(0,0,0,0.03);/*阴影怎么没用？*/
-    box-shadow: outset 0px 3px 5px rgba(0, 0, 0, 0.2);
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
     padding: 5px 15px;
     margin:1px 0px;
-    width: 100%;/*填满父元素*/
+    width: 100%;/*填满父元素*/ /*阴影怎么没用？*/
+    box-shadow: 0px -1px 1px rgba(218, 218, 218, 0.849) inset , 0px 15px 30px rgba(146, 146, 146, 0.575);
 }
 
-.onceClear{
+
+
+.onceClick{
     border: none;
     outline:none;
     background-color: rgba(0,0,0,0);
     color:rgb(221, 221, 221);
-
+    cursor: pointer;/*设置鼠标光标格式*/
 }
 
 .input {
     border: none;
     outline: none;/*和border不同，outline是轮廓线*/
+    
+    box-sizing: border-box;
     width: 100%;
     font-size: 24px;
     font-family: inherit;/*inherit哪的？？*/
@@ -73,6 +77,17 @@ input::-webkit-input-placeholder { /* WebKit browsers */
     color: rgb(221, 221, 221); 
     font-style: italic;
 } 
+
+.newobj{
+    border: none;/*和border不同，outline是轮廓线*/
+    font-size: 24px;
+    font-family: inherit;/*inherit哪的？？*/
+    font-weight: inherit;
+    line-height: 2em;
+    width: 95%;
+    margin-left:-10px;
+    padding-left: 10px;
+}
 /*input {
     /*-webkit-writing-mode: horizontal-tb !important;*/
     /*-webkit-appearance: textfield;*/
@@ -98,7 +113,9 @@ input::-webkit-input-placeholder { /* WebKit browsers */
 
 
 
-#list0 {
+#list {
+    box-shadow: 0px -1px 1px rgba(218, 218, 218, 0.849) inset , 0px 15px 30px rgba(146, 146, 146, 0.575);
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -107,7 +124,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
     flex-direction: column;
 }
 
-.list11 {
+.listall {
     display: inline-flex;
     box-sizing: border-box;
     align-items: center;
@@ -118,7 +135,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
     width: 100%;
 }
 
-.list1 {
+.li {
     order:1;
     box-sizing: border-box;/*神奇！可以解决padding改变宽度的问题！！怎么理解？？*/
     margin-left:20px;
@@ -138,6 +155,7 @@ input::-webkit-input-placeholder { /* WebKit browsers */
     margin-right:5px;
     align-self:flex-end;
     order:2;
+    cursor: pointer;/*设置鼠标光标格式*/
 }
 
 .delete:hover {/*当鼠标指针放上去时*/
@@ -148,14 +166,17 @@ input::-webkit-input-placeholder { /* WebKit browsers */
     order: 0;
     color: rgba(173, 48, 48, 0.747);
     text-decoration: none;
+    cursor: pointer;/*设置鼠标光标格式*/
 }
 
 .clickon{
     order: 0;
     color: rgb(201, 201, 201);
+    cursor: pointer;/*设置鼠标光标格式*/
 }
 
 .info {
+    
     margin: 65px auto 0;
     color: #bfbfbf;
     font-size: 10px;
