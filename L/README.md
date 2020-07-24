@@ -88,3 +88,14 @@ git和markdown的基本语法和使用
 6.40-22.22js
 ### 2
 - date对象，math，正则表达式，DOM知识补充，包装，添加补充函数的部分知识点*详见L/task/js&L/notes/js*
+
+# 7.22
+### 1
+2.00-6.20 oppo及lunbotu的编写练习
+6.20-6.40 吃饭
+6.40-7.20轮播图
+7.20-9.00 jsdom练习及笔记
+### 2
+- 轮播图*详见L/Task/js/lunbotu*
+- oppo网页完善*L/Task/html&css/oppo*
+- jsdom练习及笔记*L/Task/js/dom ex&添加删除相关操作  L/Notes/js*

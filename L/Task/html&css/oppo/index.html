@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+	<title>OPPO</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/swiper.css">
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+	<style type="text/css">
+		body {
+            background: #eee;
+            font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            color: #000;
+            margin: 0;
+            padding: 0;
+        }
+        #banner{
+        	height:630px;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 632px;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+	</style>
 </head>
 <body>
     <!-- 页面顶部 -->
@@ -47,7 +85,20 @@
     </div>
     <!-- 页面banner部分 -->
     <div id="banner">
-        <div class="container"></div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"><img src="img/banner1.jpg" width="100%;" height="630"></div>
+                <div class="swiper-slide"><img src="img/banner2.jpg" width="100%;" height="630"></div>
+                <div class="swiper-slide"><img src="img/banner3.jpg" width="100%;" height="630"></div>
+                <div class="swiper-slide"><img src="img/banner4.jpg" width="100%;" height="630"></div>
+    
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next">1</div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        <div class="banner-nav-bg"></div>
     </div>
     <!-- 明星机型部分 -->
     <div id="star">
@@ -95,34 +146,31 @@
     <div id="accessory">
         <div class="container">
             <div class="acc_top">
-                <img src="img/wb.png" alt="">
+                <img src="img/wb.png">
             </div>
             <div class="acc_main">
                 <div class="acc_left left">
                     <div>
-                        <img id="p1" src="img/20150413174400N0dPnxUKHk.jpg" alt="">
+                        <img src="img/20150413174400N0dPnxUKHk.jpg">
                     </div>
-                    <div id="baba">
                     <div class="acc_all">
                         <p>OPPO手机官网AAESSORY配件</p>
                         <ul>
-                            <li>外币巴布</li>
-                            <li>外币巴布</li>
-                            <li>外币巴布</li>
-                            <li>外币巴布</li>
-                            <li>外币巴布</li>
-                            <li>外币巴布</li>
+                            <li>耳机</li>
+                            <li>耳机</li>
+                            <li>耳机</li>
+                            <li>耳机</li>
+                            <li>耳机</li>
+                            <li>耳机</li>
                         </ul>
                         <h2 class="line"></h2>
-                        <p class="acc">全部配件<span></span>
-                        </p>
+                        <p class="acc">全部配件<span></span></p>
                     </div>
                     <div>
-                        <img id="p2" src="img/20131120165101xYIYzhkVEy.jpg" alt="">
+                        <img src="img/20131120165101xYIYzhkVEy.jpg">
                     </div>
-                    </div>
-                    <div >
-                        <img id="p3" src="img/20150413174340NLV2gvV4FU.jpg" alt="">
+                    <div>
+                        <img src="img/20150413174340NLV2gvV4FU.jpg">
                     </div>
                 </div>
                 <div class="acc_right right">
@@ -144,19 +192,211 @@
     </div>
     <!-- 页面搜索部分 -->
     <div id="world">
-        <div class="container"></div>
+        <div class="container">
+            <div class="world_top">
+                <img src="img/weibo.png">
+            </div>
+            <div class="world_main">
+                <div class="world_left left">
+                    <div  class="a1 fade">
+                        <div>
+                            <img src="img/201403261455420lqMPNGENc.png">
+                        </div>
+                        
+                    </div>
+                    <div  class="a2 fade">
+                        <div>
+                            <img src="img/201403261455420lqMPNGENc.png">
+                        </div>
+                        
+                    </div>
+                    <div class="a3 fade">
+                        <div>
+                            <img src="img/201403261455420lqMPNGENc.png">
+                        </div>
+                    </div>
+                    <div class="a4 fade">
+                        <div>
+                            <img src="img/201403261455420lqMPNGENc.png">
+                        </div>
+                    </div>
+                </div>
+                <div class="world_right right">
+                    <div class="world_title">
+                        <div class="news">新闻</div>
+                        <div class="weibo">微博</div>
+                    </div>
+                    <ul>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <img src="img/20150227161036GqO59Dvta2.jpg">
+                                </dt>
+                                <dd>OPPO R5金色版 打造纽约时装周梦幻之旅</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <img src="img/20150227161036GqO59Dvta2.jpg">
+                                </dt>
+                                <dd>OPPO R5金色版 打造纽约时装周梦幻之旅</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <img src="img/20150227161036GqO59Dvta2.jpg">
+                                </dt>
+                                <dd>OPPO R5金色版 打造纽约时装周梦幻之旅</dd>
+                            </dl>
+                        </li>
+                        <li>
+                            <dl>
+                                <dt>
+                                    <img src="img/20150227161036GqO59Dvta2.jpg">
+                                </dt>
+                                <dd>OPPO R5金色版 打造纽约时装周梦幻之旅</dd>
+                            </dl>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- 页面服务部分 -->
     <div id="serve">
-        <div class="container"></div>
+        <div class="container">
+            <ul>
+                <li>
+                    <dl>
+                        <dt></dt>
+                        <dd class="d1">挣品保障</dd>
+                        <dd class="d2">我敢卖你敢买</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt></dt>
+                        <dd class="d1">挣品保障</dd>
+                        <dd class="d2">我敢卖你敢买</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt></dt>
+                        <dd class="d1">挣品保障</dd>
+                        <dd class="d2">我敢卖你敢买</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt></dt>
+                        <dd class="d1">挣品保障</dd>
+                        <dd class="d2">我敢卖你敢买</dd>
+                    </dl>
+                </li>
+                <li>
+                    <dl>
+                        <dt></dt>
+                        <dd class="d1">挣品保障</dd>
+                        <dd class="d2">我敢卖你敢买</dd>
+                    </dl>
+                </li>
+
+            </ul>
+        </div>
     </div>
     <!-- 页面售后服务部分 -->
     <div id=after_sale>
-        <div class="container"></div>
+        <div class="container">
+            <ul>
+                <li>
+                    <ol>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">关于OPPO</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">关于OPPO</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">关于OPPO</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">关于OPPO</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <li><span class="xl"></span><a href="#">新浪微博</a></li>
+                        <li><span class="xl"></span><a href="#">腾讯微博</a></li>
+                        <li><span class="xl"></span><a href="#">人人网</a></li>
+                        <li><span class="xl"></span><a href="#">QQ空间</a></li>
+                    </ol>
+                </li>
+                <li>
+                    <ol>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">关于OPPO</a></li>
+                        <li><a href="#">新闻中心</a></li>
+                        <li><a href="#">人才招聘</a></li>
+                    </ol>
+                </li>
+            </ul>
+        </div>
     </div>
     <!-- 页面底部 -->
     <div id="footer">
-        <div class="container"></div>
+        <div class="container">
+            <p>
+                <img src="img/i-f-logo.png" alt="">
+                <span>@2020天津市</span>
+                <a href="#">版权所有</a>
+                <a href="#">版权所有</a>
+                <a href="#">版权所有</a>
+                <a href="#">版权所有</a>
+                <a href="#">版权所有</a>      
+            </p>
+        </div>
     </div>
+    <script type="text/javascript" src="js/swiper.js"></script>
+    <script type="text/javascript">
+        var swiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            paginationClickable: true,
+            loop: true,
+            autoplay: 3000,
+    
+            
+            speed: 1000,
+            prevButton: '.swiper-button-prev',
+            nextButton: '.swiper-button-next',
+            effect: 'cube',
+            grabCursor: true,
+            cube: {
+                shadow: false,
+                slideShadows: false,
+                shadowOffset: 20,
+                shadowScale: 0.94
+            }
+        });
+</script>
 </body> 
 </html>

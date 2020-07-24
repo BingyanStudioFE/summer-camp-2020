@@ -6,7 +6,7 @@ ol,ul{
     list-style-type: none;
 }
 a{
-    color: #666666;
+    /* color: #666666; */
     text-decoration: none;
 }
 .left{
@@ -19,11 +19,11 @@ a{
 {
     height: 100px;
     width: 100%;
-    border: 1px solid #000000;
+    /* border: 1px solid #000000; */
 }
 .container{
     width: 1280px;
-    border: 1px solid red;
+    /* border: 1px solid red; */
     margin: 0px auto;
 }
 /* 设置顶部样式 */
@@ -147,69 +147,78 @@ a{
 }
 /* 精选部分设置 */
 #accessory{
-    height: 1000px;
-    background-color: #f6f6f6;
+	height: 950px;
+	background-color: #F6F6F6;
+	overflow: hidden;
 }
+
 #accessory .acc_top{
-    text-align:center;
-    margin:20px 0px;
+	text-align: center;
+	margin: 20px 0px;
 }
+
 #accessory .acc_main{
-    width: 1150px;
-    margin: 0 auto;
+	width: 1090px;
+	margin: 10px auto;
 }
 #accessory .acc_left{
-    width: 580px;
-    height: 860px;
-    margin-top: 10px;
-
+	width: 540px;
+	height: 950px;
+	/*border: 2px solid #000;*/
 }
-#accessory .acc_left #p1{
-    height: 500;
+#accessory .acc_left>div{
+	float: left;
+	border-bottom: 3px solid #EAEAEA;
+	margin: 10px;
+	transition: all .3s;
 }
-#accessory .acc_left #p2{
-    height: 250;
+#accessory .acc_left>div:hover{
+	border-bottom: 3px solid #00925F;
+	transform: translateY(-10px);
 }
-#accessory .acc_left #p3{
-    height: 574;
-    width: 276;
+#accessory .acc_left img{
+	width: 250px;
 }
-
-#accessory .acc_left{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: space-between;
+#accessory .acc_left>div:last-child img{
+	width: 520px;
 }
-#accessory #baba{
-    height: 580px;
-    width: 290px;
-    display: flex;
-    flex-wrap: wrap;
-    align-content: space-between;
-    /* border: 2px solid black; */
-    margin-left:10px;
-}
-#accessory .acc_all
-{
-    height: 290px;
-    width: 280px;
-    background-color: #fff;
- 
+#accessory .acc_all{
+	width: 250px;
+	height: 250px;
+	border: 3px solid #EAEAEA;
+	background-color: #fff;
+	padding: 20px;
+	box-sizing: border-box;
 }
 #accessory .acc_all p:first-child{
-    text-align: center;
-    font-weight:bold;
-    font-size: 14px;
-    border-bottom: 1px soild #ccc;
-    padding-top: 20px;
-    padding-bottom: 40px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 14px;
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 10px;
 }
 #accessory .acc_all li{
 	float: left;
-	width: 140px;
+	width: 100px;
 	height: 40px;
 	text-align: center;
 	line-height: 40px;
+}
+#accessory .acc_all li:hover{
+	color: #00925F;
+}
+#accessory .acc_all .line{
+	width: 150px;
+	height: 0;
+	border-top: 1px solid #ccc;
+	clear: both;
+	margin: 15px auto;
+}
+#accessory .acc_all p:last-child{
+	text-align: center;
+}
+#accessory .acc_all p:last-child:hover{
+	color: #00925F;
 }
 #accessory .acc_all span{
 	width: 13px;
@@ -218,16 +227,6 @@ a{
 	vertical-align: middle;
 	background: url("../img/icons-1.png") no-repeat -177px -1014px;
 	margin-left: 10px;
-}
-#accessory .acc_all .line{
-	width: 180px;
-	height: 0;
-	border-top: 1px solid #ccc;
-	clear: both;
-	margin: 15px auto;
-}
-#accessory .acc_all p:last-child{
-	text-align: center;
 }
 #accessory .acc_right{
 	width: 540px;
@@ -247,12 +246,201 @@ a{
 }
 #accessory .acc_right div:first-child img{
 	width: 520px;
-	height: 300px;
+	height: 250px;
 }
 #accessory .acc_right div:last-child img{
 	height: 241px;
 }
-#accessory mian{
+/* 页面搜索部分 */
+#world{
+	height: 700px;
+	/*clear: both;*/
+	overflow: hidden;
+	background-color: #EAEAEA;
+}
+#world .world_top{
+
+	text-align: center;
+	margin: 20px 0px;
+}
+#world .world_main{
+	width: 1214px;
+	margin: 10px auto;
+}
+#world .world_left{
+	width: 800px;
+}
+#world .world_left>div{
+	float: left;
+	margin: 10px;
+	
+}
+#world .world_left>div>div{
+	border-bottom: 3px solid #EAEAEA;
+	transition: all .3s;
+}
+#world .world_left>div:hover div{
+	border-bottom: 3px solid #00925F;
+	transform: translateY(-10px);
+}
+#world .world_right{
+	width: 400px;
+	height: 566px;
+	background-color: #fff;
+	margin-top: 10px;
+}
+#world .world_right img{
+	height: 100px;
+}
+#world .world_right .world_title{
+	height: 60px;
+}
+#world .world_right .world_title div{
+	width: 200px;
+	height: 60px;
+	background-color: #EAEAEA;
+	text-align: center;
+	line-height: 60px;
+	float: left;
+	border-top: 3px solid #EAEAEA;
+}
+#world .world_right .world_title div:first-child{
+	border-top: 3px solid #00925F;
+	background-color: #fff;
+}
+#world .world_right  ul li{
+	background-color: #EAEAEA;
+	margin: 20px 10px;
+}
+#world .world_right dl{
+	width: 380px;
+	height: 100px;
+	position: relative;
+	box-sizing: border-box;
+}
+#world .world_right dl dt{
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+#world .world_right dl dd{
+	position: absolute;
+	top: 20px;
+	left: 140px;
+}
+/* 页面服务设置 */
+#serve
+{
+    height: 100px;
+    background-color: #fff;
+}
+#serve .container ul
+{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-left: 30px;
+    margin-right: 30px;
+    border-bottom: 1px solid #666;
+}
+#serve dl{
+    width: 200px;
+    height: 100px;
+    /* border: 1px solid black; */
+    position: relative;
+}
+#serve dt{
+    width: 41px;
+    height: 41px;
+    background: url("../img/icons.png") no-repeat 0px -44px;
+    position: absolute;
+    top: 30px;
+    left: 10px;
+}
+#serve dl .d1
+{
+    position: absolute;
+    top: 30px;
+    left: 60px;
+    font-weight: bold;
+}
+#serve dl .d2
+{
+    position: absolute;
+    top: 50px;
+    left: 60px;
+    color: #aaa;
+    font-size: 12px;
+}
+#serve li
+{
+    transition: all 0.2s;
+}
+#serve li:hover
+{
+    transform: translateY(-10px);
+}
+/* 设置售后服务 */
+#after_sale
+{
+    height: 200px;
+    background-color: white;
+}
+#after_sale ul
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+#after_sale ul li{
+    width: 140px;
+    text-align: center;
+}
+#after_sale ol li
+{
+    line-height: 30px;
+}
+#after_sale ol li:first-child a
+{
+    font-weight: bold;
+}
+#after_sale .xl
+{
+    
+    width: 20px;
+    height: 17px;
+    background: url("../img/icons.png") no-repeat -47px -95px;
+    display: inline-block;
+    vertical-align: middle;
+}
+#after_sale .xl:hover
+{
+    width: 20px;
+    height: 17px;
+    background: url("../img/xl2.png") no-repeat;
+}
+/* 页面底部设置 */
+#footer{
+	height: 40px;
+	background-color: #2D2D2D;
+}
+#footer p{
+	line-height: 40px;
+}
+#footer img{
+	margin-left: 20px;
+}
+#footer p span{
+	color: #828282;
+	margin: 0px 530px 0px 20px;
+}
+#footer p a{
+	color: #fff;
+	margin: 0px 10px;
+}
+#footer p a:hover{
+	color: #00925F;
 }
