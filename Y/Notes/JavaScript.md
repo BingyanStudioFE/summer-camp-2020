@@ -31,9 +31,15 @@
 
     }
 
-    和数组有些相像 通过objectName[property]来查找对象属性内容 或者name.property
+    - 和数组有些相像 通过objectName[property]来查找对象属性内容 或者name.property
 
-    
+    - obeject包扩数组和函数
+
+    - 访问对象方法
+
+      objectName.methodName();
+
+    - new来声明对象
 
 - 变量
 
@@ -59,6 +65,29 @@
   
   arrayName.unshift,向array开始添加元素
   
+- 事件
+
+  事件处理程序可用于处理、验证用户输入、用户动作和浏览器动作，
+
+  通过js,HTML允许向HTML元素添加事件处理程序
+
+  `<element event ='一些js code' `
+
+  比如this.innerHTML=...改变自身元素的内容
+
+  事件属性调用函数displayDate()
+
+  常见的HTML事件
+
+  | 事件        | 描述                         |
+  | :---------- | :--------------------------- |
+  | onchange    | HTML 元素已被改变            |
+  | onclick     | 用户点击了 HTML 元素         |
+  | onmouseover | 用户把鼠标移动到 HTML 元素上 |
+  | onmouseout  | 用户把鼠标移开 HTML 元素     |
+  | onkeydown   | 用户按下键盘按键             |
+  | onload      | 浏览器已经完成页面加载       |
+
 - 获取元素
 
   - 特殊标签
@@ -537,12 +566,24 @@ console.log(arr2) // [1, 2, 3, 4, 5, 6]
 #### Array() 数组方法
 
 - arr.unshift( item1,item1,…. ) 向数组的头部添加一个或更多元素，并返回（新的长度）。
+
 - arr.push( item1,item1,…. ) 向数组的尾部添加一个或更多元素，并返回（新的长度）。
+
 - arr.shift( ) 删除数组的第一个元素（返回删除对象）;。
+
 - arr.pop( ) 删除数组的最后一个元素（返回删除对象）。
+
 - arr.splice(index,howmany,item1,…..,itemX) （删除/添加） 元素，然后（只返回删除对象）。
 
 - arr.sort() 排序
+
+  - arr.sort()排依据是字符串的顺序，如果想对纯数进行排序，需要用以下比值函数修正
+
+    - 正序arr.sort(function(a,b){return a-b});
+
+      返回值小于0时，a的排序比b低
+
+    - 逆序arr.sort(function(a,b){return b-a});
 
 ```
 默认arr.sort() 以首字符编码大小排序
@@ -553,6 +594,24 @@ return > 0 调换位置，= 0不调换位置，< 0 不调换位置
 ```
 
 - arr.reverse() 反转数组
+
+- 使用Math.max.apply（null,arr）查找最大值
+
+  等于Math.max(arr)
+
+- 使用Math.min.apply查找最小值
+
+- 排序对象数组: 数字值/字符值
+
+  ```
+  cars.sort(function(a, b){
+  	  var x = a.type.toLowerCase();
+  	  var y = b.type.toLowerCase();
+  	  if (x < y) {return -1;}
+  	  if (x > y) {return 1;}
+  	  return 0;
+  });
+  ```
 
 **以上方法不创建新的数组，而是直接修改原有的数组,同时索引会变化**
 
@@ -572,7 +631,20 @@ arr.slice(start,end)方法从已有的数组中返回选定的元素
 ```
 
 - arr.join() 拼接成字符串
+
 - Array.isArray( ) 判断是不是数组
+
+- **数组迭代方法**
+
+  - forEach()为每个数组元素调用一次函数
+
+  - Array.map()对每个数组元素执行函数来创建新数组，不会对没有值的数组元素执行函数；不会更改原始数组
+
+  - Array.filter()创建一个包含通过测试元素的新数组
+
+    **以上接受参数value/index/array**
+
+  - Array.reduce()
 
 #### ECMAscript5 的遍历数组方法
 
