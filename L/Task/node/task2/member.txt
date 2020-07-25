@@ -1,0 +1,10 @@
+'use strict';
+module.exports=
+{
+    employees:[
+        {"name":"Tom" ,"gender":"man"},
+        {"name":"Koala","gender":"woman"},
+        {"name":"Peter","gender":"man"},
+        {"name":"Smith","gender":"man"}
+    ]
+}

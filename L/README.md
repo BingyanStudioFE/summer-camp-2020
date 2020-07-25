@@ -112,3 +112,11 @@ git和markdown的基本语法和使用
 - AJAX*详见L/notes/AJAX&l/task/js/ajaxn*
 - 异步回调函数 es6 js补充*详见L/notes/js*
 - http*L/notes/HTTP*
+# 7.25
+## 1
+2.00-6.00 npm，node安装调试和知识点
+6.00-6.30 恰饭
+6.30-9.41 node知识点做task1，尝试做task2（没成功）
+9.41-  继续补充node知识点
+## 2
+- node&npm*详见L/Notes/node.js,md & L/Task/node/task1*
