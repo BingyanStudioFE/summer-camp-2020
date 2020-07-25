@@ -131,3 +131,100 @@ computed: {
 //当fullName改变时,firstName和lastName也会有相应的变化
 ```
 
+
+
+### 过渡/动画
+
+###### 过渡的类名
+
+1. `v-enter`：定义进入过渡的开始状态。
+2. `v-enter-active`：定义进入过渡生效时的状态。
+3. `v-enter-to`：定义进入过渡的结束状态。
+4. `v-leave`：定义离开过渡的开始状态。
+5. `v-leave-active`：定义离开过渡生效时的状态。
+6. `v-leave-to`：定义离开过渡的结束状态。
+
+###### 动画
+
+在动画中 `v-enter` 类名在节点插入 DOM 后不会立即删除，而是在 `animationend` 事件触发时删除。
+
+###### 自定义过渡的类名
+
+* `enter-class`
+* `enter-active-class`
+* `enter-to-class`
+* `leave-class`
+* `leave-active-class`
+* `leave-to-class` 
+
+优先级高于普通的类名
+
+
+
+###### 持续时间
+
+```html
+<transition :duration="1000"></transition>
+<transition :duration="{ enter: 500, leave: 800 }"></transition>
+```
+
+
+
+###### js钩子
+
+```html
+<transition
+  v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:after-enter="afterEnter"
+  v-on:enter-cancelled="enterCancelled"
+
+  v-on:before-leave="beforeLeave"
+  v-on:leave="leave"
+  v-on:after-leave="afterLeave"
+  v-on:leave-cancelled="leaveCancelled"
+>
+</transition>
+```
+
+
+
+###### 初始渲染的过渡
+
+通过appear设置
+
+```html
+<transition appear>
+  <!-- ... -->
+</transition>
+```
+
+```html
+<!-- 自定义css类名 -->
+<transition
+  appear
+  appear-class="custom-appear-class"
+  appear-to-class="custom-appear-to-class" (2.1.8+)
+  appear-active-class="custom-appear-active-class"
+>
+  <!-- ... -->
+</transition>
+```
+
+```html
+ <!-- 自定义js钩子 -->
+<transition
+  appear
+  v-on:before-appear="customBeforeAppearHook"
+  v-on:appear="customAppearHook"
+  v-on:after-appear="customAfterAppearHook"
+  v-on:appear-cancelled="customAppearCancelledHook"
+>
+  <!-- ... -->
+</transition>
+```
+
+###### 过渡模式
+
+* `in-out`：新元素先进行过渡，完成之后当前元素过渡离开
+* `out-in`：当前元素先进行过渡，完成之后新元素过渡进入
