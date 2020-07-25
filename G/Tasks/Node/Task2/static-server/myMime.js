@@ -1,9 +1,9 @@
 const path = require("path");
 const myMime = {
-  js: "application/x-javascript",
-  html: "text/html",
-  css: "text/css",
-  txt: "text/plain",
+  js: "application/x-javascript;charset = utf - 8",
+  html: "text/html;charset = utf - 8",
+  css: "text/css;charset = utf - 8",
+  txt: "text/plain;charset = utf - 8",
   jpg: "image/jpeg",
   jpeg: "image/jpeg",
   png: "image/png",

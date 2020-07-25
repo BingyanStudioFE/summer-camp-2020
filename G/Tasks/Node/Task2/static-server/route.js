@@ -12,12 +12,12 @@ module.exports = function (request, response, filePath) {
       response.statusCode = 200;
       const mimeType = myMime(filePath);
       response.setHeader("Content-Type", mimeType);
-      fs.createReadStream(filePath).pipe(response);
+      fs.createReadStream(filePath).setEncoding("utf8").pipe(response);
     } else if (stats.isDirectory()) {
       fs.readdir(filePath, (err, files) => {
         response.statusCode = 200;
         response.setHeader("content-type", "text/html;charset = utf - 8");
-        response.write("<html><body><div>");
+        response.write("<html><head><meta charset='utf-8'/></head><body><div>");
         var html = "";
         for (let i = 0; i < files.length; i++) {
           html +=
@@ -29,7 +29,7 @@ module.exports = function (request, response, filePath) {
             files[i] +
             "</a><br >";
         }
-        response.write(html); //返回所有的文件名
+        response.write(html); //返回所有文件名
         response.end("</div></body></html>");
       });
     }
