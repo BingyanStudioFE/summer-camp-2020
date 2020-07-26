@@ -257,3 +257,26 @@ ajax 笔记见[Ajax.md](./Notes/Ajax.md)
 ###### 9:00-10:00
 
 继续学习ES6相关知识
+
+## DAY11
+
+###### 2:00-5:30
+
+[原生js实现new功能](./Tasks/Javascript/new_operator.js)
+
+[表单提交](./Tasks/Javascript/submit_form.html)
+
+下载并配置node
+
+###### 5:30-7:00
+
+吃饭
+
+###### 7:00-10:00
+
+[看node](./Notes/Node.md)
+
+[完成Task1](./Task/Node/Task1)
+
+
+
