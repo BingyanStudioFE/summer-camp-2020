@@ -172,6 +172,16 @@ input::-webkit-input-placeholder {
   padding: 0px 7px;
 }
 
+.button2 {
+  font-size: 13px;
+  color: rgb(141, 141, 141);
+  margin-left: 73px;
+  line-height: 23px;
+  border-style: none;
+  box-sizing: border-box; /*又一次神奇！！*/
+  padding: 0px 7px;
+}
+
 .button:hover {
   /*当鼠标指针放上去时*/
   border-color: rgba(148, 0, 0, 0.096);
@@ -179,6 +189,11 @@ input::-webkit-input-placeholder {
   border-radius: 3px;
   border-width: 1px;
   box-sizing: border-box; /*又一次神奇！！*/
+  cursor: pointer; /*设置鼠标光标格式*/
+}
+
+.button2:hover {
+  /*当鼠标指针放上去时*/
   cursor: pointer; /*设置鼠标光标格式*/
 }
 
@@ -239,7 +254,9 @@ input::-webkit-input-placeholder {
   background-color: rgba(255, 255, 255, 0);
   width: 0;
   height: 0;
+  visibility:hidden;
 }
+
 
 .info {
   margin: 65px auto 0;

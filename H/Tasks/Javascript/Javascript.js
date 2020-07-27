@@ -24,12 +24,15 @@ window.onload = function () {
   var buttonAll = document.createElement("div");
   var buttonActive = document.createElement("div");
   var buttonCompleted = document.createElement("div");
+  var buttonClear = document.createElement("div");
   buttonAll.innerHTML = "All";
   buttonActive.innerHTML = "Active";
   buttonCompleted.innerHTML = "Completed";
+  buttonClear.innerHTML = "Clear completed";
   buttonAll.className = "button";
   buttonActive.className = "button";
   buttonCompleted.className = "button";
+  buttonClear.className = "button2";
 
   var bot1 = document.createElement("div");
   var bot2 = document.createElement("div");
@@ -39,9 +42,7 @@ window.onload = function () {
     buttonAll.innerHTML = "";
     buttonActive.innerHTML = "";
     buttonCompleted.innerHTML = "";
-    buttonAll.className = "button";
-    buttonActive.className = "button";
-    buttonCompleted.className = "button";
+    buttonClear.innerHTML = "";
     bot1.className = "bottomDelete";
     bot2.className = "bottomDelete";
     bot3.className = "bottomDelete";
@@ -56,7 +57,6 @@ window.onload = function () {
     bot2.className = "bottomAdd2";
     bot3.className = "bottomAdd3";
   }
-
   bottom.insertBefore(bot3, bottom.children[0]);
   bottom.insertBefore(bot2, bottom.children[0]);
   bottom.insertBefore(bot1, bottom.children[0]);
@@ -64,31 +64,13 @@ window.onload = function () {
   bot1.appendChild(buttonAll);
   bot1.appendChild(buttonActive);
   bot1.appendChild(buttonCompleted);
-
-  for (let i = 1; i <= 3; i++) {
-    bot1.children[i].onclick = function () {
-      //注意！这里不要查找class(button)！因为点击以后class就变成buttonClick了！！
-      for (let j = 1; j <= 3; j++) {
-        bot1.children[j].className = "button";
-      }
-      bot1.children[i].className = "buttonClick";
-      if (i == 1) {
-        //buttonAll
-        buttonAll();
-      } else if (i == 2) {
-        //buttonActive
-        buttonActive();
-      } else {
-        //buttonCompleted
-        buttonCompleted();
-      }
-    };
-  }
+  bot1.appendChild(buttonClear);
 
   var onceClick = document.createElement("div");
   onceClick.className = "onceClick";
   onceClick.innerHTML = "√";
   div.insertBefore(onceClick, div.children[0]);
+
   function pressEnter() {
     //每点击一次enter
     if (text.value.trim() === "") {
@@ -128,6 +110,8 @@ window.onload = function () {
       newobj.focus();
     };
 
+    
+
     var de = null;
 
     var click = document.createElement("div");
@@ -143,6 +127,16 @@ window.onload = function () {
         this.setAttribute("n", "null");
         k++;
         knumber.innerHTML = k + " item(s) left";
+        for (let i = 1; i <= 3; i++) {
+          if(bot1.children[i].className === "buttonClick") {
+            bot1.children[i].onclick();
+          }
+        }
+        if (onceLi.length === onceClickoff.length) {
+          buttonClear.innerHTML = "";
+        }else{
+          buttonClear.innerHTML = "Clear completed";
+        }
       } else {
         click.className = "clickon";
         this.parentNode.children[1].style.color = "rgb(201, 201, 201)"; //关键！
@@ -150,38 +144,72 @@ window.onload = function () {
         this.setAttribute("n", "1");
         k--;
         knumber.innerHTML = k + " item(s) left";
+        for (let i = 1; i <= 3; i++) {
+          if(bot1.children[i].className === "buttonClick") {
+            bot1.children[i].onclick();
+          }
+        }
+        if (onceLi.length === onceClickoff.length) {
+          buttonClear.innerHTML = "";
+        }else{
+          buttonClear.innerHTML = "Clear completed";
+        }
       }
     };
     all.appendChild(click);
     all.appendChild(li);
 
     //常量最好就用const,可以更好地语义化,且有块作用域
+    if (onceLi.length === onceClickoff.length) {
+      buttonClear.innerHTML = "";
+    }else{
+      buttonClear.innerHTML = "Clear completed";
+    }
 
     onceClick.onclick = function () {
       if (onceLi.length > onceClickon.length) {
         //如果存在有clickoff的哪怕只有一个，也执行全部clickon
-        //？？但是好像没有用，实际是如果存在有clickoff（未完成）的事项这段代码就失效//出问题的地方!!!!!!!!
         for (let i = onceLi.length - 1; i >= 0; i--) {
           if (onceLi[i].parentNode.children[0].getAttribute("n") === "1") {
             continue;
           }
-          onceLi[i].previousElementSibling.setAttribute("n", "1"); //设置属性n=1（该事项已完成）//出问题的地方!!!!!
+          onceLi[i].previousElementSibling.setAttribute("n", "1"); //设置属性n=1（该事项已完成）
           onceLi[i].previousElementSibling.className = "clickon"; //对勾由红变灰
           onceLi[i].style.color = "rgb(201, 201, 201)"; //文字由黑变灰
           onceLi[i].style["text-decoration"] = "line-through"; //文字增加删除线
         }
         k = 0; //未完成事项数量为0
         knumber.innerHTML = k + " item(s) left";
+        for (let i = 1; i <= 3; i++) {
+          if(bot1.children[i].className === "buttonClick") {
+            bot1.children[i].onclick();
+          }
+        }
+        if (onceLi.length === onceClickoff.length) {
+          buttonClear.innerHTML = "";
+        }else{
+          buttonClear.innerHTML = "Clear completed";
+        }
       } else {
         //如果全部都clickon（已完成）了那就再全都clickoff（未完成）
         for (let i = onceLi.length - 1; i >= 0; i--) {
-          onceLi[i].previousElementSibling.setAttribute("n", "null"); //设置属性n=null（该事项未完成）//出问题的地方!!!!!!!!
+          onceLi[i].previousElementSibling.setAttribute("n", "null"); //设置属性n=null（该事项未完成）
           onceLi[i].previousElementSibling.className = "clickoff";
           onceLi[i].style.color = "rgba(22, 22, 22, 0.692)";
           onceLi[i].style["text-decoration"] = "none";
         }
         k = onceLi.length; //未完成事项数量=总事项数量
         knumber.innerHTML = k + " item(s) left";
+        for (let i = 1; i <= 3; i++) {
+          if(bot1.children[i].className === "buttonClick") {
+            bot1.children[i].onclick();
+          }
+        }
+        if (onceLi.length === onceClickoff.length) {
+          buttonClear.innerHTML = "";
+        }else{
+          buttonClear.innerHTML = "Clear completed";
+        }
       }
     };
 
@@ -214,15 +242,18 @@ window.onload = function () {
       de.style.display = "none";
     };
 
+    
     list.insertBefore(all, list.children[0]); //把all插入到list里的0号位置（最前面），类似document.body.appendChild(btn);的功能
     k++;
-
     text.value = ""; //清空输入栏
+
+
     if (document.getElementsByClassName("li").length > 0) {
       bottomAdd();
     } else {
       bottomDelete();
     }
+
     if (
       onceLi.length > 0 &&
       buttonCompleted.className === "button" &&
@@ -232,4 +263,59 @@ window.onload = function () {
       buttonAll.className = "buttonClick";
     }
   }
+
+  buttonClear.onclick = function() {
+    for (let i = document.querySelectorAll("all").length-1; i >= 0; i--) {
+      if (
+        document.querySelectorAll("all")[i].children[0].getAttribute("n") === "1"
+      ) {
+        list.removeChild(document.querySelectorAll("all")[i]);
+      }
+    }
+  }
+
+  for (let i = 1; i <= 3; i++) {
+    bot1.children[i].onclick = function () {
+      //注意！这里不要查找class(button)！因为点击以后class就变成buttonClick了！！
+      for (let j = 1; j <= 3; j++) {
+        bot1.children[j].className = "button";
+      }
+      bot1.children[i].className = "buttonClick";
+      if (i === 1) {
+        function buttonAll() {
+          for (let i = 0; i < document.querySelectorAll("all").length; i++) {
+            document.querySelectorAll("all")[i].className = "listall";
+          }
+        }
+        buttonAll();
+      } else if (i === 2) {
+        function buttonActive() {
+          for (let i = 0; i < document.querySelectorAll("all").length; i++) {
+            if (
+              document.querySelectorAll("all")[i].children[0].getAttribute("n") === "null"
+            ) {
+              document.querySelectorAll("all")[i].className = "listall";
+            } else {
+              document.querySelectorAll("all")[i].className = "bottomDelete";
+            }
+          }
+        }
+        buttonActive();
+      } else {
+        function buttonCompleted() {
+          for (let i = 0; i < document.querySelectorAll("all").length; i++) {
+            if (
+              document.querySelectorAll("all")[i].children[0].getAttribute("n") === "1"
+            ) {
+              document.querySelectorAll("all")[i].className = "listall";
+            } else {
+              document.querySelectorAll("all")[i].className = "bottomDelete";
+            }
+          }
+        }
+        buttonCompleted();
+      }
+    };
+  }
+
 };
