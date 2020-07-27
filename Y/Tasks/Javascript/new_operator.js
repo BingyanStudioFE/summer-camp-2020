@@ -6,10 +6,10 @@
 */
 
 function New(constructor, params){
-    var args = [].slice.call(arguments);//arguments转为数组
-    var constructor = args.shift();//取出构造函数
-    var context = Object.create(constructor.prototype);//创建新对象，并将对象的原型指向构造函数
-    var result = constructor.apply(context,args); //绑定this
+    let args = [].slice.call(arguments);//arguments转为数组
+    let constructor = args.shift();//取出构造函数
+    let context = Object.create(constructor.prototype);//创建新对象，并将对象的原型指向构造函数
+    let result = constructor.apply(context,args); //绑定this
     return (typeof result === 'object' && result != null) ? result : context; 
 }
 
@@ -18,6 +18,6 @@ function Place (country, city){
     this.city = city;
 }
 
-var capital = New(Place, 'China', 'Beijing');
+let capital = New(Place, 'China', 'Beijing');
 
 console.log(capital);

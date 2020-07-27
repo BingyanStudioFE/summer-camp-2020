@@ -280,3 +280,26 @@ ajax 笔记见[Ajax.md](./Notes/Ajax.md)
 
 
 
+## DAY12
+
+###### 2:00-5:30
+
+写todolist
+
+###### 5:30-7:00
+
+吃饭
+
+###### 7:00-9:00
+
+继续写todolist
+
+###### 9:00-9:30
+
+分享
+
+###### 9:30-10:30
+
+继续todolist
+
+[实现了一些基本的功能](./Tasks/Javascript/TodoList)
