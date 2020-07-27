@@ -120,3 +120,20 @@ git和markdown的基本语法和使用
 9.41-  继续补充node知识点
 ## 2
 - node&npm*详见L/Notes/node.js,md & L/Task/node/task1*
+
+# 7.27
+
+## 1
+
+2.00-5.30 react，配置eslint（再次失败），nodejs
+
+5.30-6.00 恰饭
+
+6.00-9.00 react 
+
+## 2
+
+-  react*详见L/Notes/react.md *
+- nodejs*详见L/Notes/node.js,md*
+- bint函数用法*详见L/Notes/js,md*
+
