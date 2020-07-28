@@ -1,0 +1,61 @@
+.container{
+    display:flex;
+    justify-content: center;
+    width: 1000px;
+    margin: 50px auto;
+}
+
+.startarea{
+    width: 100px;
+    height: 100px;
+    margin-top: -350px;
+    margin-left: 835px;
+    text-align: center;
+    border-radius: 10px;
+    background-color:pink;
+    border: 2px dashed palevioletred;
+}
+
+#start-button{
+    background-color: palevioletred;
+    border-radius: 3px;
+    border: 1px double purple;
+    color: yellow
+}
+.grid {
+    width: 200px;
+    height: 400px;
+    background-color:powderblue;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid rgb(41, 140, 153);
+}
+
+.grid div{
+    height: 20px;
+    width: 20px;
+    border-radius: 5px;
+}
+
+.tetromino{
+    background-color: blue;
+}
+
+.mini-grid{
+    width: 80px;
+    height: 80px;
+    margin-top: 250px;
+    margin-left: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color:rgb(255, 251, 34);
+    border: 2px dotted rgb(250, 199, 34);
+}
+
+.mini-grid div{
+    width: 20px;
+    height: 20px; 
+    border-radius: 5px;
+}
