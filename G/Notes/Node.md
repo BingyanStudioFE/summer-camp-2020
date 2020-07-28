@@ -50,6 +50,16 @@ fs.readFile('文件路径','utf8',function(e,d){
 });
 ```
 
+### fs.createReadStream(path[, options])
+
+可读流
+
+可以通过option中的start和end值选择读取一定范围的字节
+
+### fs.stat(path[, options], callback)
+
+回调有两个参数，err和stats，能获取文件的各种信息
+
 ## HTTP模块
 
 用于搭建HTTP服务器。[中文手册](http://nodejs.cn/api/http.html)
@@ -218,3 +228,17 @@ for(var i = 0; i < arr.length; i ++) {
 }
 ```
 
+# 静态资源服务器
+
+## 状态码
+
+https://www.cnblogs.com/xiaoxiaoMrHuang/p/11068723.html
+
+- 200（成功） 服务器已成功处理了请求。通常，这表示服务器提供了请求的网页。
+- 404（未找到） 服务器找不到请求的网页。例如，对于服务器上不存在的网页经常会返回此代码。
+
+## pipe管道
+
+（读出）.pipe（写入）
+
+读写流，边读边写

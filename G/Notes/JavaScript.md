@@ -746,6 +746,26 @@ element.scrollHeight//返回自身实际的高度，不含边框，没有单位
 - 之所以这样，就是因为mouseenter不会冒泡
 - 跟mouseenter搭配鼠标离开 mouseleave  同样不会冒泡
 
+# 箭头函数
+
+```javascript
+//(参数1, 参数2, …, 参数N) => { 函数声明 }
+var f = (num1, num2) => { 
+    return num1*num2 
+};
+
+//(参数1, 参数2, …, 参数N) => 表达式（单一）
+var f = (num1, num2) => num1*num2;
+
+//单个参数括号可以省略，单一参数 => {函数声明}
+var f = num => num*num;
+
+//没有参数写空括号，() => {函数声明}
+var f = () => 'hello world';
+```
+
+**箭头函数中的this总是指向外层调用者**
+
 # Ajax
 
 ## Ajax的实现步骤
