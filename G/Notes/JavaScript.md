@@ -305,6 +305,8 @@ element.setAttribute('属性','值')
 
 element.removeAttribute('属性')
 
+.remove()也可以
+
 ## H5自定义属性
 
 **data-**
@@ -367,6 +369,8 @@ document.createElement('tagName')
 ### 添加节点
 
 parentnode.appendChild(child)，将一个节点添加到指定父节点的子节点列表末尾
+
+**appendChild不支持追加字符串的子元素，可以使用insertAdjacentHTML("位置","子元素")**
 
 parentnode.insertBefore(child, 指定元素)，将一个节点添加到父节点的指定子节点前面
 
@@ -781,7 +785,440 @@ xhr.send();
 xhr.onload=function(){
     console.log(xhr.responseText);
 }
+
+ xhr.onreadystatechange = function(){
+                //判断
+    if(xhr.readyState === 4){
+        if(xhr.status >= 200 && xhr.status < 300){
+                        //处理服务端返回的结果
+            result.innerHTML = xhr.response;
+        }
+    }
+ }
 ```
 
 **服务器端大多数情况下会以 JSON 对象作为响应数据的格式。当客户端拿到响应数据时， 要将 JSON 数据和 HTML 字符串进行拼接，然后将拼接的结果展示在页面中。**
+
+## 超时与网络异常
+
+```javascript
+const xhr = new XMLHttpRequest();
+//超时设置 2s 设置
+xhr.timeout = 2000;
+//超时回调
+xhr.ontimeout = function(){
+    alert("网络异常, 请稍后重试!!");
+}
+//网络异常回调
+xhr.onerror = function(){
+    alert("你的网络似乎出了一些问题!");
+}
+```
+
+## 取消请求
+
+.abort()
+
+## 重复请求的问题
+
+```js
+btns[0].onclick = function () {
+        //判断标识变量
+        if (isSending) x.abort(); // 如果正在发送, 则取消该请求, 创建一个新的请求
+        x = new XMLHttpRequest();
+        //修改 标识变量的值
+        isSending = true;
+        x.open("GET", "xxx");
+        x.send();
+        x.onreadystatechange = function () {
+          if (x.readyState === 4) {
+            //修改标识变量
+            isSending = false;
+          }
+        };
+      };
+```
+
+## 跨域
+
+### JSONP
+
+在网页有一些标签天生具有跨域能力，比如：img link iframe script。 JSONP 就是利用 script 标签的跨域能力来发送请求的。
+
+```javascript
+//1.动态的创建一个 script 标签 
+var script = document.createElement("script"); 
+//2.设置 script 的 src，设置回调函数 
+script.src = "http://localhost:3000/testAJAX?callback=abc"; function abc(data) { 
+    alert(data.name); 
+}; 
+//3.将 script 添加到 body 中
+document.body.appendChild(script); 
+
+
+//4.服务器中路由的处理 
+router.get("/testAJAX" , function (req , res) { 
+    console.log("收到请求"); 
+    var callback = req.query.callback; 
+    var obj = {
+        name:"xx", 
+        age:18 
+    }
+    res.send(callback+"("+JSON.stringify(obj)+")"); 
+});
+```
+
+### CORS
+
+CORS 是通过设置一个响应头来告诉浏览器，该请求允许跨域，浏览器收到该响应 以后就会对响应放行。主要是服务器端的设置
+
+```js
+router.get("/testAJAX" , function (req , res) {
+    //通过 res 来设置响应头，来允许跨域请求 
+    //res.set("Access-Control-Allow-Origin","http://127.0.0.1:3000"); 
+    res.set("Access-Control-Allow-Origin","*"); 
+    res.send("testAJAX 返回的响应"); 
+});
+```
+
+# ES6
+
+## 类
+
+### 创建类
+
+```js
+//步骤1 使用class关键字
+class People {
+  // class body
+  // 类的共有属性放到 constructor 里面
+ 	constructor(name, age) {
+ 		this.name = name;
+ 		this.age = age;
+    }//注意,方法与方法之间不需要添加逗号
+    doIt(){
+        console.log("...");
+    }
+}     
+
+//步骤2使用定义的类创建实例  注意new关键字
+var xx = new People("name","age"); 
+xx.doIt("...");
+```
+
+1. 通过class 关键字创建类, 类名我们还是习惯性定义首字母大写
+2. 类里面有个constructor 函数,可以接受传递过来的参数,同时返回实例对象
+3. constructor 函数 只要 new 生成实例时,就会自动调用这个函数, 如果我们不写这个函数,类也会自动生成这个函数
+4. 多个函数方法之间不需要添加逗号分隔
+5. 生成实例 new 不能省略
+6. 语法规范, 创建类 类名后面不要加小括号,生成实例 类名后面加小括号, 构造函数不需要加function
+
+### 类的继承
+
+```js
+// 父类
+class Father{   
+} 
+
+// 子类继承父类
+class  Son  extends Father {  
+} 
+```
+
+**super关键字**
+
+```js
+//定义了父类
+class Father {
+   constructor(x, y) {
+   this.x = x;
+   this.y = y;
+   }
+   sum() {
+   console.log(this.x + this.y);
+	}
+ }
+//子元素继承父类同时扩展减法方法
+    class Son extends Father {
+   		 constructor(x, y) {
+    		super(x, y); //使用super调用了父类中的构造函数,必须在子类this之前调用,放到this之后会报错
+            this.x = x;
+   			this.y = y;
+    	}
+        subtract() {
+  			console.log(this.x - this.y);
+  		}
+    }
+    var son = new Son(1, 2);
+    son.sum(); //结果为3
+	son.subtract();//-1
+```
+
+1. 继承中,如果实例化子类输出一个方法,先看子类有没有这个方法,如果有就先执行子类的
+2. 继承中,如果子类里面没有,就去查找父类有没有这个方法,如果有,就执行父类的这个方法(就近原则)
+3. **如果子类想要继承父类的方法,同时在自己内部扩展自己的方法,利用super 调用父类的构造函数,super 必须在子类this之前调用**
+4. 时刻注意this的指向问题,类里面的共有的属性和方法一定要加this使用.
+   1. constructor中的this指向的是new出来的实例对象 
+   2. 自定义的方法,一般也指向的new出来的实例对象
+   3. 绑定事件之后this指向的就是触发事件的事件源
+5. 在 ES6 中类没有变量提升，所以必须先定义类，才能通过类实例化对象
+
+```js
+class Star {
+    constructor(uname){
+        this.uname=uname;
+        this.btn=document.querySelector('button');
+        this.btn.onclick=this.sing;//不加()点击时调用，加()直接调用
+    }
+    sing(){
+        console.log(this.uname);//加this，不过在上面绑定了btn的情况下输出undefined，可以提前声明一个that，然后在constructor里面that=this，sing里面console.log(that.uname)
+    }
+}
+```
+
+## 构造函数和原型
+
+### 对象的三种创建方式
+
+1. 字面量方式
+
+   ```js
+   var obj = {};
+   ```
+
+2. new关键字
+
+   ```js
+   var obj = new Object();
+   ```
+
+3. 构造函数方式
+
+   ```js
+   function Person(name,age){
+     this.name = name;
+     this.age = age;
+   }
+   var obj = new Person('zs',12);
+   ```
+
+### 静态成员和实例成员
+
+#### 实例成员
+
+实例成员就是构造函数内部通过this添加的成员 如下列代码中uname age sing 就是实例成员,实例成员只能通过实例化的对象来访问
+
+#### 静态成员
+
+静态成员 在构造函数本身上添加的成员  如下列代码中 sex 就是静态成员,静态成员只能通过构造函数来访问
+
+```js
+ function Star(uname, age) {
+     this.uname = uname;
+     this.age = age;
+     this.sing = function() {
+     console.log('唱歌');
+    }
+}
+Star.sex = '男';
+var xx = new Star('xx', 18);
+console.log(xx.uname);//实例成员只能通过实例化的对象来访问
+console.log(Star.sex);//静态成员只能通过构造函数来访问
+```
+
+### 构造函数的问题
+
+浪费内存，不同的new给相同的函数开辟了不同的空间
+
+### 构造函数原型prototype
+
+构造函数通过原型分配的函数是所有对象所共享的。
+
+JavaScript 规定，每一个构造函数都有一个prototype 属性，指向另一个对象。注意这个prototype就是一个对象，这个对象的所有属性和方法，都会被构造函数所拥有。
+
+我们可以把那些不变的方法，直接定义在 prototype 对象上，这样所有对象的实例就可以共享这些方法。
+
+```js
+function Star(uname, age) {
+    this.uname = uname;
+    this.age = age;
+}
+Star.prototype.sing = function() {
+	console.log('唱歌');
+}
+var A = new Star('A', 18);
+var B = new Star('B', 19);
+A.sing();//唱歌
+B.sing();//唱歌
+console.log(A.sing===B.sing);//true
+```
+
+### 对象原型
+
+对象都会有一个属性 `__proto__` 指向构造函数的 prototype 原型对象，之所以我们对象可以使用构造函数 prototype 原型对象的属性和方法，就是因为对象有  `__proto__` 原型的存在。
+ `__proto__`对象原型和原型对象 prototype 是等价的
+ `__proto__`对象原型的意义就在于为对象的查找机制提供一个方向，或者说一条路线，但是它是一个非标准属性，因此实际开发中，不可以使用这个属性，它只是内部指向原型对象 prototype
+
+```js
+//上面代码添加：
+console.log(A.__proto__===Star.prototype);//true
+```
+
+查找规则类似类的继承，先看对象身上是否有sing方法，有则执行，如果没有，因为有`__proto__`的存在，就去构造函数原型对象prototype身上去查找sing方法
+
+### constructor构造函数
+
+对象原型（ `__proto__`）和构造函数（prototype）原型对象里面都有一个属性 constructor 属性 ，constructor 我们称为构造函数，因为它指回构造函数本身。
+constructor 主要用于记录该对象引用于哪个构造函数，它可以让原型对象重新指向原来的构造函数。
+一般情况下，对象的方法都在构造函数的原型对象中设置。如果有多个对象的方法，我们可以给原型对象采取对象形式赋值，但是这样就会覆盖构造函数原型对象原来的内容，这样修改后的原型对象 constructor  就不再指向当前构造函数了。此时，我们可以在修改后的原型对象中，添加一个 constructor 指向原来的构造函数。
+
+```js
+function Star(uname, age) {
+    this.uname = uname;
+    this.age = age;
+}
+ Star.prototype = {
+ // 如果我们修改了原来的原型对象,给原型对象赋值的是一个对象,则必须手动的利用constructor指回原来的构造函数
+   constructor: Star, // 手动设置指回原来的构造函数
+   sing: function() {
+     console.log('唱歌');
+   },
+   movie: function() {
+     console.log('电影');
+   }
+}
+```
+
+### 原型链
+
+每一个实例对象又有一个`__proto__`属性，指向的构造函数的原型对象，构造函数的原型对象也是一个对象，也有`__proto__`属性，这样一层一层往上找就形成了原型链。
+
+查找机制也是从底层实例往上查找，直到Object
+
+![](img/原型链.png)
+
+#### 原型对象中this指向
+
+构造函数中的this和原型对象的this,都指向我们new出来的实例对象
+
+#### 通过原型为数组扩展内置方法
+
+```js
+Array.prototype.sum = function() {
+   var sum = 0;
+   for (var i = 0; i < this.length; i++) {
+   sum += this[i];
+   }
+   return sum;
+ };
+ //此时数组对象中已经存在sum()方法了  可以始终 数组.sum()进行数据的求
+```
+
+## 继承
+
+### call()
+
+- call()可以调用函数
+- call()可以修改this的指向,使用call()的时候 参数一是修改后的this指向,参数2,参数3..使用逗号隔开连接
+
+```js
+ function fn(x, y) {
+     console.log(this);
+     console.log(x + y);
+}
+  var o = {
+  	name: 'andy'
+  };
+  fn.call(o, 1, 2);//调用了函数此时的this指向了对象o,若不修改，this的指向是window
+```
+
+### 子构造函数继承父构造函数中的属性
+
+```js
+ // 1. 父构造函数
+ function Father(uname, age) {
+   // this 指向父构造函数的对象实例
+   this.uname = uname;
+   this.age = age;
+ }
+  // 2 .子构造函数 
+function Son(uname, age, score) {
+  // this 指向子构造函数的对象实例
+  //3.使用call方式实现子继承父的属性
+  Father.call(this, uname, age);
+  this.score = score;
+}
+var son = new Son('xxx', 18, 100);
+console.log(son);
+```
+
+### 借用原型对象继承方法
+
+```js
+// 1. 父构造函数
+function Father(uname, age) {
+  // this 指向父构造函数的对象实例
+  this.uname = uname;
+  this.age = age;
+}
+Father.prototype.money = function() {
+  console.log(100000);
+ };
+ // 2 .子构造函数 
+  function Son(uname, age, score) {
+      // this 指向子构造函数的对象实例
+      Father.call(this, uname, age);
+      this.score = score;
+  }
+// Son.prototype = Father.prototype;  这样直接赋值会有问题,如果修改了子原型对象,父原型对象也会跟着一起变化
+  Son.prototype = new Father();
+  // 如果利用对象的形式修改了原型对象,还要利用constructor 指回原来的构造函数
+  Son.prototype.constructor = Son;
+  // 这个是子构造函数专门的方法
+  Son.prototype.exam = function() {
+    console.log('考试');
+
+  }
+  var son = new Son('xxx', 18, 100);
+  console.log(son);
+```
+
+## ES5新增方法
+
+### 数组方法
+
+#### forEach遍历数组
+
+```js
+ arr.forEach(function(value, index, array) {
+       //value:数组元素
+       //index:数组元素的索引
+       //array:当前的数组
+ })
+  //相当于数组遍历的 for循环 没有返回值
+```
+
+#### filter过滤数组
+
+```js
+  var arr = [12, 66, 4, 88, 3, 7];
+  var newArr = arr.filter(function(value, index,array) {
+  	 //value:数组元素
+     //index:数组元素的索引
+     //array:当前的数组
+     return value >= 20;
+  });
+  console.log(newArr);//[66,88] //返回值是一个新数组
+```
+
+#### some
+
+```js
+some 查找数组中是否有满足条件的元素 
+ var arr = [10, 30, 4];
+ var flag = arr.some(function(value,index,array) {
+     return value < 3;
+  });
+console.log(flag);//false返回值是布尔值,只要查找到满足条件的一个元素就立马终止循环
+```
 
