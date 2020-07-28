@@ -137,3 +137,20 @@ git和markdown的基本语法和使用
 - nodejs*详见L/Notes/node.js,md*
 - bint函数用法*详见L/Notes/js,md*
 
+# 7.27
+
+## 1
+
+2.00-6.20 react
+
+6.20-6.40 恰饭
+
+6.40-8.30 被迫经营，给学弟解决志愿问题
+8.30-9.00 听分享
+
+## 2
+
+-  react*详见L/Notes/react.md &L/Tasks/node/ex*
+-  尝试配置webpack-失败
+ 
+
