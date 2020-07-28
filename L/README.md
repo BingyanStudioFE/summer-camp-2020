@@ -89,7 +89,7 @@ git和markdown的基本语法和使用
 ### 2
 - date对象，math，正则表达式，DOM知识补充，包装，添加补充函数的部分知识点*详见L/task/js&L/notes/js*
 
-# 7.22
+# 7.23
 ### 1
 2.00-6.20 oppo及lunbotu的编写练习
 6.20-6.40 吃饭
@@ -99,3 +99,41 @@ git和markdown的基本语法和使用
 - 轮播图*详见L/Task/js/lunbotu*
 - oppo网页完善*L/Task/html&css/oppo*
 - jsdom练习及笔记*L/Task/js/dom ex&添加删除相关操作  L/Notes/js*
+
+# 7.24
+## 1
+2.00-6.48 AJAX 异步 回调函数 es6  js补充知识
+
+6.48-7.20恰饭
+
+7.20-9.00 js补充知识 http
+
+## 2
+- AJAX*详见L/notes/AJAX&l/task/js/ajaxn*
+- 异步回调函数 es6 js补充*详见L/notes/js*
+- http*L/notes/HTTP*
+# 7.25
+## 1
+2.00-6.00 npm，node安装调试和知识点
+6.00-6.30 恰饭
+6.30-9.41 node知识点做task1，尝试做task2（没成功）
+9.41-  继续补充node知识点
+## 2
+- node&npm*详见L/Notes/node.js,md & L/Task/node/task1*
+
+# 7.27
+
+## 1
+
+2.00-5.30 react，配置eslint（再次失败），nodejs
+
+5.30-6.00 恰饭
+
+6.00-9.00 react 
+
+## 2
+
+-  react*详见L/Notes/react.md *
+- nodejs*详见L/Notes/node.js,md*
+- bint函数用法*详见L/Notes/js,md*
+
