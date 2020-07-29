@@ -1214,11 +1214,411 @@ Father.prototype.money = function() {
 #### some
 
 ```js
-some 查找数组中是否有满足条件的元素 
+//some 查找数组中是否有满足条件的元素 
  var arr = [10, 30, 4];
  var flag = arr.some(function(value,index,array) {
      return value < 3;
   });
 console.log(flag);//false返回值是布尔值,只要查找到满足条件的一个元素就立马终止循环
+```
+
+#### some和forEach区别
+
+- 如果查询数组中唯一的元素, 用some方法更合适,在some 里面 遇到 return true 就是终止遍历 迭代效率更高
+- 在forEach 里面 return 不会终止迭代
+
+#### trim方法去除字符串两端的空格
+
+```js
+var str = '   hello   '
+console.log(str.trim()）  //hello 去除两端空格
+var str1 = '   he l l o   '
+console.log(str.trim()）  //he l l o  去除两端空格
+```
+
+#### Object.keys获取对象的属性名
+
+```js
+ var obj = {
+     id: 1,
+     pname: '小米',
+     price: 1999,
+     num: 2000
+};
+var result = Object.keys(obj)
+console.log(result)//[id，pname,price,num]
+```
+
+#### Object.defineProperty
+
+Object.defineProperty设置或修改对象中的属性
+
+```js
+Object.defineProperty(对象，修改或新增的属性名，{
+		value:修改或新增的属性的值,
+		writable:true/false,//如果值为false 不允许修改这个属性值
+		enumerable: false,//enumerable 如果值为false 则不允许遍历
+        configurable: false  //configurable 如果为false 则不允许删除这个属性 属性是否可以被删除或是否可以再次修改特性
+})	
+```
+
+## 函数的定义、调用与this指向总结
+
+### 函数的定义方式
+
+```js
+//方式1 函数声明方式 function 关键字 (命名函数)
+function fn(){}
+
+//方式2 函数表达式(匿名函数)
+var fn = function(){}
+
+//方式3 new Function() 
+var fn = new Function('参数1','参数2'..., '函数体')
+//例如：
+var f = new Function('a', 'b', 'console.log(a + b)');
+f(1, 2);
+//Function 里面参数都必须是字符串格式.第三种方式执行效率低，也不方便书写，因此较少使用.所有函数都是 Function 的实例(对象),函数也属于对象
+```
+
+### 函数的调用与this指向
+
+```js
+//1. 普通函数
+function fn() {
+	console.log('hi');
+    console.log(this);//指向window
+}
+fn(); 
+
+//2. 对象的方法
+var o = {
+  sayHi: function() {
+  	console.log('hi');
+    console.log(this);//指向对象o
+  }
+}
+o.sayHi();
+
+//3. 构造函数
+function Star() {
+    console.log(this);
+    //指向实例对象xx，原型对象里面的this也指向xx实例对象
+};
+var xx=new Star();
+
+//4. 绑定事件函数
+btn.onclick = function() {
+    console.log(this);//指向btn
+};//点击即调用
+
+//5. 定时器函数
+setInterval(function() {
+    console.log(this);//window
+}, 1000);//每一秒调用一次
+
+//6. 立即执行函数(自调用函数)
+(function() {
+	console.log('hi');
+    console.log(this);//window
+})();
+```
+
+### 改变函数内部 this 指向
+
+#### call
+
+看继承那里，经常在继承时使用
+
+#### apply
+
+apply() 方法调用一个函数。简单理解为调用函数的方式，但是它可以改变函数的 this 指向，传递的参数是数组
+
+应用场景:  经常跟数组有关系
+
+```js
+var o = {
+	name: 'andy'
+}
+ function fn(a, b) {
+      console.log(this);
+      console.log(a+b)
+};
+fn()// 此时的this指向的是window 运行结果为3
+fn.apply(o,[1,2])//此时的this指向的是对象o,参数使用数组传递 运行结果为3
+```
+
+```js
+//用apply与Math结合求数组中最大值
+var arr=[11,22,33,44];
+var max=Math.max.apply(Math,arr);
+```
+
+#### bind
+
+bind() 方法不会调用函数,但是能改变函数内部this 指向,返回的是原函数改变this之后产生的新函数。如果只是想改变 this 指向，并且不想立即调用这个函数的时候，可以使用bind
+
+应用场景:不调用函数,但是还想改变this指向
+
+```js
+ var o = {
+ name: 'andy'
+ };
+
+function fn(a, b) {
+	console.log(this);
+	console.log(a + b);
+};
+var f = fn.bind(o, 1, 2); //此处的f是bind返回的新函数
+f();//调用新函数  this指向的是对象o 参数使用逗号隔开
+```
+
+```js
+//bind改变定时器内的this指向
+var btn = document.querySelector('button');
+btn.onclick = function(){
+    this.disabled = true;//this指向btn按钮
+    setTimeOut(function(){
+        this.disabled = false;
+    }.bind(this),3000)
+}
+//其他方法如在setTimeOut外部设置var that=this，或直接写btn
+```
+
+
+
+#### call、apply、bind三者的异同
+
+- 共同点 : 都可以改变this指向
+- 不同点:
+  - call 和 apply  会调用函数, 并且改变函数内部this指向.
+  - call 和 apply传递的参数不一样,call传递参数使用逗号隔开,apply使用数组传递
+  - bind  不会调用函数, 可以改变函数内部this指向.
+
+
+- 应用场景
+  1. call 经常做继承. 
+  2. apply经常跟数组有关系.  比如借助于数学对象实现数组最大值最小值
+  3. bind  不调用函数,但是还想改变this指向. 比如改变定时器内部的this指向
+
+## 严格模式
+
+[严格模式要求参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
+
+### 开启严格模式
+
+严格模式可以应用到整个脚本或个别函数中。因此在使用时，我们可以将严格模式分为为脚本开启严格模式和为函数开启严格模式两种情况。
+
+- 情况一 :为脚本开启严格模式
+
+  有的 script 脚本是严格模式，有的 script 脚本是正常模式，这样不利于文件合并，所以可以将整个脚本文件放在一个立即执行的匿名函数之中。这样独立创建一个作用域而不影响其他script 脚本文件。
+
+  ```js
+  (function (){
+    //在当前的这个自调用函数中有开启严格模式，当前函数之外还是普通模式
+  　　　　"use strict";
+         var num = 10;
+  　　　　function fn() {}
+  })();
+  //或者 
+  <script>
+    　"use strict"; //当前script标签开启了严格模式
+  </script>
+  <script>
+    			//当前script标签未开启严格模式
+  </script>
+  ```
+
+- 情况二: 为函数开启严格模式
+
+  要给某个函数开启严格模式，需要把“use strict”;  (或 'use strict'; ) 声明放在函数体所有语句之前。
+
+```js
+function fn(){
+　　"use strict";
+　　return "123";
+} 
+//当前fn函数开启了严格模式
+```
+
+### 严格模式中的变化
+
+```js
+'use strict'
+num = 10 
+console.log(num)//严格模式后使用未声明的变量报错
+--------------------------------------------------------------------------------
+var num2 = 1;
+delete num2;//严格模式不允许删除变量
+--------------------------------------------------------------------------------
+function fn() {
+ console.log(this); // 严格模式下全局作用域中函数中的 this 是 undefined
+}
+fn();  
+---------------------------------------------------------------------------------
+function Star() {
+	 this.sex = '男';
+}
+// Star();严格模式下,如果构造函数不加new调用, this 指向的是undefined 如果给他赋值则会报错.
+var ldh = new Star();
+console.log(ldh.sex);
+----------------------------------------------------------------------------------
+setTimeout(function() {
+  console.log(this); //严格模式下，定时器 this 还是指向 window
+}, 2000);  
+```
+
+## 高阶函数
+
+高阶函数是对其他函数进行操作的函数，它接收函数作为参数或将函数作为返回值输出。
+
+```html
+<script>
+    function fn(callback){
+        callback&&callback();
+    }
+    fn(function(){alert('hi')}
+</script>
+
+
+<script>
+    function fn(){
+        return function() {}
+    }
+    fn();
+</script>
+```
+
+## 闭包
+
+闭包（closure）指有权访问另一个函数作用域中变量的函数。简单理解就是 ，一个作用域可以访问另外一个函数内部的局部变量。
+
+作用：延伸变量的作用范围。
+
+```js
+function fn1(){ // fn1 就是闭包函数
+    var num = 10;
+    function fn2(){
+        console.log(num); // 10
+    }
+    fn2();
+}
+fn1();
+
+//或者
+function fn1(){ // fn1 就是闭包函数
+    var num = 10;
+    function fn2(){
+        console.log(num); // 10
+    }
+    return fn2;
+}
+var fun = fn1();
+fun();
+```
+
+### 使用闭包获取循环中的i
+
+```js
+for (var i = 0; i < lis.length; i++) {
+// 利用for循环创建了4个立即执行函数
+// 立即执行函数也成为小闭包因为立即执行函数里面的任何一个函数都可以使用它的i这变量
+	(function(i) {
+	    lis[i].onclick = function() {
+    	  console.log(i);
+   		 }
+	 })(i);
+    
+    //闭包应用-3秒钟之后,打印所有li元素的内容
+     (function(i) {
+     	setTimeout(function() {
+    		 console.log(lis[i].innerHTML);
+    	 }, 3000)
+     })(i);
+}
+```
+
+### 闭包思考题
+
+```js
+//无闭包
+var name = "The Window";
+   var object = {
+     name: "My Object",
+     getNameFunc: function() {
+     	return function() {
+     		return this.name;
+     	};
+   	}
+ };
+console.log(object.getNameFunc()())
+
+/*相当于
+var fn = object.getNameFunc()()
+即 fn = function(){
+	   return this.name
+   }
+   fn();
+function(){this}()类似于立即执行函数，立即执行函数的this指向window
+最终输出The Window */
+```
+
+```js
+//有闭包
+var name = "The Window";　　
+  var object = {　　　　
+    name: "My Object",
+    getNameFunc: function() {
+    	var that = this;
+    	return function() {
+    		return that.name;
+    	};
+   }
+};
+console.log(object.getNameFunc()())//My Object
+```
+
+## 递归
+
+```js
+//利用递归遍历数据
+var data = [{
+    id: 1,
+    name: '家电',
+    goods: [{
+        id: 11,
+        gname: '冰箱',
+        goods: [{
+            id: 111,
+            gname: '海尔'
+        }, {
+            id: 112,
+            gname: '美的'
+        }]
+    }, {
+        id: 12,
+        gname: '洗衣机'
+    }]
+}, {
+    id: 2,
+    name: '服饰'
+}];
+//1.利用 forEach 去遍历里面的每一个对象
+ function getID(json, id) {
+   var o = {};
+   json.forEach(function(item) {
+     // console.log(item); // 2个数组元素
+     if (item.id == id) {
+       // console.log(item);
+       o = item;
+       return o;
+       // 2. 我们想要得里层的数据 11 12 可以利用递归函数
+       // 里面应该有goods这个数组并且数组的长度不为 0 
+     } else if (item.goods && item.goods.length > 0) {
+       o = getID(item.goods, id);
+     }
+   });
+   return o;
+}
 ```
 
