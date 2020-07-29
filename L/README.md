@@ -137,7 +137,7 @@ git和markdown的基本语法和使用
 - nodejs*详见L/Notes/node.js,md*
 - bint函数用法*详见L/Notes/js,md*
 
-# 7.27
+# 7.28
 
 ## 1
 
@@ -152,5 +152,14 @@ git和markdown的基本语法和使用
 
 -  react*详见L/Notes/react.md &L/Tasks/node/ex*
 -  尝试配置webpack-失败
- 
 
+# 7.29
+
+## 1
+- 2.00-5.40 react知识点笔记补充，实战教程练习
+- 5.40-6.10 恰饭
+- 6.10-8.30 配置环境
+## 2
+react知识点笔记*详见L/Notes/react.md *
+[react实战](https://codepen.io/free-lc/pen/NWxVQWq)
+配置文件和练习*C:\git\free\summer-camp-2020\L\Task\my-app*
