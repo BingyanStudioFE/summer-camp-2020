@@ -750,26 +750,6 @@ element.scrollHeight//返回自身实际的高度，不含边框，没有单位
 - 之所以这样，就是因为mouseenter不会冒泡
 - 跟mouseenter搭配鼠标离开 mouseleave  同样不会冒泡
 
-# 箭头函数
-
-```javascript
-//(参数1, 参数2, …, 参数N) => { 函数声明 }
-var f = (num1, num2) => { 
-    return num1*num2 
-};
-
-//(参数1, 参数2, …, 参数N) => 表达式（单一）
-var f = (num1, num2) => num1*num2;
-
-//单个参数括号可以省略，单一参数 => {函数声明}
-var f = num => num*num;
-
-//没有参数写空括号，() => {函数声明}
-var f = () => 'hello world';
-```
-
-**箭头函数中的this总是指向外层调用者**
-
 # Ajax
 
 ## Ajax的实现步骤
@@ -881,11 +861,9 @@ router.get("/testAJAX" , function (req , res) {
 });
 ```
 
-# ES6
+# 类
 
-## 类
-
-### 创建类
+## 创建类
 
 ```js
 //步骤1 使用class关键字
@@ -913,7 +891,7 @@ xx.doIt("...");
 5. 生成实例 new 不能省略
 6. 语法规范, 创建类 类名后面不要加小括号,生成实例 类名后面加小括号, 构造函数不需要加function
 
-### 类的继承
+## 类的继承
 
 ```js
 // 父类
@@ -976,9 +954,9 @@ class Star {
 }
 ```
 
-## 构造函数和原型
+# 构造函数和原型
 
-### 对象的三种创建方式
+## 对象的三种创建方式
 
 1. 字面量方式
 
@@ -1002,13 +980,13 @@ class Star {
    var obj = new Person('zs',12);
    ```
 
-### 静态成员和实例成员
+## 静态成员和实例成员
 
-#### 实例成员
+### 实例成员
 
 实例成员就是构造函数内部通过this添加的成员 如下列代码中uname age sing 就是实例成员,实例成员只能通过实例化的对象来访问
 
-#### 静态成员
+### 静态成员
 
 静态成员 在构造函数本身上添加的成员  如下列代码中 sex 就是静态成员,静态成员只能通过构造函数来访问
 
@@ -1026,11 +1004,11 @@ console.log(xx.uname);//实例成员只能通过实例化的对象来访问
 console.log(Star.sex);//静态成员只能通过构造函数来访问
 ```
 
-### 构造函数的问题
+## 构造函数的问题
 
 浪费内存，不同的new给相同的函数开辟了不同的空间
 
-### 构造函数原型prototype
+## 构造函数原型prototype
 
 构造函数通过原型分配的函数是所有对象所共享的。
 
@@ -1053,7 +1031,7 @@ B.sing();//唱歌
 console.log(A.sing===B.sing);//true
 ```
 
-### 对象原型
+## 对象原型
 
 对象都会有一个属性 `__proto__` 指向构造函数的 prototype 原型对象，之所以我们对象可以使用构造函数 prototype 原型对象的属性和方法，就是因为对象有  `__proto__` 原型的存在。
  `__proto__`对象原型和原型对象 prototype 是等价的
@@ -1066,7 +1044,7 @@ console.log(A.__proto__===Star.prototype);//true
 
 查找规则类似类的继承，先看对象身上是否有sing方法，有则执行，如果没有，因为有`__proto__`的存在，就去构造函数原型对象prototype身上去查找sing方法
 
-### constructor构造函数
+## constructor构造函数
 
 对象原型（ `__proto__`）和构造函数（prototype）原型对象里面都有一个属性 constructor 属性 ，constructor 我们称为构造函数，因为它指回构造函数本身。
 constructor 主要用于记录该对象引用于哪个构造函数，它可以让原型对象重新指向原来的构造函数。
@@ -1089,7 +1067,7 @@ function Star(uname, age) {
 }
 ```
 
-### 原型链
+## 原型链
 
 每一个实例对象又有一个`__proto__`属性，指向的构造函数的原型对象，构造函数的原型对象也是一个对象，也有`__proto__`属性，这样一层一层往上找就形成了原型链。
 
@@ -1097,11 +1075,11 @@ function Star(uname, age) {
 
 ![](img/原型链.png)
 
-#### 原型对象中this指向
+### 原型对象中this指向
 
 构造函数中的this和原型对象的this,都指向我们new出来的实例对象
 
-#### 通过原型为数组扩展内置方法
+### 通过原型为数组扩展内置方法
 
 ```js
 Array.prototype.sum = function() {
@@ -1114,9 +1092,9 @@ Array.prototype.sum = function() {
  //此时数组对象中已经存在sum()方法了  可以始终 数组.sum()进行数据的求
 ```
 
-## 继承
+# 继承
 
-### call()
+## call()
 
 - call()可以调用函数
 - call()可以修改this的指向,使用call()的时候 参数一是修改后的this指向,参数2,参数3..使用逗号隔开连接
@@ -1132,7 +1110,7 @@ Array.prototype.sum = function() {
   fn.call(o, 1, 2);//调用了函数此时的this指向了对象o,若不修改，this的指向是window
 ```
 
-### 子构造函数继承父构造函数中的属性
+## 子构造函数继承父构造函数中的属性
 
 ```js
  // 1. 父构造函数
@@ -1152,7 +1130,7 @@ var son = new Son('xxx', 18, 100);
 console.log(son);
 ```
 
-### 借用原型对象继承方法
+## 借用原型对象继承方法
 
 ```js
 // 1. 父构造函数
@@ -1183,11 +1161,11 @@ Father.prototype.money = function() {
   console.log(son);
 ```
 
-## ES5新增方法
+# ES5新增方法
 
-### 数组方法
+## 数组方法
 
-#### forEach遍历数组
+### forEach遍历数组
 
 ```js
  arr.forEach(function(value, index, array) {
@@ -1198,7 +1176,7 @@ Father.prototype.money = function() {
   //相当于数组遍历的 for循环 没有返回值
 ```
 
-#### filter过滤数组
+### filter过滤数组
 
 ```js
   var arr = [12, 66, 4, 88, 3, 7];
@@ -1211,7 +1189,7 @@ Father.prototype.money = function() {
   console.log(newArr);//[66,88] //返回值是一个新数组
 ```
 
-#### some
+### some
 
 ```js
 //some 查找数组中是否有满足条件的元素 
@@ -1222,12 +1200,12 @@ Father.prototype.money = function() {
 console.log(flag);//false返回值是布尔值,只要查找到满足条件的一个元素就立马终止循环
 ```
 
-#### some和forEach区别
+### some和forEach区别
 
 - 如果查询数组中唯一的元素, 用some方法更合适,在some 里面 遇到 return true 就是终止遍历 迭代效率更高
 - 在forEach 里面 return 不会终止迭代
 
-#### trim方法去除字符串两端的空格
+### trim方法去除字符串两端的空格
 
 ```js
 var str = '   hello   '
@@ -1236,7 +1214,7 @@ var str1 = '   he l l o   '
 console.log(str.trim()）  //he l l o  去除两端空格
 ```
 
-#### Object.keys获取对象的属性名
+### Object.keys获取对象的属性名
 
 ```js
  var obj = {
@@ -1249,7 +1227,7 @@ var result = Object.keys(obj)
 console.log(result)//[id，pname,price,num]
 ```
 
-#### Object.defineProperty
+### Object.defineProperty
 
 Object.defineProperty设置或修改对象中的属性
 
@@ -1262,9 +1240,9 @@ Object.defineProperty(对象，修改或新增的属性名，{
 })	
 ```
 
-## 函数的定义、调用与this指向总结
+# 函数的定义、调用与this指向总结
 
-### 函数的定义方式
+## 函数的定义方式
 
 ```js
 //方式1 函数声明方式 function 关键字 (命名函数)
@@ -1281,7 +1259,7 @@ f(1, 2);
 //Function 里面参数都必须是字符串格式.第三种方式执行效率低，也不方便书写，因此较少使用.所有函数都是 Function 的实例(对象),函数也属于对象
 ```
 
-### 函数的调用与this指向
+## 函数的调用与this指向
 
 ```js
 //1. 普通函数
@@ -1324,13 +1302,13 @@ setInterval(function() {
 })();
 ```
 
-### 改变函数内部 this 指向
+## 改变函数内部 this 指向
 
-#### call
+### call
 
 看继承那里，经常在继承时使用
 
-#### apply
+### apply
 
 apply() 方法调用一个函数。简单理解为调用函数的方式，但是它可以改变函数的 this 指向，传递的参数是数组
 
@@ -1354,7 +1332,7 @@ var arr=[11,22,33,44];
 var max=Math.max.apply(Math,arr);
 ```
 
-#### bind
+### bind
 
 bind() 方法不会调用函数,但是能改变函数内部this 指向,返回的是原函数改变this之后产生的新函数。如果只是想改变 this 指向，并且不想立即调用这个函数的时候，可以使用bind
 
@@ -1387,7 +1365,7 @@ btn.onclick = function(){
 
 
 
-#### call、apply、bind三者的异同
+### call、apply、bind三者的异同
 
 - 共同点 : 都可以改变this指向
 - 不同点:
@@ -1401,11 +1379,11 @@ btn.onclick = function(){
   2. apply经常跟数组有关系.  比如借助于数学对象实现数组最大值最小值
   3. bind  不调用函数,但是还想改变this指向. 比如改变定时器内部的this指向
 
-## 严格模式
+# 严格模式
 
 [严格模式要求参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Strict_mode)
 
-### 开启严格模式
+## 开启严格模式
 
 严格模式可以应用到整个脚本或个别函数中。因此在使用时，我们可以将严格模式分为为脚本开启严格模式和为函数开启严格模式两种情况。
 
@@ -1441,7 +1419,7 @@ function fn(){
 //当前fn函数开启了严格模式
 ```
 
-### 严格模式中的变化
+## 严格模式中的变化
 
 ```js
 'use strict'
@@ -1468,7 +1446,7 @@ setTimeout(function() {
 }, 2000);  
 ```
 
-## 高阶函数
+# 高阶函数
 
 高阶函数是对其他函数进行操作的函数，它接收函数作为参数或将函数作为返回值输出。
 
@@ -1489,7 +1467,7 @@ setTimeout(function() {
 </script>
 ```
 
-## 闭包
+# 闭包
 
 闭包（closure）指有权访问另一个函数作用域中变量的函数。简单理解就是 ，一个作用域可以访问另外一个函数内部的局部变量。
 
@@ -1517,7 +1495,7 @@ var fun = fn1();
 fun();
 ```
 
-### 使用闭包获取循环中的i
+## 使用闭包获取循环中的i
 
 ```js
 for (var i = 0; i < lis.length; i++) {
@@ -1538,7 +1516,7 @@ for (var i = 0; i < lis.length; i++) {
 }
 ```
 
-### 闭包思考题
+## 闭包思考题
 
 ```js
 //无闭包
@@ -1578,7 +1556,7 @@ var name = "The Window";　　
 console.log(object.getNameFunc()())//My Object
 ```
 
-## 递归
+# 递归
 
 ```js
 //利用递归遍历数据
@@ -1620,5 +1598,611 @@ var data = [{
    });
    return o;
 }
+```
+
+# 浅拷贝与深拷贝
+
+```js
+//浅拷贝只拷贝一层，更深层次对象级别的是引用地址
+var obj = {
+    id:1,
+    uname:'andy',
+    info:{
+        age:18
+    }
+}
+var o = {};
+for(var k in obj){
+    //k是属性名，obj[k]是属性值
+    o[k]=obj[k];
+}
+console.log(o);
+//如果修改o.info.age，obj中的age也会随着改变
+
+//Object.assign(target,...source)实现浅拷贝
+Object.assign(o,obj);
+```
+
+```js
+//深拷贝，全部都拷贝
+var obj = {
+    id:1,
+    uname:'andy',
+    info:{
+        age:18
+    }
+    like:['eating','sleeping']
+}
+var o={};
+//封装函数
+function deepCopy(newObj,oldObj){
+    for(var k in oldObj){
+        var item = oldObj[k];
+        //判断属性值的数据类型
+        if(item instanceof Array){	//判断数组
+            newObj[k]=[];
+            deepCopy(newObj[k],item);
+        } else if(item instanceof Object){	//判断对象
+            newObj[k]={};
+            deepCopy(newObj[k],item);
+        }else{
+            newObj[k]=item;
+        }
+    }
+}
+
+deepCopy(o,obj);
+//修改o中的对象不会影响obj
+```
+
+# 正则表达式
+
+## 正则表达式的创建
+
+方式一：通过调用RegExp对象的构造函数创建 
+
+```js
+var regexp = new RegExp(/123/);
+console.log(regexp);
+```
+
+方式二：利用字面量创建 正则表达式
+
+```js
+ var rg = /123/;
+```
+
+## 测试正则表达式
+
+test() 正则对象方法，用于检测字符串是否符合该规则，该对象会返回 true 或 false，其参数是测试字符串。
+
+```js
+var rg = /123/;
+console.log(rg.test(123));//匹配字符中是否出现123  出现结果为true
+console.log(rg.test('abc'));//未出现123结果为false
+```
+
+## 正则表达式的组成
+
+一个正则表达式可以由简单的字符构成，比如 /abc/，也可以是简单和特殊字符的组合，比如 /ab*c/ 。其中特殊字符也被称为元字符，在正则表达式中是具有特殊意义的专用符号，如 ^ 、$ 、+ 等。
+
+特殊字符非常多，可以参考： 
+
+[MDN](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions)
+
+### 边界符
+
+正则表达式中的边界符（位置符）用来提示字符所处的位置，主要有两个字符
+
+| 边界符 | 说明                           |
+| ------ | ------------------------------ |
+| ^      | 表示匹配行首的文本（以谁开始） |
+| $      | 表示匹配行尾的文本（以谁结束） |
+
+如果 ^和 $ 在一起，表示必须是精确匹配。
+
+```js
+var rg = /abc/; // 正则表达式里面不需要加引号 不管是数字型还是字符串型
+// /abc/ 只要包含有abc这个字符串返回的都是true
+console.log(rg.test('abc'));
+console.log(rg.test('abcd'));
+console.log(rg.test('aabcd'));
+console.log('---------------------------');
+var reg = /^abc/;
+console.log(reg.test('abc')); // true
+console.log(reg.test('abcd')); // true
+console.log(reg.test('aabcd')); // false
+console.log('---------------------------');
+var reg1 = /^abc$/; // 精确匹配 要求必须是 abc字符串才符合规范
+console.log(reg1.test('abc')); // true
+console.log(reg1.test('abcd')); // false
+console.log(reg1.test('aabcd')); // false
+console.log(reg1.test('abcabc')); // false
+```
+
+### 字符类
+
+字符类表示有一系列字符可供选择，只要匹配其中一个就可以了。所有可供选择的字符都放在方括号内。
+
+#### []方括号
+
+表示有一系列字符可供选择，只要匹配其中一个就可以了
+
+```js
+var rg = /[abc]/; // 只要包含有a 或者 包含有b 或者包含有c 都返回为true
+console.log(rg.test('andy'));//true
+console.log(rg.test('baby'));//true
+console.log(rg.test('color'));//true
+console.log(rg.test('red'));//false
+var rg1 = /^[abc]$/; // 三选一 只有是a 或者是 b  或者是c 这三个字母才返回 true
+console.log(rg1.test('aa'));//false
+console.log(rg1.test('a'));//true
+console.log(rg1.test('b'));//true
+console.log(rg1.test('c'));//true
+console.log(rg1.test('abc'));//false
+----------------------------------------------------------------------------------
+var reg = /^[a-z]$/ //26个英文字母任何一个字母返回 true  - 表示的是a 到z 的范围  
+console.log(reg.test('a'));//true
+console.log(reg.test('z'));//true
+console.log(reg.test('A'));//false
+-----------------------------------------------------------------------------------
+//字符组合
+var reg1 = /^[a-zA-Z0-9]$/; // 26个英文字母(大写和小写都可以)任何一个字母返回 true  
+------------------------------------------------------------------------------------
+//取反 方括号内部加上 ^ 表示取反，只要包含方括号内的字符，都返回 false 。
+var reg2 = /^[^a-zA-Z0-9]$/;
+console.log(reg2.test('a'));//false
+console.log(reg2.test('B'));//false
+console.log(reg2.test(8));//false
+console.log(reg2.test('!'));//true
+```
+
+#### 量词符
+
+量词符用来设定某个模式出现的次数。
+
+| 量词  | 说明            |
+| ----- | --------------- |
+| *     | 重复0次或更多次 |
+| +     | 重复1次或更多次 |
+| ?     | 重复0次或1次    |
+| {n}   | 重复n次         |
+| {n,}  | 重复n次或更多次 |
+| {n,m} | 重复n到m次      |
+
+```js
+var reg = /^a*$/;
+var reg = /^a+$/;
+var reg = /^a?$/;
+var reg = /^a{3}$/;
+var reg = /^a{3,}$/;
+var reg = /^a{3,5}$/;
+
+var reg = /^abc{3}$/;//只有abccc才是true
+```
+
+### 预定义类
+
+![](img\预定义类.png)
+
+## 正则替换replace
+
+replace() 方法可以实现替换字符串操作，用来替换的参数可以是一个字符串或是一个正则表达式。
+
+```js
+var str = 'andy和red';
+var newStr = str.replace('andy', 'baby');
+console.log(newStr)//baby和red
+//等同于 此处的andy可以写在正则表达式内
+var newStr2 = str.replace(/andy/, 'baby');
+console.log(newStr2)//baby和red
+//全部替换
+var str = 'abcabc'
+var nStr = str.replace(/a/,'哈哈')
+console.log(nStr) //哈哈bcabc
+//全部替换g
+var nStr = str.replace(/a/a,'哈哈')
+console.log(nStr) //哈哈bc哈哈bc
+//忽略大小写i
+var str = 'aAbcAba';
+var newStr = str.replace(/a/gi,'哈哈')//"哈哈哈哈bc哈哈b哈哈"
+```
+
+**案例:过滤敏感词汇**
+
+```js
+<textarea name="" id="message"></textarea> <button>提交</button>
+<div></div>
+<script>
+    var text = document.querySelector('textarea');
+    var btn = document.querySelector('button');
+    var div = document.querySelector('div');
+    btn.onclick = function() {
+    	div.innerHTML = text.value.replace(/激情|gay/g, '**');
+    }
+</script>
+```
+
+# let
+
+## 特点
+
+**let声明的变量只在所处于的块级有效**
+
+```javascript
+ if (true) { 
+     let a = 10;
+ }
+console.log(a) // a is not defined
+```
+
+**注意：**使用let关键字声明的变量才具有块级作用域，使用var声明的变量不具备块级作用域特性。
+
+**不存在变量提升**
+
+```javascript
+console.log(a); // a is not defined 
+let a = 20;
+```
+
+**暂时性死区**
+
+利用let声明的变量会绑定在这个块级作用域，不会受外界的影响
+
+```js
+ var tmp = 123;
+ if (true) { 
+     tmp = 'abc';
+     let tmp; 
+ } 
+```
+
+## let与var
+
+```js
+ var arr = [];
+ for (var i = 0; i < 2; i++) {
+     arr[i] = function () {
+         console.log(i); 
+     }
+ }
+ arr[0]();//2
+ arr[1]();//2
+```
+
+```js
+ let arr = [];
+ for (let i = 0; i < 2; i++) {
+     arr[i] = function () {
+         console.log(i); 
+     }
+ }
+ arr[0]();//0
+ arr[1]();//1
+```
+
+## 解构赋值
+
+- 解构赋值就是把数据结构分解，然后给变量进行赋值
+- 如果结构不成功，变量跟数值个数不匹配的时候，变量的值为undefined
+- 数组解构用中括号包裹，多个变量用逗号隔开，对象解构用花括号包裹，多个变量用逗号隔开
+- 利用解构赋值能够让我们方便的去取对象中的属性跟方法
+
+```js
+//数组 
+let [a, b, c] = [1, 2, 3];
+ console.log(a)//1
+ console.log(b)//2
+ console.log(c)//3
+//如果解构不成功，变量的值为undefined
+```
+
+```js
+//对象
+ let person = { name: 'zhangsan', age: 20 }; 
+ let { name, age } = person;
+ console.log(name); // 'zhangsan' 
+ console.log(age); // 20
+
+ let {name: myName, age: myAge} = person; // myName myAge 属于别名
+ console.log(myName); // 'zhangsan' 
+ console.log(myAge); // 20
+```
+
+# const
+
+声明常量，常量就是值（内存地址）不能变化的量
+
+## 特点
+
+**具有块级作用域**
+
+```javascript
+ if (true) { 
+     const a = 10;
+ }
+console.log(a) // a is not defined
+```
+
+**声明常量时必须赋值**
+
+```javascript
+const PI; // Missing initializer in const declaration
+```
+
+**常量赋值后，值不能修改**
+
+```javascript
+const PI = 3.14;
+PI = 100; // Assignment to constant variable.
+
+const ary = [100, 200];
+ary[0] = 'a';
+ary[1] = 'b';
+console.log(ary); // ['a', 'b']; 
+ary = ['a', 'b']; // Assignment to constant variable.
+```
+
+# 箭头函数
+
+```javascript
+//(参数1, 参数2, …, 参数N) => { 函数声明 }
+var f = (num1, num2) => { 
+    return num1*num2 
+};
+
+//(参数1, 参数2, …, 参数N) => 表达式（单一）
+var f = (num1, num2) => num1*num2;
+
+//单个参数括号可以省略，单一参数 => {函数声明}
+var f = num => num*num;
+
+//没有参数写空括号，() => {函数声明}
+var f = () => 'hello world';
+```
+
+**箭头函数中的this总是指向外层调用者**
+
+```js
+var age = 100;
+
+var obj = {
+	age: 20,
+	say: () => {
+		alert(this.age)
+	}
+}
+
+obj.say();//100
+//箭头函数this指向的是被声明的作用域里面，而对象没有作用域的，所以箭头函数虽然在对象中被定义，但是this指向的是全局作用域
+```
+
+# 剩余参数
+
+剩余参数语法允许我们将一个不定数量的参数表示为一个数组，不定参数定义方式，这种方式很方便的去声明不知道参数情况下的一个函数
+
+```javascript
+function sum (first, ...args) {
+     console.log(first); // 10
+     console.log(args); // [20, 30] 
+ }
+ sum(10, 20, 30)
+
+```
+
+**剩余参数和解构配合使用**
+
+```javascript
+let students = ['wangwu', 'zhangsan', 'lisi'];
+let [s1, ...s2] = students; 
+console.log(s1);  // 'wangwu' 
+console.log(s2);  // ['zhangsan', 'lisi']
+
+```
+
+# ES6 的内置对象扩展
+
+## Array
+
+### 扩展运算符（展开语法）
+
+扩展运算符可以将数组或者对象转为用逗号分隔的参数序列
+
+```javascript
+ let ary = [1, 2, 3];
+ //...ary  : 1, 2, 3
+ console.log(...ary);    // 1 2 3,相当于下面的代码
+ console.log(1,2,3);
+```
+
+**扩展运算符可以应用于合并数组**
+
+```js
+let ary1 = [1, 2, 3];
+let ary2 = [3, 4, 5];
+//方法1
+let ary3 = [...ary1, ...ary2];
+//方法2
+ary1.push(...ary2);
+```
+
+**将类数组或可遍历对象转换为真正的数组**
+
+```javascript
+let oDivs = document.getElementsByTagName('div'); 
+oDivs = [...oDivs];
+```
+
+### Array.from()
+
+将伪数组或可遍历对象转换为真正的数组
+
+```js
+//定义一个集合
+let arrayLike = {
+    '0': 'a',
+    '1': 'b',
+    '2': 'c',
+    length: 3
+}; 
+//转成数组
+let arr2 = Array.from(arrayLike); // ['a', 'b', 'c']
+console.log(arr2);
+console.log(arrayLike);
+```
+
+输出为：
+
+![](img\Array.from.png)
+
+方法还可以接受第二个参数，作用类似于数组的map方法，用来对每个元素进行处理，将处理后的值放入返回的数组
+
+```javascript
+ let arrayLike = { 
+     "0": 1,
+     "1": 2,
+     length: 2
+ }
+ let newAry = Array.from(arrayLike, item => item *2)//[2,4]
+
+```
+
+**如果是对象，那么属性需要写对应的索引**
+
+### find()
+
+用于找出第一个符合条件的数组成员，如果没有找到返回undefined
+
+```js
+let ary = [{
+     id: 1,
+     name: '张三'
+ }, { 
+     id: 2,
+     name: '李四'
+ }]; 
+ let target = ary.find((currentValue, index) => currentValue.id == 2);
+//找数组里面符合条件的值，当数组中元素id等于2的查找出来，只会匹配第一个
+```
+
+### findIndex()
+
+用于找出第一个符合条件的数组成员的索引号，如果没有找到返回-1
+
+```javascript
+let ary = [1, 5, 10, 15];
+let index = ary.findIndex((value, index) => value > 9); 
+console.log(index); // 2
+```
+
+### includes()
+
+判断某个数组是否包含给定的值，返回布尔值。
+
+```js
+[1, 2, 3].includes(2) // true 
+[1, 2, 3].includes(4) // false
+```
+
+## String
+
+### 模板字符串
+
+ES6新增的创建字符串的方式，使用反引号定义
+
+**模板字符串中可以解析变量**
+
+```javascript
+let name = '张三'; 
+let sayHello = `hello,my name is ${name}`; // hello, my name is zhangsan
+```
+
+**模板字符串中可以换行**
+
+```js
+let result = {
+    name: "zhangsan",
+    age: 20,
+    sex: "男",
+};
+let html = `${result.name}
+${result.age}
+${result.sex}`;
+console.log(html);
+/*输出为：
+zhangsan
+20
+男
+*/
+```
+
+**在模板字符串中可以调用函数**
+
+```js
+const sayHello = function () { 
+    return 'hello';
+ }; 
+ let greet = `${sayHello()} world`;
+ console.log(greet); // hello world
+```
+
+### startsWith() 和 endsWith()
+
+- startsWith()：表示参数字符串是否在原字符串的头部，返回布尔值
+- endsWith()：表示参数字符串是否在原字符串的尾部，返回布尔值
+
+```js
+let str = 'Hello world!';
+str.startsWith('Hello') // true 
+str.endsWith('!')       // true
+```
+
+### repeat()
+
+repeat方法表示将原字符串重复n次，返回一个新字符串
+
+```js
+let x = 'x'.repeat(3)      // "xxx" 
+let hello = 'hello'.repeat(2)  // "hellohello"
+console.log(x);
+console.log(hello);
+```
+
+## Set 数据结构
+
+ES6 提供了新的数据结构  Set。它类似于数组，但是成员的值都是唯一的，没有重复的值。Set本身是一个构造函数，用来生成  Set  数据结构
+
+```js
+const set = new Set([1, 2, 3, 4, 4]);//{1, 2, 3, 4}
+```
+
+**Set的方法**
+
+- add(value)：添加某个值，返回 Set 结构本身
+- delete(value)：删除某个值，返回一个布尔值，表示删除是否成功
+- has(value)：返回一个布尔值，表示该值是否为 Set 的成员
+- clear()：清除所有成员，没有返回值
+
+```js
+ const s = new Set([1, 2, 3, 4, 4]);
+ var addReturn = s.add(1).add(2).add(3); //向set结构中添加值
+ console.log(addReturn);//{1, 2, 3, 4}
+ console.log(s);//{1, 2, 3, 4}
+
+ var deleteReturn = s.delete(2);// 删除 set 结构中的2值 
+ console.log(deleteReturn);//true
+ console.log(s);//{1,3,4}
+
+ console.log(s.has(1));// 表示 set 结构中是否有1这个值 返回布尔值true 
+ console.log(s);//{1,2,3,4}
+
+ s.clear()// 清除 set 结构中的所有值
+ //注意：删除的是元素的值，不是代表的索引
+```
+
+Set 结构的实例与数组一样，也拥有forEach方法，用于对每个成员执行某种操作，没有返回值。
+
+```javascript
+s.forEach(value => console.log(value))
 ```
 
