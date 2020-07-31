@@ -2,7 +2,7 @@ const fs = require("fs");
 const myMime = require("./myMime");
 
 module.exports = function (request, response, filePath) {
-  fs.stat(filePath, "utf8", (err, stats) => {
+  fs.stat(filePath, (err, stats) => {
     if (err) {
       response.statusCode = 404;
       response.setHeader("Content-Type", "text/plain;charset = utf - 8");
@@ -12,7 +12,7 @@ module.exports = function (request, response, filePath) {
       response.statusCode = 200;
       const mimeType = myMime(filePath);
       response.setHeader("Content-Type", mimeType);
-      fs.createReadStream(filePath).setEncoding("utf8").pipe(response);
+      fs.createReadStream(filePath).pipe(response);
     } else if (stats.isDirectory()) {
       fs.readdir(filePath, (err, files) => {
         response.statusCode = 200;
@@ -21,7 +21,7 @@ module.exports = function (request, response, filePath) {
         var html = "";
         for (let i = 0; i < files.length; i++) {
           html +=
-            '<a href="http://127.0.0.1:8877' +
+            '<a href="http://127.0.0.1:11037' +
             request.url +
             "/" +
             files[i] +

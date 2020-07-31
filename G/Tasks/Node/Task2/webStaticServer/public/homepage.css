@@ -1,0 +1,505 @@
+header {
+  height: 5.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 995px;
+  background-color: #fff;
+  border-bottom: 0.1rem solid rgb(235, 235, 235);
+}
+
+.logo {
+  height: 5.6rem;
+  width: 10rem;
+  background: url(../source/jianshu.png) no-repeat;
+  background-size: 10rem 5.6rem;
+}
+
+.homepage span,
+.download span {
+  width: 7rem;
+  padding: 0 1rem;
+  line-height: 5.6rem;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.homepage span {
+  width: 5rem;
+  color: rgb(234, 111, 90);
+}
+
+.homepage {
+  margin: 0 1.5rem 0 5.5rem;
+}
+
+.download:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.searchText {
+  width: auto;
+  height: 3.6rem;
+  border: 0.1rem;
+  border-radius: 2rem;
+  margin: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(238, 238, 238);
+}
+
+.textInput {
+  width: auto;
+  line-height: 3.6rem;
+  border-radius: 2rem;
+  padding-left: 1.5rem;
+}
+
+.textInput input:focus {
+  width: 22rem;
+}
+
+.textInput input {
+  width: 10rem;
+  height: 3.6rem;
+  border: none;
+  background-color: transparent;
+  transition: width 1s;
+}
+
+.searchButton {
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 100%;
+  background: url(../source/search.png) no-repeat center;
+  background-size: 2.3rem;
+}
+
+.right {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-left: auto;
+  padding: 1rem;
+}
+
+.write,
+.signIn {
+  width: 8rem;
+  height: 2.6rem;
+  margin: 0 1rem;
+  padding: 0.6rem 1.2rem;
+  background-color: rgb(234, 111, 90);
+  color: #ffffff;
+  border-radius: 2rem;
+  text-align: center;
+  line-height: 2.6rem;
+  font-size: 1.5rem;
+}
+
+.signIn {
+  background-color: #fff;
+  border: 0.1rem solid rgb(234, 111, 90);
+  color: rgb(234, 111, 90);
+  width: 5.3rem;
+  height: 2.4rem;
+}
+
+.logIn,
+.model {
+  width: 4rem;
+  height: 3.8rem;
+  font-size: 1.5rem;
+  line-height: 3.8rem;
+  text-align: center;
+  margin: 0 2rem;
+  color: rgb(159, 159, 159);
+}
+
+.diamond {
+  width: 5.7rem;
+  height: 3.8rem;
+  background: url(../source/diamond.png) no-repeat center;
+  background-size: contain;
+  margin-right: 1rem;
+}
+
+.content {
+  width: 78%;
+  margin: 0 auto;
+  display: flex;
+  /* background-color: yellowgreen; */
+}
+
+.contentLeft {
+  width: 48.5rem;
+  padding: 3rem 0 0 1.5rem;
+  flex-grow: 2.2;
+  /* background-color: bisque; */
+}
+
+.images {
+  /* height: 21rem; */
+  width: 100%;
+  height: 0;
+  padding-bottom: 40%;
+  /* background-color: blue; */
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.images_list {
+  width: 100%;
+  height: 0;
+  padding-bottom: 50%;
+  list-style: none;
+  position: relative;
+  /* background-color: chocolate; */
+}
+
+.images_list_item {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: darkblue;
+  background: url(../source/rotation1.png) no-repeat;
+  background-size: contain;
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+.images_list_item:nth-child(2) {
+  background: url(../source/rotation2.png) no-repeat;
+  background-size: contain;
+}
+
+.images_list_item.active {
+  opacity: 1;
+}
+
+.button {
+  width: 100%;
+  height: 0;
+  padding-bottom: 10%;
+  position: relative;
+  top: -19rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+#button_left,
+#button_right {
+  width: 5%;
+  height: 0;
+  padding-bottom: 5%;
+  background-color: rgba(0, 0, 0, 0.5);
+  visibility: hidden;
+  text-align: center;
+}
+
+#button_left img,
+#button_right img {
+  width: 100%;
+  height: auto;
+}
+
+.images:hover #button_left,
+.images:hover #button_right {
+  visibility: visible;
+}
+
+.point_list {
+  width: 100%;
+  position: relative;
+  top: -12rem;
+  display: flex;
+  justify-content: center;
+}
+
+.point {
+  width: 5%;
+  height: 0;
+  padding-bottom: 1%;
+  border-radius: 0.2rem;
+  margin: 0 0.5rem;
+  background-color: gray;
+}
+
+.point.active {
+  background-color: #fff;
+}
+
+.passage {
+  width: 100%;
+}
+
+.passage_info {
+  /* height: 10rem; */
+  padding: 1.5rem 0.2rem 2rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 0.1rem solid rgb(235, 235, 235);
+  display: flex;
+  justify-content: space-between;
+  /* background-color: yellowgreen; */
+}
+
+.passage_info_content {
+  width: 70%;
+}
+
+.passage_info_content_title {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.passage_info_content_title:hover {
+  text-decoration: underline;
+}
+
+.passage_info_content_title:visited {
+  color: #969696;
+}
+
+.passage_info_content_txt {
+  font-size: 1.3rem;
+  color: #999999;
+}
+
+.passage_info_content_txt.content_fold {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.passage_info_img {
+  display: block;
+  width: 30%;
+  height: 10rem;
+  background: url(../source/passage-img.png) no-repeat;
+  background-size: contain;
+}
+
+.unfold {
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: rgb(0, 122, 204);
+}
+
+.hidden {
+  display: none;
+}
+
+.contentRight {
+  flex-grow: 1;
+  width: 21.9rem;
+  height: 100rem;
+  padding-top: 3rem;
+  margin-left: 3.1rem;
+}
+
+.vip,
+.article,
+.copyright,
+.study {
+  display: block;
+  height: 5.5rem;
+  background: url(../source/vip.png) no-repeat;
+  background-size: contain;
+}
+
+.article {
+  background: url(../source/article.png) no-repeat;
+  background-size: contain;
+}
+
+.copyright {
+  background: url(../source/copyright.png) no-repeat;
+  background-size: contain;
+}
+
+.study {
+  background: url(../source/study.png) no-repeat;
+  background-size: contain;
+}
+
+.QRcode {
+  display: flex;
+  width: 90%;
+  height: auto;
+  padding: 0.7rem 1rem;
+  border: 0.05rem solid rgb(235, 235, 235);
+  border-radius: 0.5rem;
+  margin: 0.6rem 0 3rem 0;
+  position: relative;
+}
+
+.bigQRcode > img {
+  width: 19rem;
+  height: 19rem;
+}
+
+.bigQRcode {
+  width: 20rem;
+  height: 20rem;
+  margin-top: 6.4rem;
+  border: 0.2rem solid rgb(235, 235, 235);
+  background-color: #fff;
+  text-align: center;
+  display: none;
+  position: absolute;
+}
+
+.QRcode:hover .bigQRcode {
+  display: block;
+}
+
+.imgQRcode {
+  width: 26%;
+  height: 0;
+  padding-bottom: 26%;
+  background: url(../source/qrcode.png) no-repeat;
+  background-size: 100% 100%;
+}
+
+.describe {
+  width: 13.2rem;
+  margin: 0.5rem 0 0.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.describe > :first-child {
+  font-size: 1.6rem;
+}
+
+.reason {
+  margin-top: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.authorTitle {
+  height: 1.6rem;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+}
+
+#change::before {
+  content: "\21BB";
+}
+
+#change {
+  cursor: pointer;
+}
+
+.authorList {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.author {
+  width: 100%;
+  height: 0;
+  padding-bottom: 20%;
+  margin-top: 1rem;
+  display: flex;
+}
+
+.author.hidden {
+  display: none;
+}
+
+.photo {
+  display: block;
+  width: 21%;
+  height: 0;
+  padding-bottom: 16.5%;
+  border-radius: 100%;
+  margin-right: 1rem;
+  background: url(../source/author1.webp) no-repeat;
+  background-size: contain;
+}
+
+.authorInfo {
+  width: 100%;
+  height: 100%;
+}
+
+.nameAndfollow {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4rem;
+  margin: 0.5rem 0;
+}
+
+.follow {
+  cursor: pointer;
+  color: rgb(66, 192, 46);
+}
+
+.follow::before {
+  content: "\271A";
+}
+
+.photo.nth2 {
+  background: url(../source/author2.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth3 {
+  background: url(../source/author3.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth4 {
+  background: url(../source/author4.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth5 {
+  background: url(../source/author5.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth6 {
+  background: url(../source/author6.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth7 {
+  background: url(../source/author7.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth8 {
+  background: url(../source/author8.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth9 {
+  background: url(../source/author9.webp) no-repeat;
+  background-size: contain;
+}
+
+.photo.nth10 {
+  background: url(../source/author10.webp) no-repeat;
+  background-size: contain;
+}
+
+#allAuthor {
+  cursor: pointer;
+  width: 100%;
+  height: 1.8rem;
+  padding: 0.7rem 0;
+  border: 0.1rem solid rgb(235, 235, 235);
+  background-color: rgb(245, 245, 245);
+  line-height: 1.8rem;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.allAuthor::after {
+  content: "\003E";
+}
