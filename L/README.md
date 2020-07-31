@@ -163,3 +163,31 @@ git和markdown的基本语法和使用
 react知识点笔记*详见L/Notes/react.md *
 [react实战](https://codepen.io/free-lc/pen/NWxVQWq)
 配置文件和练习*C:\git\free\summer-camp-2020\L\Task\my-app*
+
+# 7.30
+
+## 1
+
+2.00-6.30 进行环境配置，进行实战练习
+
+6.30-7.00 恰饭
+
+7.00-9.00 实战练习
+
+## 2
+
+实战练习*详见L/Tasks/my-app-副本&L/Tasks/my-app*
+
+# 7.30
+
+## 1
+
+2.00-6.00 做项目联系尝试使用ant design mobile 模板
+
+6.00-8.30 陪家人出去吃饭
+
+8.30-9.00 听分享
+
+## 2
+
+实战练习*详见L/Tasks/my-app-副本*
