@@ -1,0 +1,28 @@
+.input-group
+{
+    border: 1px solid white;
+    height:40px ;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    display: flex;
+   
+}
+.input-group i{
+    font-size: 22px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.input-group input
+{
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: black;
+}
+.input-group input::-webkit-input-placeholder{
+    color:black;
+    opacity: 0.6;
+
+}

@@ -1,0 +1,9 @@
+body{
+    background-color: #777777;
+}
+html,body,#root{
+    height: 100%;
+}
+input{
+    outline: none;
+}
