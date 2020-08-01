@@ -178,7 +178,7 @@ react知识点笔记*详见L/Notes/react.md *
 
 实战练习*详见L/Tasks/my-app-副本&L/Tasks/my-app*
 
-# 7.30
+# 7.31
 
 ## 1
 
@@ -190,4 +190,22 @@ react知识点笔记*详见L/Notes/react.md *
 
 ## 2
 
-实战练习*详见L/Tasks/my-app-副本*
+实战练习*详见L/Tasks/my-app-2*
+
+# 8.1
+
+## 1
+
+2.00-6.00 node,请求，交互
+
+6.00-6.30 睡觉
+
+6.30-7.00恰饭
+
+7.00-8.30node,请求，交互
+
+8.30-9.00听分享
+
+## 2
+
+node,请求，交互*详见L/notes/node&L/Task/node/dome*

@@ -744,6 +744,18 @@ console.log(f() === window);  // true
 #### 事件
 - 事件绑定
 ### 异步
+#### 外部获取异步方法中的数据
+function getData(callback)
+{
+	setTime(function(){
+	var name="tom";
+	callback(name)
+	},1000);
+}
+getDate(function(aaa){
+console.log(aaa);
+){
+
 ```
 <!DOCTYPE html>
 <html>
