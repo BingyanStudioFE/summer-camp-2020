@@ -13,16 +13,31 @@ header {
 }
 
 #todo {
-  /* background-color: aqua; */
-  /* height: 80px; */
   width: 500px;
   margin: 0 auto;
   text-align: center;
 }
 
 .todo_input {
-  padding-left: 55px;
-  background-color: yellowgreen;
+  display: flex;
+}
+
+.todo_input_alldelete {
+  width: 55px;
+  height: 55px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-right: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.todo_input_alldelete img {
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  top: 28%;
+  left: 28%;
 }
 
 .todo_input input {
@@ -31,6 +46,7 @@ header {
   height: 55px;
   font-size: 24px;
   border: 1px solid #ccc;
+  border-left: none;
 }
 
 table {
@@ -41,16 +57,13 @@ table {
 }
 
 td {
-  /* background-color: blueviolet; */
-  line-height: 24px;
   text-align: left;
   width: 55px;
-  height: 55px;
   font-size: 24px;
   border-left: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
   background-color: #fff;
-  overflow: hidden;
+  word-break: break-all;
 }
 
 .btn {
@@ -70,17 +83,19 @@ td {
 }
 
 .todo_value {
-  width: 100%;
-  border-right: 1px solid #ccc;
-  border-left: none;
+  padding: 15px 0;
+  width: 420px;
+  height: auto;
+  border: none;
+  border-bottom: 1px solid #ccc;
 }
 
 .todo_delete {
-  float: right;
   background-color: #fff;
-  margin-right: 6px;
-  line-height: 18px;
+  width: 20px;
   cursor: pointer;
+  border-right: 1px solid #c9c9c9;
+  border-left: none;
 }
 
 .todo_delete::after {
@@ -93,11 +108,12 @@ td {
   text-decoration-line: line-through;
 }
 
-#tab {
+.tab {
   height: 30px;
-  background-color: yellow;
   display: flex;
   justify-content: space-evenly;
+  background-color: #fff;
+  border: 1px solid #ccc;
 }
 
 .tab_items,
@@ -105,11 +121,29 @@ td {
 .tab_active,
 .tab_completed {
   line-height: 30px;
+  text-align: center;
   font-size: 14px;
   color: rgb(119, 119, 119);
+  border: 1px solid rgba(239, 213, 213, 0);
+  padding-left: 10px;
+  padding-right: 10px;
   cursor: pointer;
+}
+
+.tab_all:hover,
+.tab_active:hover,
+.tab_completed:hover {
+  border: 1px solid rgba(239, 213, 213, 0.5);
+}
+
+.selected {
+  border: 1px solid rgb(239, 213, 213);
 }
 
 .tab_items {
   cursor: default;
+}
+
+.hidden {
+  display: none;
 }
