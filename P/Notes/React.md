@@ -105,3 +105,29 @@ this.setState({
 继承
 
 继承？不存在的
+
+React不使用模板
+
+React不是一个MVC框架
+
+响应式
+
+轻量级js库
+
+原理
+
+虚拟DOM	(把DOM抽象成一个js对象)
+
+确保对界面上真正发生变化的部分进行实际的DOM操作
+
+著层次的来进行节点的比较
+
+diff算法	
+
+2013正式开源
+
+react.js 核心文件
+
+react-dom.js 渲染界面中的DOM(依赖于核心文件)
+
+babel.js ES6转ES5 JSX转js 解决兼容问题	

@@ -20,7 +20,7 @@ const server = http.createServer(function(request, response) {
       response.end();
     }
     else {
-      response.writeHead(200, {'Content-Type': contentType});
+      response.writeHead(200, {'Content-Type': contentType + ';charset=utf-8'});
       response.write(data);
       response.end();
     }
@@ -43,7 +43,7 @@ function getType (ext) {
     case 'java' :
       return 'text/x-java-source';
     case 'md' :
-      return 'text/markdown';
+      return 'text/x-markdown';
     case 'txt' :
     case 'c' :
     case 'cpp' :
