@@ -1,0 +1,20 @@
+.Login-page{
+    background-color: #666666;
+    color: #666666;
+
+    
+}
+.img-div{
+    text-align: center;
+    padding-top: 100px;
+}
+
+.login-form{
+    /* border: 1px solid white; */
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-right: 5%;
+    margin-left: 5%;
+    text-align: center;
+    
+}
