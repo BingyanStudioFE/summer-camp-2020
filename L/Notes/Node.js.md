@@ -1604,3 +1604,18 @@ $ node express_cookie.js
 ```
 
 现在你可以访问 http://127.0.0.1:8081 并查看终端信息的输出，如下演示：
+## fs [例子演示](C:\git\free\summer-camp-2020\L\Task\node\dome\demo03)
+1.  fs.stat   检测是文件还是目录
+2.  fs.mkdir  创建目录
+3.  fs.writeFile  创建写入文件
+4.  fs.appendFile 追加文件
+5.  fs.readFile 读取文件
+6.  fs.readdir读取目录
+7.  fs.rename 重命名 移动文件
+8.  fs.rmdir  删除目录
+9.  fs.unlink 删除文件
+# 常用
+- 当文件中没有所引入包时，通过`npm i`进行引入
+- 指定版本安包`npm install 包@版本`
+- 创建package.json`npm init`or`npm init --yes`
+- 

@@ -1,0 +1,37 @@
+.classbar ul{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    width: 100%;
+}
+.classbar{
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-top: 30px;
+    width: auto;
+    
+}
+.classbar::-webkit-scrollbar { width: 0 !important }
+/* .classbar { -ms-overflow-style: none; }
+.classbar { overflow: -moz-scrollbars-none; } */
+.classbar ul li{
+list-style-type:none;
+display: inline-flex;
+align-items: center;
+justify-content: flex-start;
+}
+.classbar ul a:hover{
+    color: rgb(0,204,168);
+}
+.classbar ul a {
+    font-size: 30px;
+    color: rgb(186,186,186);
+    text-decoration:none;
+}
+.classbar ul img{
+    width: 22px;
+    height: 22px;
+    margin-top: 10px;
+    opacity: 0.4;
+    
+}

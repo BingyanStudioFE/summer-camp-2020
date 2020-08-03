@@ -1,0 +1,10 @@
+.container{
+    background-color: red;
+    /* 9f9f9f */
+    padding-top: 20px;
+    padding-bottom:20px;
+}
+.container ul li{
+    list-style-type: none;
+
+}

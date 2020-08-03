@@ -1,0 +1,23 @@
+
+.rectangle {
+	/* width: 750px; */
+	width: auto;
+	height: 128px;
+	background-color: white;
+	display: flex;
+	flex-wrap:nowrap;
+	justify-content: space-between;
+}
+.rectangle .infos
+{
+	display: inline-block;
+	line-height: 128px;
+	margin-top: 10px;
+	margin-left: 30px;
+}
+.rectangle .imgs{
+	height: 40px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: -30px;
+}
