@@ -1,0 +1,28 @@
+*{
+    margin-top: 20px;
+    text-align: center;
+}
+p{
+    margin-top: 60px;
+    font-size: 22px;
+}
+.body{
+    margin-top: 100px;
+    margin-bottom: 50%;
+}
+.body ul{
+    display: flex;
+    align-content:space-around ;
+    justify-content: space-around;
+}
+.body ul li{
+    font-size: 26px;
+    list-style-type: none;
+}
+.footer{
+    position: relative;
+    bottom: 10px;
+    text-align: center;
+    left: 0;
+    right: 0;
+}

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import "../assets/style/header.css"
 import Search from "./Seach"
-import Classes from "./Classes"
 export default class Header extends Component {
     render() {
         return (
@@ -13,7 +12,6 @@ export default class Header extends Component {
                     </div>
                 </div>
                 <Search/>
-                <Classes />
             </div>
         )
     }

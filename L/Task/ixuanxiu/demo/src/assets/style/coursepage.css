@@ -1,0 +1,118 @@
+.header{
+    margin-top: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.header img{
+	width: 20px;
+    height: 20px;
+    float: left;
+
+}
+.header span{
+   font-weight: bolder;
+   font-size: 22px;
+
+}
+.body{
+    background-image: linear-gradient(to right , rgb(0,204,168), rgb(0,193,204));
+    text-align: center;
+    padding-top: 1px;
+}
+.body h1{
+   color: white;
+   font-weight: lighter;
+}
+.body .tone{
+    margin:0px auto;
+    width: 98%;
+    height: 120px;
+}
+.body .tone th{
+    color: white;
+    font-weight: lighter;
+    opacity: 0.9;
+
+}
+.body .tone td{
+    color: white;
+
+}
+.body .ttwo{
+    margin: 10px auto;
+    background-color: #fff;
+    width: 84%;
+    padding-left: 20px;
+    color: black;
+    margin-bottom: 20px;
+}
+.body .ttwo th{
+    float: left;
+    opacity: 0.3;
+}
+.body .ttwo td{
+    opacity: 0.8;
+}
+.body .ttwo th img{
+    width: 19px;
+    height: 19px;
+    margin-top: px;
+}
+.body .ttwo th span{
+    line-height: 30px;
+}
+/* .comments h2{
+    background-color: white;
+    width: 84%;
+    margin: 0px auto;
+}
+.body .tthree{
+    width: 84%;
+    margin: 0px auto;
+    background-color: white;
+    font-size: 40px;
+
+}
+.body .tthree tr{
+    display: flex;
+    
+} */
+.body .tthree{
+    width: 100%;
+    margin: 0px auto;
+    background-color: white;
+    font-size: 40px;
+
+}
+.body .tfour{
+    width: 84%;
+    margin: 0px auto;
+    background-color: white;
+}
+.comments{
+    background-color: white;
+    width: 84%;
+    margin: 0px auto;
+}
+.body .tfour img{
+    width: 36px;
+    height: 36px;
+}
+.areabottom{
+    background-color: rgb(243,253,251);
+    padding-bottom: 40px;
+    width: 100%;
+}
+.areabottom ul{
+  margin: 0px auto;
+    background-color: white;
+  padding-top: 20px;
+  width: 81%;
+}
+
+.areabottom ul li{
+    list-style-type: none;
+}
+.details{
+    background-color: white;
+}

@@ -6,11 +6,15 @@ export default class Cousrses extends Component {
         return (
             <div className="container">
                 <ul>
-                    <li><CoursesContent  title="逻辑与幽默" l="刘家俊" r="沟通与管理" comments={comments} />
-                    </li>
+                    {/* <li><CoursesContent  title="逻辑与幽默" l="刘家俊" r="沟通与管理" comments={this.props.comments} />
+                    </li> */}
+                    {this.props.numbers.map((number)=>
+                    <li key={number.toString()}>
+                        <CoursesContent title={number} l="刘家俊" r="沟通与管理" comments={this.props.comments}/>
+                    </li>)}
                 </ul>
             </div>
         )
     }
 }
-const comments=["周一","东区","二学分"];
+

@@ -28,12 +28,10 @@
 import React, { Component } from 'react'
 import '../assets/style/courses_content.css'
 export default class CoursesContent extends Component {
-    constructor(props){
-        super(props);
-        this.listItems=this.props.comments.map((this.props.comment)=>
-        <li>{this.props.comment}</li>
-                );
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.listItems=this.listItems.bind(this);
+    // }
     // listItems(){
     //     const comments =this.props.comments;
     //     var str=""
@@ -42,8 +40,10 @@ export default class CoursesContent extends Component {
     //     return str;
  
     // }
-    render() {
 
+    render() {
+   
+    
         return (
             <div className="content">
                 <div className="content_left">
@@ -54,7 +54,14 @@ export default class CoursesContent extends Component {
                 <div className="content_right">
                         <ul>
                             {/* {this.listItems()} */}
-                            {this.listItems}
+                            {/* {this.props.comments.map((comment, i) =>
+                            <comment comment={comment} key={i} />
+                            )} */}
+                            {this.props.comments.map((comment)=>
+                            <li key={comment.toString()}>
+                                {comment}
+                            </li>
+                            )}
                         </ul>
                 </div>
             </div>
