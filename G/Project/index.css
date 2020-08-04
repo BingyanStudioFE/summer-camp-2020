@@ -68,6 +68,8 @@ header {
   -webkit-overflow-scrolling: touch;
   background-color: #fff;
   margin-bottom: 1.6rem;
+  padding-bottom: 2.3rem;
+  /* position: relative; */
 }
 
 .sort li {
@@ -87,6 +89,34 @@ header {
   background-size: contain;
 }
 
+.sort_info_detail {
+  box-sizing: border-box;
+  position: absolute;
+  top: 31.5rem;
+  width: 100%;
+  height: auto;
+  background-color: rgba(238, 238, 238, 0.9);
+  padding: 0.8rem 3.3rem;
+  font-size: 2.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.hidden {
+  display: none;
+}
+
+.sort_info_detail div {
+  color: #00cca8;
+  font-size: 2.8rem;
+  padding: 0 1.1rem 0 2.2rem;
+  height: 6rem;
+  line-height: 6rem;
+  background-color: #fff;
+  margin: 0.8rem;
+}
+
 .courses {
   box-sizing: border-box;
   width: 68.6rem;
@@ -96,16 +126,76 @@ header {
   margin: 0 auto 1.6rem auto;
   padding: 2.7rem;
   display: flex;
+  padding-right: 0;
+  margin-bottom: 3.3rem;
 }
 
 .courses_info {
+  box-sizing: border-box;
   width: 27.4rem;
   height: 100%;
   border-right: 0.1rem solid #ccc;
+  padding-right: 2.7rem;
 }
 
 .courses_info_name {
   font-family: SourceHanSansCN-Medium;
   font-size: 2.8rem;
   color: #353535;
+}
+
+.courses_info > div:nth-child(2) {
+  background-color: yellow;
+  margin-top: 5.6rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.courses_info_teacher {
+  font-size: 2.8rem;
+  color: #888888;
+}
+
+.courses_info_class {
+  color: #cccccc;
+  font-size: 2.2rem;
+}
+
+.courses_tag {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 2.2rem;
+  color: #ffffff;
+  /* justify-content: space-between; */
+  padding-left: 2.7rem;
+  width: 41rem;
+}
+
+.courses_tag div {
+  width: 8rem;
+  height: 4.5rem;
+  background-color: #00cca8;
+  border-radius: 0.4rem;
+  line-height: 4.5rem;
+  text-align: center;
+  margin: 0 2rem;
+  /* margin-left: 3.5rem; */
+}
+
+.divide {
+  display: flex;
+  width: 50.8rem;
+  height: 2.2rem;
+  font-size: 2.2rem;
+  color: #888888;
+  margin: 0 auto 3.3rem auto;
+  line-height: 2.2rem;
+}
+
+.divide_line {
+  width: 14rem;
+  height: 0.3rem;
+  background-color: #d7e0e4;
+  margin: auto;
 }

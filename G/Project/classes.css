@@ -1,0 +1,65 @@
+.classes_background {
+  height: 70rem;
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgb(0, 204, 168),
+    rgb(0, 174, 203)
+  );
+  position: absolute;
+  z-index: -1;
+}
+
+.classes_back {
+  font-size: 4rem;
+  color: #ffffff;
+  padding: 3.3rem 2.3rem;
+}
+
+.classes_back::before {
+  content: "\003C";
+}
+
+.classes_name {
+  font-size: 4rem;
+  color: #ffffff;
+  text-align: center;
+}
+
+.classes_info {
+  font-size: 2.8rem;
+  color: #ffffff;
+  /* padding: auto; */
+  margin: 5.1rem 8.1rem 0 3.1rem;
+  width: 63.8rem;
+  text-align: center;
+}
+
+.classes_info td {
+  padding: 2.4rem;
+}
+
+.classes_detail {
+  box-sizing: border-box;
+  width: 68.6rem;
+  margin: 1.3rem auto;
+  background-color: #fff;
+  font-size: 2.8rem;
+  box-shadow: 0rem 0.1rem 1.6rem 0rem rgba(0, 173, 204, 0.5);
+  border-radius: 0.8rem;
+}
+
+.classes_detail td {
+  padding: 1.9rem 3.2rem;
+  text-align: center;
+}
+
+.classes_comment {
+  box-sizing: border-box;
+  width: 68.6rem;
+  height: 38.6rem;
+  background-color: #ffffff;
+  box-shadow: 0rem 0.1rem 4rem 0rem rgba(0, 204, 168, 0.2);
+  border-radius: 0.8rem;
+  margin: auto;
+}
