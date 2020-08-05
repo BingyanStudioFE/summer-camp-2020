@@ -1,14 +1,17 @@
 import React, { Component } from 'react'
 import '../assets/style/coursepage.css'
+import Header2 from '../components/Header2'
 export default class CoursePage extends Component {
     render() {
         return (
             <div>
-                <div className="header">
+                {/* <div className="header">
                     <img src={require('../assets/images/zuo.png')} alt=""></img>
                     <span>爱选修</span>
-                </div>
+                </div> */}
+                <Header2/>
                 <div className="body">
+                    <div className="areatop">
                     <h1>逻辑与幽默</h1>
                     <table className="tone">
                         <tr>
@@ -36,13 +39,14 @@ export default class CoursePage extends Component {
                     </table>
                     <div className="comments">
                         <h2>课程评价</h2>
-                        <table className="tthree">
-                            <tr>
-                                <th>27</th>
-                                <th>7</th>
-                                <th>3</th>
-                            </tr>
-                        </table>
+                        <ul className="tthree">
+
+                                <li>27</li>
+                                <li>7</li>
+                                <li>3</li>
+
+                        </ul>
+                    </div>
                     </div>
                     <div className="areabottom">
                         <table className="tfour">
@@ -61,13 +65,47 @@ export default class CoursePage extends Component {
                     
                     <div className="details">
                           <h1>评论</h1>
-                          <ul>
-                              <li>
+                          <ul className="mainul">
+                              <li className="mainli">
                                   <img src={require('../assets/images/anonymous.png')} alt=""></img>
-                                  <p className="username">匿名用户</p>
-                                  <p className="time">2020年07月18日</p>
-                                  <p className="bb">老师nice</p>
+                                  <div className="perspective">
                                   <ul>
+                                  <li className="username">匿名用户</li>
+                                  <li className="time">2020年07月18日</li>
+                                  <li className="bb">老师nice</li>
+                                  </ul>
+                                  </div>
+                                  <ul className="subul">
+                                      <li><img src={require('../assets/images/share.png')} alt=""></img></li>
+                                      <li><img src={require('../assets/images/zan.png')} alt=""></img><span>1</span></li>
+                                      <li><img src={require('../assets/images/pinglun.png')} alt=""></img><span>0</span></li>
+                                  </ul>
+                              </li>
+                              <li className="mainli">
+                                  <img src={require('../assets/images/anonymous.png')} alt=""></img>
+                                  <div className="perspective">
+                                  <ul>
+                                  <li className="username">匿名用户</li>
+                                  <li className="time">2020年07月18日</li>
+                                  <li className="bb">老师nice</li>
+                                  </ul>
+                                  </div>
+                                  <ul className="subul">
+                                      <li><img src={require('../assets/images/share.png')} alt=""></img></li>
+                                      <li><img src={require('../assets/images/zan.png')} alt=""></img><span>1</span></li>
+                                      <li><img src={require('../assets/images/pinglun.png')} alt=""></img><span>0</span></li>
+                                  </ul>
+                              </li>
+                              <li className="mainli">
+                                  <img src={require('../assets/images/anonymous.png')} alt=""></img>
+                                  <div className="perspective">
+                                  <ul>
+                                  <li className="username">匿名用户</li>
+                                  <li className="time">2020年07月18日</li>
+                                  <li className="bb">老师nice</li>
+                                  </ul>
+                                  </div>
+                                  <ul className="subul">
                                       <li><img src={require('../assets/images/share.png')} alt=""></img></li>
                                       <li><img src={require('../assets/images/zan.png')} alt=""></img><span>1</span></li>
                                       <li><img src={require('../assets/images/pinglun.png')} alt=""></img><span>0</span></li>

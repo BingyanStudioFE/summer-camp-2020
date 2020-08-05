@@ -1,7 +1,8 @@
-.header{
-    margin-top: 20px;
+/* .header{
+    margin-top: 40px;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+
 }
 .header img{
 	width: 20px;
@@ -12,12 +13,35 @@
 .header span{
    font-weight: bolder;
    font-size: 22px;
+   float: left;
+} */
+/* .header{
+    padding-top: 40px;
+    text-align: center;
+    padding-bottom: 30px;
+    opacity: 0.8;
+}
+.header img{
+	width: 20px;
+    height: 20px;
+    float: left;
 
 }
+.header span{
+   font-weight: bolder;
+   font-size: 22px;
+    float: left;
+    margin-left: 30px;
+    opacity: 0.8;
+} */
 .body{
-    background-image: linear-gradient(to right , rgb(0,204,168), rgb(0,193,204));
+    /* background-image: linear-gradient(to right , rgb(0,204,168), rgb(0,193,204)); */
     text-align: center;
     padding-top: 1px;
+}
+.areatop{
+    padding-top: 10px;
+    background-image: linear-gradient(to right , rgb(0,204,168), rgb(0,193,204));
 }
 .body h1{
    color: white;
@@ -82,7 +106,13 @@
     margin: 0px auto;
     background-color: white;
     font-size: 40px;
-
+    display: flex;
+    justify-content: space-around;
+    padding-left: 0px;
+    margin-bottom: 20px;
+}
+.body .tthree li{
+    list-style-type: none;
 }
 .body .tfour{
     width: 84%;
@@ -90,6 +120,7 @@
     background-color: white;
 }
 .comments{
+    padding-top: 5px;
     background-color: white;
     width: 84%;
     margin: 0px auto;
@@ -97,22 +128,130 @@
 .body .tfour img{
     width: 36px;
     height: 36px;
+    margin-left: 20px;
 }
 .areabottom{
     background-color: rgb(243,253,251);
     padding-bottom: 40px;
     width: 100%;
+    margin-bottom: 32px;
 }
 .areabottom ul{
   margin: 0px auto;
-    background-color: white;
+  background-color: white;
   padding-top: 20px;
-  width: 81%;
+  /* width: 79.55%; */
+  width: 84%;
+  padding-left: 0px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 .areabottom ul li{
     list-style-type: none;
+    background-color: rgb(0,204,168);
+    color: white;
+    text-align: center;
+    max-width: 122px;
+	height: 41px;
+	background-color: #00cca8;
+    border-radius: 4px;
+    line-height: 41px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
+/* 设置下方评论细则 */
 .details{
     background-color: white;
+    color: #000;
+    position: relative;
+}
+.details h1{
+    margin-left: 31px;
+    width: 80px;
+	height: 37px;
+	font-family: SourceHanSansCN-Regular;
+	font-size: 40px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+    color: #353535;
+    padding-bottom: 28px;
+}
+.details .mainul .mainli{
+    width: 100%;
+    height: 366px;
+    margin: 0px 31px;
+    padding-left: 0px;
+    padding-top: 20px;
+    border-bottom: 1px solid rgb(205,205,205);
+    list-style-type: none;
+    position: relative;
+}
+.details .mainul li{
+    list-style-type: none;
+    
+}
+.details .mainul .mainli img{
+    float: left;
+}
+.details .mainul .mainli .perspective{
+    float: left;
+}
+.details .mainul .mainli .username{
+ 
+	font-family: SourceHanSansCN-Regular;
+	font-size: 28px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+    color: #353535;
+    margin-top: 0px;
+    margin-left: 20px;
+
+}
+.details .mainul .mainli .time{
+
+	font-family: PingFang-SC-Regular;
+	font-size: 18px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: -1px;
+	color: #000000;
+    opacity: 0.4;
+    margin-top: 30px;
+    margin-left: 20px;
+
+}
+.details .mainul .mainli .bb{
+    font-family: AdobeHeitiStd-Regular;
+	font-size: 22px;
+	font-weight: normal;
+	letter-spacing: -1px;
+    color: #000000;
+
+    margin-top: 30px;
+    margin-left: 20px;
+
+}
+.details .mainul .subul{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: flex;
+    
+}
+.details .mainul .subul li{
+    margin-left: 100px;
+    line-height: 30px;
+}
+.details .mainul .subul li img{
+    width:  30px;
+    height: 30px;
+}
+.details .mainul .subul li span{
+    margin-left: 30px;
+
 }
