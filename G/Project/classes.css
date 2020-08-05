@@ -57,9 +57,112 @@
 .classes_comment {
   box-sizing: border-box;
   width: 68.6rem;
-  height: 38.6rem;
+  height: auto;
   background-color: #ffffff;
   box-shadow: 0rem 0.1rem 4rem 0rem rgba(0, 204, 168, 0.2);
   border-radius: 0.8rem;
-  margin: auto;
+  margin: 0 auto;
+}
+
+.classes_comment > div:nth-child(1) {
+  padding: 3.2rem;
+  font-size: 3.6rem;
+  color: #353535;
+  text-align: center;
+  /* background-color: aquamarine; */
+}
+
+.classes_comment_attitude {
+  margin: 0 auto;
+  font-size: 4rem;
+  text-align: center;
+}
+
+.classes_comment_attitude td {
+  padding: 0 8.3rem 2.8rem 8.3rem;
+}
+
+.classes_comment_attitude img {
+  width: 3.6rem;
+  height: 3.6rem;
+}
+
+.classes_comment_tag {
+  box-sizing: border-box;
+  display: flex;
+  margin: 0 2.8rem;
+  /* background-color: blanchedalmond; */
+  flex-wrap: wrap;
+}
+
+.classes_comment_tag div {
+  background-color: #00cca8;
+  border-radius: 0.4rem;
+  color: #fff;
+  font-size: 2.2rem;
+  padding: 0.9rem 2.9rem;
+  margin: 1.6rem 2.8rem;
+}
+
+.classes_comment_detail {
+  margin: 3.2rem 0;
+  width: 100%;
+  /* height: 100rem; */
+  /* background-color: bisque; */
+  box-shadow: 0rem 0.1rem 2rem 0rem rgba(0, 204, 168, 0.2);
+  border-radius: 1.6rem;
+}
+
+.classes_comment_detail > div:nth-child(1) {
+  padding: 3.2rem;
+  font-size: 4rem;
+}
+
+.classes_comment_detail_users {
+  display: flex;
+  margin: 0 3.2rem;
+  /* background-color: violet; */
+}
+
+.ccdu_photo {
+  width: 8rem;
+  height: 8rem;
+  text-align: center;
+  margin-right: 3.4rem;
+}
+
+.ccdu_username {
+  font-size: 2.8rem;
+  margin-bottom: 2.8rem;
+}
+
+.ccdu_date {
+  font-size: 1.8rem;
+  color: #000000;
+  opacity: 0.4;
+  margin-bottom: 2.8rem;
+}
+
+.ccdu_comment {
+  font-size: 2.8rem;
+  line-height: 4rem;
+  margin-bottom: 2.8rem;
+}
+
+.ccdu_data {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 3.6rem;
+  color: #888888;
+}
+
+.ccdu_data_good {
+  margin-right: 16.6rem;
+}
+
+.ccdu_data_good > img,
+.ccdu_data_write > img {
+  width: 3.6rem;
+  height: 3.6rem;
+  padding-right: 3.2rem;
 }
