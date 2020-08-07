@@ -1,3 +1,8 @@
+.search header::before {
+  content: "\003C";
+  padding-right: 2rem;
+}
+
 .search_box {
   box-sizing: border-box;
   width: 100%;

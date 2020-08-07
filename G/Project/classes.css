@@ -118,35 +118,43 @@
   font-size: 4rem;
 }
 
-.classes_comment_detail_users {
+.classes_comment_detail_users,
+.index_me_message_info {
   display: flex;
   margin: 0 3.2rem;
   /* background-color: violet; */
 }
 
-.ccdu_photo {
+.ccdu_photo,
+.immi_photo {
   width: 8rem;
   height: 8rem;
   text-align: center;
   margin-right: 3.4rem;
 }
 
-.ccdu_username {
+.ccdu_username,
+.immi_username {
   font-size: 2.8rem;
   margin-bottom: 2.8rem;
 }
 
-.ccdu_date {
+.ccdu_date,
+.immi_date {
   font-size: 1.8rem;
   color: #000000;
   opacity: 0.4;
   margin-bottom: 2.8rem;
 }
 
-.ccdu_comment {
+.ccdu_comment,
+.immi_reply {
   font-size: 2.8rem;
   line-height: 4rem;
   margin-bottom: 2.8rem;
+}
+.immi_reply {
+  font-size: 3.4rem;
 }
 
 .ccdu_data {

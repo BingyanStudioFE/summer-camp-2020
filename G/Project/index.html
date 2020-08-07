@@ -8,155 +8,159 @@
     <link rel="stylesheet" href="search.css" />
     <link rel="stylesheet" href="classes.css" />
     <link rel="stylesheet" href="write.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.staticfile.org/ionicons/2.0.1/css/ionicons.min.css">
   </head>
   <body>
-    <header>爱选修</header>
     <div class="index">
+    <header>爱选修</header>
       <div class="menu">
         <div class="menu_index">
-          <div class="class">选课</div>
+          <div class="class checked">选课</div>
           <div class="me">我</div>
         </div>
         <div class="menu_search"></div>
       </div>
-      <div class="index_course" style="display: none;">
-        <ul class="sort">
-          <li>
-            类别
-            <div class="sort_fold"></div>
-          </li>
-          <li>
-            时间
-            <div class="sort_fold"></div>
-          </li>
-          <li>
-            地点
-            <div class="sort_fold"></div>
-          </li>
-          <li>
-            点名方式
-            <div class="sort_fold"></div>
-          </li>
-          <li>
-            考核方式
-            <div class="sort_fold"></div>
-          </li>
-        </ul>
+      <div class="index_course">
 
-        <div class="sort_info">
-          <div class="sort_info_detail hidden">
-            <div>沟通与管理[人文社科]</div>
-            <div>沟通与管理[人文社科]</div>
-            <div>沟通与管理[人文社科]</div>
-            <div>沟通与管理[人文社科]</div>
-            <div>沟通与管理[人文社科]</div>
-          </div>
+        <div id="classify">
+          <ul class="sort">
+            <li>
+              类别
+              <div class="sort_fold"></div>
+            </li>
+            <li>
+              时间
+              <div class="sort_fold"></div>
+            </li>
+            <li>
+              地点
+              <div class="sort_fold"></div>
+            </li>
+            <li>
+              点名方式
+              <div class="sort_fold"></div>
+            </li>
+            <li>
+              考核方式
+              <div class="sort_fold"></div>
+            </li>
+          </ul>
 
-          <div class="sort_info_detail hidden">
-            <div>周一</div>
-            <div>周二</div>
-            <div>周三</div>
-            <div>周四</div>
-            <div>周五</div>
-            <div>周六</div>
-            <div>周日</div>
-          </div>
+          <div id="sort_info">
+            <div class="sort_info_detail">
+              <div>沟通与管理[人文社科]</div>
+              <div>沟通与管理[人文社科]</div>
+              <div>沟通与管理[人文社科]</div>
+              <div>沟通与管理[人文社科]</div>
+              <div>沟通与管理[人文社科]</div>
+            </div>
 
-          <div class="sort_info_detail hidden">
-            <div>东区</div>
-            <div>西区</div>
-          </div>
+            <div class="sort_info_detail hidden">
+              <div>周一</div>
+              <div>周二</div>
+              <div>周三</div>
+              <div>周四</div>
+              <div>周五</div>
+              <div>周六</div>
+              <div>周日</div>
+            </div>
 
-          <div class="sort_info_detail hidden">
-            <div>点名</div>
-            <div>签到</div>
-            <div>不点名不签到</div>
-          </div>
+            <div class="sort_info_detail hidden">
+              <div>东区</div>
+              <div>西区</div>
+            </div>
 
-          <div class="sort_info_detail hidden">
-            <div>论文</div>
-            <div>考试</div>
-            <div>其他</div>
+            <div class="sort_info_detail hidden">
+              <div>点名</div>
+              <div>签到</div>
+              <div>不点名不签到</div>
+            </div>
+
+            <div class="sort_info_detail hidden">
+              <div>论文</div>
+              <div>考试</div>
+              <div>其他</div>
+            </div>
           </div>
-        </div>
-        <div>
-          <div class="courses">
-            <div class="courses_info">
-              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
-              <div>
-                <span class="courses_info_teacher">汤黎</span>
-                <span class="courses_info_class">历史与文化</span>
+          <div>
+            <div class="courses">
+              <div class="courses_info">
+                <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+                <div>
+                  <span class="courses_info_teacher">汤黎</span>
+                  <span class="courses_info_class">历史与文化</span>
+                </div>
+              </div>
+              <div class="courses_tag">
+                <div class="courses_tag_date">周日</div>
+                <div class="courses_tag_address">东区</div>
+                <div class="courses_tag_cridet">2学分</div>
+                <div class="courses_tag_call">点名</div>
+                <div class="courses_tag_test">考试</div>
               </div>
             </div>
-            <div class="courses_tag">
-              <div>周日</div>
-              <div>东区</div>
-              <div>2学分</div>
-              <div>点名</div>
-              <div>考试</div>
-            </div>
-          </div>
 
-          <div class="courses">
-            <div class="courses_info">
-              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
-              <div>
-                <span class="courses_info_teacher">汤黎</span>
-                <span class="courses_info_class">历史与文化</span>
+            <div class="courses">
+              <div class="courses_info">
+                <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+                <div>
+                  <span class="courses_info_teacher">汤黎</span>
+                  <span class="courses_info_class">历史与文化</span>
+                </div>
+              </div>
+              <div class="courses_tag">
+                <div class="courses_tag_date">周日</div>
+                <div class="courses_tag_address">东区</div>
+                <div class="courses_tag_cridet">2学分</div>
+                <div class="courses_tag_call">点名</div>
+                <div class="courses_tag_test">考试</div>
               </div>
             </div>
-            <div class="courses_tag">
-              <div>周日</div>
-              <div>东区</div>
-              <div>2学分</div>
-              <div>点名</div>
-              <div>考试</div>
-            </div>
-          </div>
 
-          <div class="courses">
-            <div class="courses_info">
-              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
-              <div>
-                <span class="courses_info_teacher">汤黎</span>
-                <span class="courses_info_class">历史与文化</span>
+            <div class="courses">
+              <div class="courses_info">
+                <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+                <div>
+                  <span class="courses_info_teacher">汤黎</span>
+                  <span class="courses_info_class">历史与文化</span>
+                </div>
+              </div>
+              <div class="courses_tag">
+                <div class="courses_tag_date">周一</div>
+                <div class="courses_tag_address">东区</div>
+                <div class="courses_tag_cridet">2学分</div>
+                <div class="courses_tag_call">点名</div>
+                <div class="courses_tag_test">考试</div>
               </div>
             </div>
-            <div class="courses_tag">
-              <div>周日</div>
-              <div>东区</div>
-              <div>2学分</div>
-              <div>点名</div>
-              <div>考试</div>
+
+            <div class="divide">
+              <div class="divide_line"></div>
+              <div class="divide_text">以下课程低于两学分</div>
+              <div class="divide_line"></div>
             </div>
-          </div>
 
-          <div class="divide">
-            <div class="divide_line"></div>
-            <div class="divide_text">以下课程低于两学分</div>
-            <div class="divide_line"></div>
-          </div>
-
-          <div class="courses">
-            <div class="courses_info">
-              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
-              <div>
-                <span class="courses_info_teacher">汤黎</span>
-                <span class="courses_info_class">历史与文化</span>
+            <div class="courses">
+              <div class="courses_info">
+                <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+                <div>
+                  <span class="courses_info_teacher">汤黎</span>
+                  <span class="courses_info_class">历史与文化</span>
+                </div>
               </div>
-            </div>
-            <div class="courses_tag">
-              <div>周日</div>
-              <div>东区</div>
-              <div>2学分</div>
-              <div>点名</div>
-              <div>考试</div>
+              <div class="courses_tag">
+                <div class="courses_tag_date">周二</div>
+                <div class="courses_tag_address">东区</div>
+                <div class="courses_tag_cridet">1学分</div>
+                <div class="courses_tag_call">点名</div>
+                <div class="courses_tag_test">考试</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="index_me">
+      <div class="index_me hidden" >
         <div class="index_me_info">
           <img src="assets/anonymous.png" class="index_me_info_photo"></img>
           <div class="index_me_info_name">张三</div>
@@ -164,14 +168,61 @@
         <div class="search_box">
           <div>
             <div class="search_box_icon"></div>
-            <input type="text" value="快速搜索课程名和教师名" />
+            <input type="text" />
           </div>
         </div>
-  
+
+        <div class="index_me_menu">
+          <div class="index_me_menu_comment checked">已评价课程</div>
+          <div class="index_me_menu_message">消息</div>
+        </div>
+
+        <div style="display: none;">
+        <div class="index_me_comment">
+          <div>
+            <div class="index_me_comment_content">这是一条评论这是一条评论这是一条评论这是一
+            条评论这是一是一条评论</div>
+            <div class="index_me_comment_course">
+              <div class="imcc_name"><ion-icon name="book-outline"></ion-icon><span>精神情感活动的神经生物学</span> </div>
+              <div class="imcc_teacher"><ion-icon name="person-outline"></ion-icon><span>张育红</span></div>
+            </div>
+          </div>
+          <div class="index_me_comment_delect">删除</div>
+        </div>
+        <div class="index_me_comment">
+          <div>
+            <div class="index_me_comment_content">这是一条评论这是一条评论这是一条评论这是一
+            条评论这是一是一条评论</div>
+            <div class="index_me_comment_course">
+              <div class="imcc_name"><ion-icon name="book-outline"></ion-icon><span>精神情感活动的神经生物学</span> </div>
+              <div class="imcc_teacher"><ion-icon name="person-outline"></ion-icon><span>张育红</span></div>
+            </div>
+          </div>
+          <div class="index_me_comment_delect">删除</div>
+        </div>
+        </div>
+
+        <div class="index_me_message" style="display: none;">
+          <div class="index_me_message_info">
+            <div><img src="assets/anonymous.png" class="immi_photo" /></div>
+            <div>
+              <div class="immi_myreply"><ion-icon name="chatbox-outline"></ion-icon>回复</div>
+              <div class="immi_username">用户名</div>
+              <div class="immi_date">10小时前</div>
+              <div class="immi_reply">
+                老师讲的超级好，学到很多，但是要每节课签到，结课方式就是一篇简单的小论文
+              </div>
+              <div class="immi_mycomment">
+                我的回复我的回复我的回复我的回复我的回复我的回复我的回复我的回复我的回复
+              </div>
+            </div>
+        </div>
       </div>
     </div>
+  </div>
 
-    <div class="search" style="display: none;">
+    <div class="search hidden" >
+    <header>爱选修</header>
       <div class="search_box">
         <div>
           <div class="search_box_icon"></div>
@@ -345,5 +396,8 @@
       </div>
       <div class="write_submit">提交</div>
     </div>
+
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <script src="index.js"></script>
   </body>
 </html>

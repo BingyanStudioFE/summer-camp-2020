@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+.hidden {
+  display: none !important;
+}
+
 @media screen and (max-width: 375px) {
   html {
     font-size: 4px;
@@ -58,7 +62,7 @@ header {
   height: 13rem;
   font-family: SourceHanSansCN-Medium;
   font-size: 4rem;
-  background-color: yellowgreen;
+  /* background-color: yellowgreen; */
   padding: 2.6rem 3.6rem;
 }
 
@@ -74,6 +78,12 @@ header {
   width: 100%;
   font-size: 4rem;
   padding: 2.3rem;
+}
+
+.class.checked,
+.me.checked {
+  color: #00cca8;
+  border-bottom: 0.5rem solid #00cca8;
 }
 
 .menu_search {
@@ -105,6 +115,10 @@ header {
   display: flex;
 }
 
+.sort li.checked {
+  color: #00cca8;
+}
+
 .sort_fold {
   margin: auto;
   height: 3rem;
@@ -113,10 +127,19 @@ header {
   background-size: contain;
 }
 
+.sort_fold.checked {
+  background: url(assets/unfold.png) no-repeat;
+  background-size: contain;
+}
+
+#sort_info {
+  position: relative;
+}
+
 .sort_info_detail {
   box-sizing: border-box;
   position: absolute;
-  top: 31.5rem;
+  top: -1rem;
   width: 100%;
   height: auto;
   background-color: rgba(238, 238, 238, 0.9);
@@ -125,10 +148,6 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-}
-
-.hidden {
-  display: none;
 }
 
 .sort_info_detail div {
@@ -247,5 +266,108 @@ header {
 .index_me .search_box {
   border: none;
   box-shadow: none;
-  margin: 0 3.2rem;
+  /* margin: 0 3.2rem; */
+}
+
+.index_me_menu {
+  width: 43.2rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.index_me_menu_comment,
+.index_me_menu_message {
+  font-size: 3.6rem;
+  color: #b2b2b2;
+  padding-bottom: 2.8rem;
+}
+
+.index_me_menu_comment.checked,
+.index_me_menu_message.checked {
+  color: #00cca8;
+  border-bottom: 0.5rem solid #00cca8;
+}
+
+.index_me_message {
+  position: relative;
+}
+
+.immi_myreply {
+  font-size: 2.8rem;
+  color: #00adcc;
+  position: absolute;
+  top: 0;
+  right: 3.2rem;
+  display: flex;
+  align-items: center;
+}
+
+.immi_myreply > ion-icon {
+  margin-right: 1.6rem;
+}
+
+.immi_mycomment {
+  width: 52.8rem;
+  font-size: 2.8rem;
+  color: #888888;
+  background-color: #f7f7f7;
+  padding: 1.5rem 1.4rem 1.5rem 3.2rem;
+}
+
+.index_me_comment {
+  width: 75rem;
+  display: flex;
+  padding: 0 3.5rem;
+  padding-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+  /* background-color: yellowgreen; */
+  height: auto;
+  box-sizing: border-box;
+  border-bottom: 0.1rem solid #d9d9d9;
+  background-color: #fff;
+}
+
+.index_me_comment_content {
+  /* width: 75rem; */
+  font-size: 3.4rem;
+  color: #353535;
+  /* background-color: wheat; */
+  /* position: absolute; */
+  padding: 3.2rem 0;
+}
+
+.index_me_comment_delect {
+  background-color: #ff3333;
+  font-size: 2.8rem;
+  color: #ffffff;
+  position: absolute;
+  right: 0;
+  width: 17.3rem;
+  height: auto;
+  top: 3.2rem;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -1;
+}
+
+.index_me_comment_course {
+  display: flex;
+  font-size: 2.8rem;
+  color: #888888;
+  justify-content: space-between;
+}
+
+.imcc_name,
+.imcc_teacher {
+  display: flex;
+  align-items: flex-end;
+}
+
+.imcc_name span,
+.imcc_teacher span {
+  padding-left: 3rem;
 }
