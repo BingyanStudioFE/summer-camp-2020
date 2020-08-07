@@ -44,8 +44,8 @@ export default class ViewPage extends Component {
                 </form>
                 </div>
                 <div className="footer">
-                    <input type="radio" name="niming" value="yes"></input><label>匿名</label>
-                    <input type="radio" name="qimo" value="yes"></input><label>是否为期末情报</label>
+                    <input type="checkbox" name="niming" value="yes"></input><label>匿名</label>
+                    <input type="checkbox" name="qimo" value="yes"></input><label>是否为期末情报</label>
                     <ul className="ul2">
                         <h3>总评</h3>
                         <li><img src={require('../assets/images/smile.png')} alt=""></img><p>很赞</p></li>

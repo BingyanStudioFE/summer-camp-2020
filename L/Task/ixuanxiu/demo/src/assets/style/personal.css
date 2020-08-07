@@ -19,6 +19,9 @@ p{
     font-size: 26px;
     list-style-type: none;
 }
+.body img{
+    width: 400px;
+}
 .footer{
     position: relative;
     bottom: 10px;

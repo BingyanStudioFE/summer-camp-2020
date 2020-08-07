@@ -4,6 +4,10 @@
     padding-top: 40px;
     padding-bottom:20px;
 }
+.container ul{
+    padding-left: 16px;
+    padding-right: 16px;
+}
 .container ul li{
     list-style-type: none;
 

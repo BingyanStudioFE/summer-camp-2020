@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import '../assets/style/coursepage.css'
 import Header2 from '../components/Header2'
+import { Link } from 'react-router-dom'
+// import ViewPage from '../pages/ViewPage'
 export default class CoursePage extends Component {
     render() {
         return (
             <div>
-                {/* <div className="header">
-                    <img src={require('../assets/images/zuo.png')} alt=""></img>
-                    <span>爱选修</span>
-                </div> */}
+
                 <Header2/>
                 <div className="body">
                     <div className="areatop">
@@ -106,14 +105,21 @@ export default class CoursePage extends Component {
                                   </ul>
                                   </div>
                                   <ul className="subul">
-                                      <li><img src={require('../assets/images/share.png')} alt=""></img></li>
-                                      <li><img src={require('../assets/images/zan.png')} alt=""></img><span>1</span></li>
-                                      <li><img src={require('../assets/images/pinglun.png')} alt=""></img><span>0</span></li>
+                                      <li>
+                                          <img src={require('../assets/images/share.png')} alt=""/><span>1</span>
+                                      </li>
+                                      <li>
+                                          <img src={require('../assets/images/zan.png')} alt=""/><span>1</span>
+                                      </li>
+                                      <li>
+                                          <img src={require('../assets/images/pinglun.png')} alt=""/><span>1</span>
+                                      </li>
                                   </ul>
                               </li>
                           </ul>  
                     </div>
-                </div>                
+                </div>
+                <div className="skip"><Link to="/ViewPage"><img src={require('../assets/images/comment-button.png')} alt=""></img></Link></div>                
             </div>
         )
     }

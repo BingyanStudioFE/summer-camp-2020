@@ -1,0 +1,148 @@
+.searchbar {
+    height: 103px;
+    width: 100%;
+    margin-top: 54px;
+    /* box-shadow: 0px 1px 16px 0px 
+        rgba(0, 0, 0, 0.13); */
+    display: flex;
+    justify-content: space-between;
+
+}
+.searchbar form{
+    /* margin-top: 60px; */
+    width: 70%;
+	height: 60px;
+	background-color: #ebf1f3;
+    border-radius: 10px;
+    margin-left: 32px;
+}
+.searchbar button{
+    float: left;
+    border: none;
+    width: 60px;
+    height: 60px;
+    content: "../images/fangfa.png";
+    /* margin-right:; */
+    padding-bottom: 10px;
+}
+.searchbar button img{
+    width: 28px;
+	height: 29px;
+}
+.searchbar input[type="search"]{
+    
+    
+    background-color:#ebf1f3;
+    border: none;
+    font-family: SourceHanSansCN-Regular;
+	font-size: 34px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+    color: #d9d9d9;
+    width: 500px;
+    height: 32px;
+    margin-top: 10px;
+}
+.searchbar a{
+    text-decoration: none;
+    width: 76px;
+    height: 34px;
+    line-height: 48px;
+	font-family: SourceHanSansCN-Regular;
+	font-size: 36px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+    color: #00cca8;
+   margin-right: 5%;
+}
+/* 设置热门搜索 */
+.hotsearch{
+    height: 300px;
+    width: 100%;
+    background-color: #ffffff;
+	box-shadow: 0px 1px 16px 0px 
+        rgba(0, 0, 0, 0.13);
+    padding-top: 42px;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-bottom: 34px;
+}
+.hotsearch p{
+    font-family: SourceHanSansCN-Regular;
+	font-size: 36px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+    color: #353535;
+    margin-top: 0px;
+    margin-bottom: 45px;
+}
+.hotsearch ul{
+    padding-left: 0px;
+    margin:0px auto;
+    width: 98%;
+	height: 152px;
+    display: flex;
+    align-content: space-between;
+    flex-wrap: wrap;
+    justify-content: start;
+    justify-items: flex-start;
+}
+.hotsearch ul li{
+   margin-right:  13%;
+    list-style-type: none;
+    height: 60px;
+    line-height: 60px;
+	background-color: #f2f2f2;
+    border-radius: 8px;
+    font-family: SourceHanSansCN-Regular;
+	font-size: 28px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: -1px;
+    color: #353535;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+/* 设置搜索历史 */
+.searchhistory{
+    padding: 46px 32px;
+
+}
+.searchhistory p{
+    width: 149px;
+	height: 34px;
+	font-family: SourceHanSansCN-Regular;
+	font-size: 36px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: 0px;
+	color: #353535;
+}
+.searchhistory ul li{
+    height: 67px;
+    list-style-type: none;
+    font-family: SourceHanSansCN-Regular;
+	font-size: 28px;
+	font-weight: normal;
+	font-stretch: normal;
+	letter-spacing: -1px;
+    color: #888888;
+    margin-top: 39px;
+    /* line-height: 67px; */
+    border-bottom: 1px solid rgb(248,248,248);
+}
+.searchhistory ul li img{
+    width: 30px;
+    height: 30px;
+}
+.searchhistory ul li button{
+    background-color: #fff;
+    border: none;
+    float: right;
+}
+.searchhistory ul li button:hover{
+    border: none;
+}
