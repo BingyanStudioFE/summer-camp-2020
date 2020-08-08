@@ -1,8 +1,10 @@
+/* @import '~antd/dist/antd.css'; */
+
 .classbar ul{
     display: flex;
     flex-wrap: nowrap;
     /* justify-content: space-between; */
-    width: 115%;
+    width: 121%;
     padding-left: 20px;
 }
 .classbar{
@@ -17,15 +19,17 @@
 .classbar { overflow: -moz-scrollbars-none; } */
 
 .classbar ul li{
+   
     margin-left: 5px;
-list-style-type:none;
-display: inline-flex;
-align-items: center;
-justify-content: flex-start;
-/* width: 100px; */
-margin-top:0px;
-/* margin-right: 20px; */
+    list-style-type:none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: flex-start;
+    /* width: 100px; */
+    margin-top:0px;
+    /* margin-right: 20px; */
 }
+
 .classbar ul a:hover{
     color: rgb(0,204,168);
 }
@@ -42,7 +46,7 @@ margin-top:0px;
     opacity: 0.4;
   
 }
-.dropdownone{
+/* .dropdownone{
     position: relative;
     display: inline-block;
 }
@@ -56,4 +60,4 @@ margin-top:0px;
   }
   .dropdownone:hover .dropdown-contentone {
     display: block;
-  }
+  } */

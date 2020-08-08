@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Header2 from '../components/Header2'
 import '../assets/style/searchpage.css'
+import { Link } from 'react-router-dom'
 export default class SearchPage extends Component {
 
     render() {
@@ -10,7 +11,7 @@ export default class SearchPage extends Component {
                 <div className="searchbar">
                     <form>
                         <button type="submit"><img src={require('../assets/images/fangda.png') }alt=""></img></button>
-                        <input type="search" placeholder="快速搜索课程名称或教师名"></input>
+                        <input type="text" placeholder="快速搜索课程名称或教师名"></input>
                     </form>
                     {/*  eslint-disable-next-line */}
                     <a href="#" alt="">取消</a>
@@ -19,13 +20,13 @@ export default class SearchPage extends Component {
                 <div className="hotsearch">
                     <p>热门搜索</p>
                     <ul>
-                        <li>建筑史盖伦论建筑史概论</li>
-                        <li>建筑史</li>
-                        <li>建筑史</li>
-                        <li>建筑史</li>
-                        <li>建筑史</li>
-                        <li>建筑史</li>
-                        <li>建筑史</li>
+                        <li><Link to="/CoursePage">建筑史盖伦论建筑史概论</Link></li>
+                        <li><Link to="/CoursePage">建筑史</Link></li>
+                        <li><Link to="/CoursePage">建筑史</Link></li>
+                        <li><Link to="/CoursePage">建筑史</Link></li>
+                        <li><Link to="/CoursePage">建筑史</Link></li>
+                        <li><Link to="/CoursePage">建筑史</Link></li>
+                        <li><Link to="/CoursePage">建筑史</Link></li>
                     </ul>
                 </div>
                 <div className="searchhistory">

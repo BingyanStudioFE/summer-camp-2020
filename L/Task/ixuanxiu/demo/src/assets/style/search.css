@@ -2,9 +2,9 @@
     display: flex;
     justify-content: space-between;
 }
-.Searcher .Search_left a:active{
+/* .Searcher .Search_left a:active{
     color: rgb(0,204,168);
-}
+} */
 .Search_left
 {   
     margin-left: 10%;
@@ -18,26 +18,28 @@
     /* color: rgb(186,186,186); */
     /* line-height: 60px; */
     /* opacity: 0.6; */
+    height: 32px;
     font-family: SourceHanSansCN-Medium;
 	font-size: 32px;
 	font-weight: normal;
 	font-stretch: normal;
 	line-height: 40px;
 	letter-spacing: 0px;
-
-
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+    color: rgb(186,186,186);
 }
 .Search_left .wo{
-    color: rgb(186,186,186);
-    line-height: 60px;
-    /* opacity: 0.6; */
+    height: 32px;
     font-family: SourceHanSansCN-Medium;
 	font-size: 32px;
 	font-weight: normal;
 	font-stretch: normal;
 	line-height: 40px;
 	letter-spacing: 0px;
-	/* color: #00cca8; */
+    border-bottom: 1px solid white;
+    padding-bottom: 20px;
+    color: rgb(186,186,186);
 }
 .Searcher img{
     margin-top: 0px;
@@ -46,6 +48,15 @@
     color: rgb(186,186,186);
     opacity: 0.6;
 }
-.Search_left .xaunke:active{
+/* .Search_left .xaunke:active{
     color: rgb(0,204,168);
 }
+/* .Search_left .xaunke:hover{
+    color: rgb(0,204,168);
+} */
+/* .Search_left .wo:active{
+    color: rgb(0,204,168);
+}  */
+/* .Search_left .wo:hover{
+    color: rgb(0,204,168);
+} */
