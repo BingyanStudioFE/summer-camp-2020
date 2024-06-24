@@ -1259,3 +1259,16 @@ Function.prototype.bind2 = function (context) {
     return fBound;
 }
 如果对原型链稍有困惑，可以查看《JavaScript深入之从原型到原型链》。
+### Promise
+Promise来处理异步 resolve成功的回调函数 reject失败的回调函数
+```
+var p=new Promise(function(resolve,reject){
+	setTimeout(function(){
+	var name ='张三';
+	resolve(name);
+	},3000);
+})
+p.then(function(data){
+	console,log(data);
+})
+```

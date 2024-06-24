@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="search.css" />
+    <link rel="stylesheet" href="classes.css" />
+    <link rel="stylesheet" href="write.css" />
+  </head>
+  <body>
+    <header>爱选修</header>
+    <div class="index">
+      <div class="menu">
+        <div class="menu_index">
+          <div class="class">选课</div>
+          <div class="me">我</div>
+        </div>
+        <div class="menu_search"></div>
+      </div>
+      <div class="index_course" style="display: none;">
+        <ul class="sort">
+          <li>
+            类别
+            <div class="sort_fold"></div>
+          </li>
+          <li>
+            时间
+            <div class="sort_fold"></div>
+          </li>
+          <li>
+            地点
+            <div class="sort_fold"></div>
+          </li>
+          <li>
+            点名方式
+            <div class="sort_fold"></div>
+          </li>
+          <li>
+            考核方式
+            <div class="sort_fold"></div>
+          </li>
+        </ul>
+
+        <div class="sort_info">
+          <div class="sort_info_detail hidden">
+            <div>沟通与管理[人文社科]</div>
+            <div>沟通与管理[人文社科]</div>
+            <div>沟通与管理[人文社科]</div>
+            <div>沟通与管理[人文社科]</div>
+            <div>沟通与管理[人文社科]</div>
+          </div>
+
+          <div class="sort_info_detail hidden">
+            <div>周一</div>
+            <div>周二</div>
+            <div>周三</div>
+            <div>周四</div>
+            <div>周五</div>
+            <div>周六</div>
+            <div>周日</div>
+          </div>
+
+          <div class="sort_info_detail hidden">
+            <div>东区</div>
+            <div>西区</div>
+          </div>
+
+          <div class="sort_info_detail hidden">
+            <div>点名</div>
+            <div>签到</div>
+            <div>不点名不签到</div>
+          </div>
+
+          <div class="sort_info_detail hidden">
+            <div>论文</div>
+            <div>考试</div>
+            <div>其他</div>
+          </div>
+        </div>
+        <div>
+          <div class="courses">
+            <div class="courses_info">
+              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+              <div>
+                <span class="courses_info_teacher">汤黎</span>
+                <span class="courses_info_class">历史与文化</span>
+              </div>
+            </div>
+            <div class="courses_tag">
+              <div>周日</div>
+              <div>东区</div>
+              <div>2学分</div>
+              <div>点名</div>
+              <div>考试</div>
+            </div>
+          </div>
+
+          <div class="courses">
+            <div class="courses_info">
+              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+              <div>
+                <span class="courses_info_teacher">汤黎</span>
+                <span class="courses_info_class">历史与文化</span>
+              </div>
+            </div>
+            <div class="courses_tag">
+              <div>周日</div>
+              <div>东区</div>
+              <div>2学分</div>
+              <div>点名</div>
+              <div>考试</div>
+            </div>
+          </div>
+
+          <div class="courses">
+            <div class="courses_info">
+              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+              <div>
+                <span class="courses_info_teacher">汤黎</span>
+                <span class="courses_info_class">历史与文化</span>
+              </div>
+            </div>
+            <div class="courses_tag">
+              <div>周日</div>
+              <div>东区</div>
+              <div>2学分</div>
+              <div>点名</div>
+              <div>考试</div>
+            </div>
+          </div>
+
+          <div class="divide">
+            <div class="divide_line"></div>
+            <div class="divide_text">以下课程低于两学分</div>
+            <div class="divide_line"></div>
+          </div>
+
+          <div class="courses">
+            <div class="courses_info">
+              <div class="courses_info_name">中国历代王朝兴衰史及其启示</div>
+              <div>
+                <span class="courses_info_teacher">汤黎</span>
+                <span class="courses_info_class">历史与文化</span>
+              </div>
+            </div>
+            <div class="courses_tag">
+              <div>周日</div>
+              <div>东区</div>
+              <div>2学分</div>
+              <div>点名</div>
+              <div>考试</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="index_me">
+        <div class="index_me_info">
+          <img src="assets/anonymous.png" class="index_me_info_photo"></img>
+          <div class="index_me_info_name">张三</div>
+        </div>
+        <div class="search_box">
+          <div>
+            <div class="search_box_icon"></div>
+            <input type="text" value="快速搜索课程名和教师名" />
+          </div>
+        </div>
+  
+      </div>
+    </div>
+
+    <div class="search" style="display: none;">
+      <div class="search_box">
+        <div>
+          <div class="search_box_icon"></div>
+          <input type="text" value="快速搜索课程名和教师名" />
+        </div>
+        <div class="search_box_cancel">取消</div>
+      </div>
+
+      <div class="search_hot">
+        <div>热门搜索</div>
+        <div class="search_hot_tag">
+          <div>建筑史概论</div>
+          <div>建筑史概论</div>
+          <div>建筑史概论</div>
+          <div>建筑史概论</div>
+        </div>
+      </div>
+
+      <div class="search_divide"></div>
+      <div class="search_history">
+        <div>搜索历史</div>
+        <ul>
+          <li class="search_history_list">建筑史概论</li>
+          <li class="search_history_list">
+            111111111111111111111111111111111111111111111111111111111111111111111111
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="classes" style="display: none;">
+      <div class="classes_background"></div>
+      <div class="classes_back">课程</div>
+      <div class="classes_name">晚清历史人物研究</div>
+      <table class="classes_info">
+        <tbody>
+          <tr>
+            <td>类别</td>
+            <td>学分</td>
+            <td>针对对象</td>
+          </tr>
+          <tr>
+            <td>历史与文化[人文社科]</td>
+            <td>2</td>
+            <td>全校本科生</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <table class="classes_detail">
+        <tr>
+          <td>开课地点</td>
+          <td>东十二楼302</td>
+          <td>西十二楼302</td>
+        </tr>
+        <tr>
+          <td>开课时间</td>
+          <td>7-15周</td>
+          <td>7-15周</td>
+        </tr>
+      </table>
+
+      <div class="classes_comment">
+        <div>课程评价</div>
+        <table class="classes_comment_attitude">
+          <tr>
+            <td>27</td>
+            <td>7</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td><img src="assets/satisfied.png" /></td>
+            <td><img src="assets/just_so_so.png" /></td>
+            <td><img src="assets/unsatisfied.png" /></td>
+          </tr>
+        </table>
+        <div class="classes_comment_tag">
+          <div>不点名不签到</div>
+          <div>论文考核</div>
+          <div>无作业</div>
+          <div>签到</div>
+        </div>
+      </div>
+
+      <div class="classes_comment_detail">
+        <div>评价</div>
+        <div class="classes_comment_detail_users">
+          <div><img src="assets/anonymous.png" class="ccdu_photo" /></div>
+          <div>
+            <div class="ccdu_username">用户名</div>
+            <div class="ccdu_date">2017年6月25日</div>
+            <div class="ccdu_comment">
+              老师讲的超级好，学到很多，但是要每节课签
+              到，结课方式就是一篇简单的小论文
+            </div>
+            <div class="ccdu_data">
+              <div class="ccdu_data_good">
+                <img src="assets/good.png" />
+                9
+              </div>
+              <div class="ccdu_data_write">
+                <img src="assets/comment.png" />
+                9
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="write" style="display: none;">
+      <div class="write_class">中国文化概况</div>
+      <ul>
+        <li>
+          <div>点名</div>
+          <div class="write_tag">
+            <div class="checked">签到</div>
+            <div>点名</div>
+            <div>不点名不签到</div>
+          </div>
+        </li>
+        <li>
+          <div>考核</div>
+          <div class="write_tag">
+            <div class="checked">论文</div>
+            <div>考试</div>
+            <div>其他</div>
+          </div>
+        </li>
+        <li>
+          <div>作业</div>
+          <div class="write_tag">
+            <div class="checked">无作业</div>
+            <div>有作业</div>
+          </div>
+        </li>
+        <li>
+          <div>质量</div>
+          <div class="write_tag">
+            <div class="checked">很好</div>
+            <div>一般</div>
+            <div>差</div>
+            <div>没听</div>
+          </div>
+        </li>
+      </ul>
+      <div class="write_divide"></div>
+      <form>
+        <textarea class="write_input">请输入内容</textarea>
+        <input class="write_img" disabled="true" />
+      </form>
+      <div class="write_divide"></div>
+      <div class="write_unknow">
+        <input type="checkbox" value="" />
+        <div>匿名</div>
+      </div>
+      <div class="write_satisfy">
+        <div>总评</div>
+        <table>
+          <tr>
+            <td><img src="assets/satisfied.png" /></td>
+            <td><img src="assets/just_so_so.png" /></td>
+            <td><img src="assets/unsatisfied.png" /></td>
+          </tr>
+          <tr>
+            <td>满意</td>
+            <td>一般</td>
+            <td>糟糕</td>
+          </tr>
+        </table>
+      </div>
+      <div class="write_submit">提交</div>
+    </div>
+  </body>
+</html>
